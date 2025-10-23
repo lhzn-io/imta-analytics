@@ -1,0 +1,2 @@
+# Ignore generated markdown files from PDFs
+refs/publications/*.md

@@ -156,3 +156,9 @@ temp/
 # OS generated files
 Thumbs.db
 ehthumbs.db
+
+# Windows thumbnail cache
+**/*Zone.Identifier
+
+# PDF files
+**/*.pdf
