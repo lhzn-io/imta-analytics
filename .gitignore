@@ -124,7 +124,12 @@ dmypy.json
 .pyre/
 
 # IDE specific files
-.vscode/
+# VS Code - ignore personal settings but keep project settings
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
 .idea/
 *.swp
 *.swo
