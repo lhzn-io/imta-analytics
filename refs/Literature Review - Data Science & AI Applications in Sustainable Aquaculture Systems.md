@@ -8,7 +8,7 @@
 
 ## Executive Summary
 
-This literature review synthesizes current research on the application of data science, artificial intelligence, and sensor technologies to integrated multi-trophic aquaculture (IMTA) systems, with emphasis on: (1) predictive yield modeling based on environmental factors, and (2) intelligent decision support systems for farm operators. Our analysis of 30+ peer-reviewed publications reveals significant opportunities for machine learning-driven optimization of IMTA operations, particularly in dissolved oxygen prediction (R² = 0.67), growth modeling (RMSE = 6.92%), and real-time alert systems for environmental thresholds.
+This literature review synthesizes current research on the application of data science, artificial intelligence, and sensor technologies to integrated multi-trophic aquaculture (IMTA) systems, with emphasis on: (1) predictive yield modeling based on environmental factors, and (2) intelligent decision support systems for farm operators. Our analysis of 50+ peer-reviewed publications reveals significant opportunities for machine learning-driven optimization of IMTA operations, particularly in dissolved oxygen prediction (R² = 0.67), growth modeling (RMSE = 6.92%), and real-time alert systems for environmental thresholds.
 
 **Key Findings:**
 - Environmental parameter monitoring via remote sensing + IoT achieves operational cost reductions of 20-40%
