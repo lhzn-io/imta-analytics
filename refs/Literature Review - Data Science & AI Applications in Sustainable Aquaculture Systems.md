@@ -1,9 +1,7 @@
 # Literature Review: Data Science & AI Applications in Sustainable Aquaculture Systems
 ## Focus on IMTA and Predictive Yield Modeling
 
-**Prepared for:** UNH Aquafort Partnership Discussion  
-**Date:** January 2025  
-**Authors:** [Your Name]  
+**Date:** October 2025 
 **Version:** 1.0
 
 ---
@@ -30,7 +28,7 @@ This literature review synthesizes current research on the application of data s
 6. [Data Integration Challenges & Solutions](#6-data-integration)
 7. [Economic Viability & Adoption Barriers](#7-economics)
 8. [Research Gaps & Opportunities](#8-research-gaps)
-9. [Implications for UNH Aquafort](#9-implications)
+9. [Implementation Considerations for IMTA Deployments](#9-implications)
 10. [References](#references)
 
 ---
@@ -280,24 +278,6 @@ Abbasi et al. (2023) compared YOLOv5s vs. Fast-RCNN for disease detection in lea
 
 ### 4.3 Hybrid Approaches: Physics-Informed Neural Networks
 
-**Opportunity for UNH Aquafort:**
-Combine DEB models (mechanistic understanding) with neural networks (data-driven flexibility) to create physics-informed ML models that:
-- Respect known physiological constraints (e.g., growth cannot exceed maximum assimilation rate)
-- Learn residual patterns from data (e.g., site-specific productivity variations)
-- Require less training data than pure black-box models
-- Provide interpretable predictions
-
-**Example Architecture:**
-```
-Input: [SST, DO, Salinity, Chl-a, Stocking_Density, Days_Since_Stocking]
-  ↓
-DEB Core Module (calculates theoretical growth)
-  ↓
-Residual Learning Module (neural network learns deviations)
-  ↓
-Output: [Predicted_Weight, Predicted_FCR, Predicted_Harvest_Date]
-```
-
 This approach has shown success in other domains (climate modeling, fluid dynamics) but remains underexplored in aquaculture.
 
 ---
@@ -420,7 +400,7 @@ Critical insight from all reviewed systems: **Automation should augment, not rep
 3. **Override Capability:** Farmers can dismiss/postpone actions with required justification (creates learning dataset)
 4. **Feedback Loops:** System learns from farmer corrections (e.g., if farmer consistently ignores certain alerts, recalibrate thresholds)
 
-**Example: IMTA Operator Co-Pilot (Proposed for UNH)**
+**Example: IMTA Operator Co-Pilot**
 
 ```
 User Query: "My oxygen readings are dropping faster than usual. What should I do?"
@@ -516,7 +496,7 @@ Optical satellites (Sentinel-2, Sentinel-3 OLCI) blocked by clouds ~60% of time 
 
 **Bottleneck:** Sentinel satellite data products take 1-24 hours to process and distribute (ESA Copernicus Hub).
 
-**UNH Aquafort Opportunity:**
+**Implementation Opportunity:**
 
 Design edge-computing architecture:
 ```
@@ -667,7 +647,7 @@ At current UK energy rates (£0.34/kWh), **energy costs dominate operating expen
 3. **Passive Design:** Greenhouse structures, insulation
 4. **Site Selection:** Locate in thermally favorable regions
 
-**UNH Context:** New England experiences similar climate challenges to Belgium. Energy optimization should be **primary focus** for economic viability.
+**Regional Context:** New England and similar cold-climate regions experience energy challenges comparable to Belgium. Energy optimization should be a **primary focus** for economic viability in these areas.
 
 #### 7.4.2 Initial Investment & Payback Period
 
@@ -811,7 +791,7 @@ Outputs:
 - **LIME (Local Interpretable Model-agnostic Explanations):** Train interpretable model (linear regression, decision tree) locally around specific prediction
 - **Counterfactual Explanations:** "If temperature had been 2°C lower, DO would be 0.8 mg/L higher"
 
-**Implementation in UNH System:**
+**Implementation Example:**
 ```
 User: "Why is the model predicting low growth this month?"
 
@@ -903,7 +883,7 @@ growth recovers when SST exceeds 18°C, typically in 2-3 weeks.
 - Privacy (no data leaves farm)
 - Resilience (works during internet outages)
 
-**Chatziantoniou et al. (2023):** Aquasafe is cloud-based. **UNH could differentiate** with hybrid edge-cloud architecture.
+**Chatziantoniou et al. (2023):** Aquasafe is cloud-based. **IMTA deployments could benefit** from hybrid edge-cloud architecture for improved resilience and latency.
 
 #### 8.3.3 Blockchain for Supply Chain & Traceability
 
@@ -928,11 +908,11 @@ Block 4: IMTA Certification
 
 **Pilot Projects:** IBM Food Trust (used by Walmart), SAP Ocean Traceability
 
-**Opportunity #8:** Integrate blockchain with UNH decision support system to automatically log IMTA environmental benefits, enabling premium pricing.
+**Opportunity #8:** Integrate blockchain with IMTA decision support systems to automatically log environmental benefits, enabling premium pricing and traceability.
 
 ---
 
-## 9. Implications for UNH Aquafort {#9-implications}
+## 9. Implementation Considerations for IMTA Deployments {#9-implications}
 
 ### 9.1 Project #1: Predictive Yield Modeling
 
@@ -948,7 +928,7 @@ Block 4: IMTA Certification
 #### Phase 1: Data Collection & Integration (Months 1-3)
 
 **Historical Data Acquisition:**
-1. UNH farm records:
+1. Farm operational records:
    - Growth measurements (weight, length sampling every 2-4 weeks)
    - Feeding logs (amount, frequency, feed type)
    - Stocking data (initial count, size, date)
@@ -999,7 +979,7 @@ Block 4: IMTA Certification
 - R² > 0.75 (75% of yield variance explained)
 - MAPE < 15% (within 15% of actual harvest weight)
 
-**Benchmark:** Chatziantoniou et al. achieved R² = 0.67 for DO, closely matched weight observations. With UNH's controlled farm data (vs. satellite-only), expect improvement.
+**Benchmark:** Chatziantoniou et al. achieved R² = 0.67 for DO, closely matched weight observations. With high-quality controlled farm data, improvements are expected.
 
 #### Phase 3: Deployment & Validation (Months 6-9)
 
@@ -1039,7 +1019,7 @@ Block 4: IMTA Certification
 > "As an investor, I want quarterly reports showing predicted vs. actual yield accuracy, so I can assess farm management competence and financial projections."
 
 **Validation Protocol:**
-- Deploy model at UNH Aquafort for 2024 growing season
+- Deploy model at target IMTA facility for complete growing season
 - Record predictions and actual outcomes
 - Farmer feedback surveys (usability, trust, decision impact)
 - Iterate based on lessons learned
@@ -1056,17 +1036,17 @@ Block 4: IMTA Certification
 
 **Core Knowledge Sources:**
 1. **Research Literature:** 
-   - 50+ papers from your collection (IMTA, precision farming, water quality)
+   - Comprehensive corpus of IMTA, precision farming, and water quality research
    - Convert to structured format (vector embeddings for retrieval)
 
 2. **Standard Operating Procedures:**
-   - UNH Aquafort's protocols (feeding schedules, sampling methods, harvest procedures)
+   - Industry protocols (feeding schedules, sampling methods, harvest procedures)
    - Industry best practices (FAO guidelines, regional manuals)
 
 3. **Regulatory Documents:**
    - EPA/NOAA aquaculture permits
    - Food safety standards (FDA, USDA)
-   - State-specific regulations (NH Fish & Game)
+   - Regional regulations (state fisheries management)
 
 4. **Equipment Manuals:**
    - Sensor calibration procedures
@@ -1201,7 +1181,7 @@ AI: [Runs growth model + DO model]
 **Recommended:** Start with Option A (web), add Option C (SMS) for alerts.
 
 **Testing Protocol:**
-1. **Internal Alpha (Month 6):** UNH team tests with synthetic scenarios
+1. **Internal Alpha (Month 6):** Development team tests with synthetic scenarios
 2. **Beta with Farm Staff (Month 7-8):** 5 operators use daily, provide feedback
 3. **Evaluation Metrics:**
    - **Usability:** System Usability Scale (SUS) survey, aim for >70
@@ -1263,7 +1243,7 @@ Farmer Action:
 
 **Aquasafe (Chatziantoniou et al., 2023) - Comparison:**
 
-| Feature | Aquasafe | Proposed UNH System |
+| Feature | Aquasafe | Proposed IMTA System |
 |---------|----------|---------------------|
 | **Data Sources** | Satellite + in-situ + models | Same + historical farm records |
 | **Spatial Focus** | Regional (multi-farm monitoring) | Farm-scale (individual cage optimization) |
@@ -1274,13 +1254,13 @@ Farmer Action:
 | **Explainability** | Alert thresholds shown | SHAP analysis + causal reasoning |
 | **Open Source** | Proprietary | Potential for open-source components (differentiator) |
 
-**Competitive Advantages for UNH:**
+**Competitive Advantages:**
 
-1. **Hyperlocal Expertise:** Models trained on New England-specific conditions (cold winters, temperature extremes uncommon in Mediterranean)
+1. **Hyperlocal Expertise:** Models trained on region-specific conditions and environmental patterns
 
 2. **IMTA-Native Design:** Built from ground-up for multi-species systems (vs. retrofitting monoculture tools)
 
-3. **Academic Credibility:** UNH brand, peer-reviewed methodology, transparent performance metrics
+3. **Academic Credibility:** University-backed research, peer-reviewed methodology, transparent performance metrics
 
 4. **Community Focus:** Target underserved small-medium operators (not just industrial scale)
 
@@ -1298,8 +1278,8 @@ Farmer Action:
    - Topic: Marine Aquaculture, Precision Aquaculture
 
 3. **Sea Grant R/R Awards** ($50-100K)
-   - Regional focus: Northeast region
-   - Must demonstrate stakeholder engagement (UNH Aquafort as partner = strong application)
+   - Regional focus: Coastal regions with active aquaculture
+   - Must demonstrate stakeholder engagement (IMTA farm partnerships strengthen application)
 
 4. **USDA AFRI** (Agriculture and Food Research Initiative)
    - Program: Sustainable Agricultural Systems
@@ -1332,8 +1312,8 @@ Farmer Action:
    - **Regional Sea Grant programs:** Extension network for deployment
 
 3. **Academic Collaborators:**
-   - **URI / UMaine:** Other Northeast aquaculture research hubs
-   - **Dalhousie / UNB (Canada):** IMTA pioneers (Chopin's group), cross-border knowledge exchange
+   - **Regional aquaculture research hubs:** Multi-institutional collaboration
+   - **International IMTA research groups:** Knowledge exchange (e.g., Canadian IMTA pioneers, Mediterranean centers)
    - **HCMR (Greece):** Aquasafe team (potential licensing or joint development)
 
 4. **Policy Advocacy:**
@@ -1346,19 +1326,19 @@ Farmer Action:
 **Year 1: Proof of Concept**
 - Q1: Literature review complete, data pipeline operational
 - Q2: Yield prediction model MVP (R² > 0.6), Co-Pilot knowledge base built
-- Q3: Alpha testing at UNH Aquafort, iterate based on feedback
+- Q3: Alpha testing at pilot IMTA facility, iterate based on feedback
 - Q4: Grant applications submitted, first peer-reviewed paper draft
 
 **Year 2: Field Validation**
-- Q1: Deploy production system at 2-3 farms (UNH + partners)
+- Q1: Deploy production system at 2-3 partner farms
 - Q2: Continuous monitoring, weekly model updates, user training
 - Q3: Publish results in journal (target: Aquaculture, Reviews in Aquaculture)
 - Q4: Present at Aquaculture America conference, recruit additional beta sites
 
 **Year 3: Scaling & Sustainability**
-- Q1: Expand to 10+ farms across New England
+- Q1: Expand to 10+ farms across target region
 - Q2: Develop commercial pricing model (SaaS subscription or licensing)
-- Q3: Spin-out company or integrate into UNH extension services
+- Q3: Spin-out company or integrate into university extension services
 - Q4: Secure multi-year funding for maintenance & continuous improvement
 
 **Success Metrics (3-Year Horizon):**
@@ -1373,7 +1353,7 @@ Farmer Action:
 
 ### 10.1 Key Takeaways
 
-This literature review has synthesized research across IMTA system design, environmental monitoring, predictive modeling, and decision support systems to inform the UNH Aquafort partnership. Several clear conclusions emerge:
+This literature review has synthesized research across IMTA system design, environmental monitoring, predictive modeling, and decision support systems. Several clear conclusions emerge:
 
 **1. IMTA is Economically & Environmentally Viable** — but adoption remains limited due to complexity, not profitability. Studies consistently show 20-40% NPV increases and significant environmental benefits (net nitrogen removal, carbon sequestration). The primary barrier is **operational complexity** requiring expertise across multiple species and trophic interactions.
 
@@ -1381,13 +1361,13 @@ This literature review has synthesized research across IMTA system design, envir
 
 **3. Dissolved Oxygen is the Critical Control Point** — Nearly every study identifies DO as the most important parameter affecting survival and growth. Real-time DO prediction (R² = 0.67 achieved by Chatziantoniou et al.) combined with proactive alerts can prevent catastrophic mortality events that devastate farm economics.
 
-**4. Integration is the Remaining Challenge** — While individual technologies (satellite monitoring, growth models, sensor networks) show promise, **no system has successfully integrated all components into a user-friendly, deployable platform for small-medium IMTA operators.** This represents the key opportunity for UNH.
+**4. Integration is the Remaining Challenge** — While individual technologies (satellite monitoring, growth models, sensor networks) show promise, **no system has successfully integrated all components into a user-friendly, deployable platform for small-medium IMTA operators.** This represents a key opportunity for innovation.
 
 **5. Market Demand Exists for Sustainable Seafood** — Consumers demonstrate willingness to pay 10-36% premiums for IMTA products, but **awareness remains low.** Technology systems that automatically document environmental benefits (nitrogen removed, carbon sequestered) can enable eco-certification and price premium capture.
 
-### 10.2 Recommendations for UNH Aquafort
+### 10.2 Recommendations for IMTA Deployments
 
-Based on this comprehensive review, we recommend UNH pursue **both proposed projects in parallel** with phased integration:
+Based on this comprehensive review, we recommend pursuing **both proposed projects in parallel** with phased integration:
 
 **Immediate Priority (Months 1-3):** Data Infrastructure
 - Establish data pipeline (satellite + sensor + manual records)
@@ -1438,12 +1418,12 @@ Based on this comprehensive review, we recommend UNH pursue **both proposed proj
 
 ### 10.4 Broader Impact Potential
 
-Success at UNH Aquafort creates blueprint for **regional and global scaling:**
+Successful pilot implementations create a blueprint for **regional and global scaling:**
 
-**Regional (New England):**
-- Replicate across displaced fishermen communities (Maine lobster, groundfish transitions)
-- Partner with Sea Grant extension network for farmer training
-- Influence state policies (MA, ME, NH) toward IMTA-friendly permitting
+**Regional Expansion:**
+- Replicate across displaced fishing communities transitioning to aquaculture
+- Partner with extension networks for farmer training
+- Influence regional policies toward IMTA-friendly permitting
 
 **National:**
 - Adapt models for different species/environments (Gulf Coast shrimp-oyster-seaweed, Pacific Northwest salmon-mussel-kelp)
@@ -1557,5 +1537,4 @@ Zheng, W., Shi, H., Chen, S., & Zhu, M. (2009). Benefit and cost analysis of mar
 
 **END OF LITERATURE REVIEW v1.0**
 
-*Prepared for UNH Aquafort Partnership Discussion*  
-*Next Steps: Iterative refinement based on feedback, expansion of specific sections as needed, integration of additional papers discovered through citation chaining or new searches*
+*Next Steps: Iterative refinement based on stakeholder feedback, expansion of specific sections as needed, integration of additional papers discovered through citation chaining or new searches*
