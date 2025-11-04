@@ -412,7 +412,7 @@ Effective DSS for IMTA must balance comprehensiveness with usability (Wenkel et 
 
 #### Threshold-Based Rules
 
-```text
+```
 IF (DO < 5.5 mg/L) OR (DO_saturation < 40%) THEN
    TRIGGER Critical_Alert
    RECOMMEND: Increase aeration, reduce feeding, harvest consideration
@@ -424,7 +424,7 @@ IF (Chl_a > 10 μg/L) AND (temperature > 25°C) THEN
 IF (predicted_weight ≥ target_market_weight - 50g) THEN
    TRIGGER Harvest_Ready_Notification
    RECOMMEND: Plan harvest logistics within 7-14 days
-```text
+```
 
 #### Risk Scoring:
 Widowati et al. (2020) assigned multi-criteria scores for site suitability:
@@ -448,7 +448,7 @@ Critical insight from all reviewed systems: **Automation should augment, not rep
 
 #### Example: IMTA Operator Co-Pilot
 
-```text
+```
 User Query: "My oxygen readings are dropping faster than usual. What should I do?"
 
 AI Response:
@@ -474,7 +474,7 @@ AI Response:
    - June 2024: Early harvest → prevented losses, but -8% market price (small size)
 
 ❓ Follow-up: Would you like me to simulate the financial impact of each option?
-```text
+```
 
 ---
 
@@ -617,7 +617,7 @@ Tested three scenarios of salmon production variability (disease, weather impact
 
 #### Chambers et al. (2024) - Revenue Streams
 
-```text
+```
 Steelhead trout: 416 kg × $13.20/kg = $5,491
 Blue mussels: 3,072 kg × $2.50/kg = $7,680 (estimated market price)
 Sugar kelp: 638 kg × $3.00/kg = $1,914 (estimated market price)
@@ -625,7 +625,7 @@ Sugar kelp: 638 kg × $3.00/kg = $1,914 (estimated market price)
 Total Revenue (IMTA): $15,085
 Trout-Only Revenue: $5,491
 Diversification Benefit: +174%
-```text
+```
 
 ### 7.2 Environmental Cost Internalization
 
@@ -841,7 +841,7 @@ New Brunswick regulations inadvertently **prevent** IMTA innovation by:
 
 #### Opportunity #5: Multi-Objective Optimization Tool
 
-```text
+```
 Inputs: 
   - Site parameters (temperature, currents, depth, nutrient baseline)
   - Cage specifications (volume, number, configuration)
@@ -856,7 +856,7 @@ Outputs:
   - Recommended species mix (e.g., 18 salmon/m³, 15 mussels/m², 0.8 kg kelp/m²)
   - Predicted NPV over 3-year cycle
   - Sensitivity analysis (how much NPV changes with ±10% price variation)
-```text
+```
 
 ### 8.2 Methodological Opportunities
 
@@ -873,7 +873,7 @@ Outputs:
 
 #### Implementation Example:
 
-```text
+```
 User: "Why is the model predicting low growth this month?"
 
 AI Response with SHAP:
@@ -885,7 +885,7 @@ AI Response with SHAP:
 
 💡 Insight: Temperature is the dominant factor. Historical data shows 
 growth recovers when SST exceeds 18°C, typically in 2-3 weeks.
-```text
+```
 
 #### 8.2.2 Causal Inference vs. Correlation
 
@@ -981,7 +981,7 @@ growth recovers when SST exceeds 18°C, typically in 2-3 weeks.
 
 **Technology:** Blockchain + IoT sensors create immutable record:
 
-```text
+```
 Block 1: Seedstock Origin
   - Species, hatchery, genetics, date
 
@@ -995,7 +995,7 @@ Block 4: IMTA Certification
   - N removed, carbon sequestered, sustainability score
 
 → Consumer scans QR code on product → sees full history
-```text
+```
 
 **Pilot Projects:** IBM Food Trust (used by Walmart), SAP Ocean Traceability
 
@@ -1120,7 +1120,7 @@ graph TB
     Dashboard --> Compare
 ```
 
-```text
+```
 
 
 *Story 1 - Farm Manager:*
@@ -1211,7 +1211,7 @@ AI System (internal process):
     - Aerator logs: Last maintenance 45 days ago
   
   Step 3: Generate contextualized response
-```text
+```
 
 #### AI Response:
 > 🚨 Your DO is below the recommended threshold of 5.5 mg/L. This is concerning.
@@ -1243,15 +1243,15 @@ AI System (internal process):
 
 #### 3. Training & Education:
 
-```text
+```
 User: "Teach me about the nitrogen cycle in IMTA"
 
 AI: [Generates interactive lesson with diagrams, quizzes, links to relevant papers]
-```text
+```
 
 #### 4. Troubleshooting Wizard:
 
-```text
+```
 User: "My kelp isn't growing well"
 
 AI: "Let's diagnose this step-by-step:
@@ -1260,11 +1260,11 @@ Q2: How much light is the kelp receiving (hours/day)?
 Q3: When did you last check for epiphytic growth on the blades?"
 
 [Guides user through systematic diagnosis]
-```text
+```
 
 #### 5. Scenario Simulation:
 
-```text
+```
 User: "What would happen if I increased stocking density by 20%?"
 
 AI: [Runs growth model + DO model]
@@ -1273,7 +1273,7 @@ AI: [Runs growth model + DO model]
 - Peak DO levels: -1.2 mg/L (concerning in summer)
 - Risk score: Elevated risk of hypoxia events in July-August
 - Recommendation: Proceed only if you upgrade aeration capacity by 15%"
-```text
+```
 
 #### Technology Stack:
 
@@ -1335,7 +1335,7 @@ AI: [Runs growth model + DO model]
 
 #### User Workflow Example:
 
-```text
+```
 Morning: 
 - Farmer opens dashboard, sees yield forecast updated overnight
 - Notice: "Predicted harvest weight 8% below target"
@@ -1365,7 +1365,7 @@ Farmer Action:
 - Actual yield: 96% of target (model was accurate!)
 - System learns: "Low DO → reduced feeding" pathway confirmed
 - Co-Pilot confidence in this advice type increases
-```text
+```
 
 ### 9.4 Differentiation from Existing Systems
 
