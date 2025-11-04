@@ -22,15 +22,15 @@ This literature review synthesizes current research on the application of data s
 
 ## Table of Contents
 
-1. [Introduction & Research Context](#1-introduction)
-2. [IMTA Systems: Evolution & Current State](#2-imta-fundamentals)
-3. [Environmental Factors Affecting Aquaculture Yield](#3-environmental-factors)
-4. [Predictive Modeling Approaches](#4-predictive-modeling)
-5. [AI-Driven Decision Support Systems](#5-ai-decision-support)
-6. [Data Integration Challenges & Solutions](#6-data-integration)
-7. [Economic Viability & Adoption Barriers](#7-economics)
-8. [Research Gaps & Opportunities](#8-research-gaps)
-9. [Implementation Considerations for IMTA Deployments](#9-implications)
+1. [Introduction & Research Context](#1-introduction--research-context)
+2. [IMTA Systems: Evolution & Current State](#2-imta-systems-evolution--current-state)
+3. [Environmental Factors Affecting Aquaculture Yield](#3-environmental-factors-affecting-aquaculture-yield)
+4. [Predictive Modeling Approaches](#4-predictive-modeling-approaches)
+5. [AI-Driven Decision Support Systems](#5-ai-driven-decision-support-systems)
+6. [Data Integration Challenges & Solutions](#6-data-integration-challenges--solutions)
+7. [Economic Viability & Adoption Barriers](#7-economic-viability--adoption-barriers)
+8. [Research Gaps & Opportunities](#8-research-gaps--opportunities)
+9. [Implementation Considerations for IMTA Deployments](#9-implementation-considerations-for-imta-deployments)
 10. [References](#references)
 
 ---
