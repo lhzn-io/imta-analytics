@@ -140,6 +140,7 @@ dmypy.json
 data/raw/
 data/processed/
 *.csv
+*.dat
 *.xlsx
 *.xls
 *.h5

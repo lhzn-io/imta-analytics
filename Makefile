@@ -1,9 +1,30 @@
 # Makefile for imta-analytics
 
+# Use bash instead of sh
+SHELL := /bin/bash
+
+# Variables
+CONDA_ENV := imta-analytics
+PYTEST := python -m pytest
+CONDA_ACTIVATE := source $$(conda info --base)/etc/profile.d/conda.sh && conda activate $(CONDA_ENV)
+
 .PHONY: help pubs-md tech-md refs-md clean-md clean-tech-md clean
+.PHONY: test test-fast test-coverage test-unit test-integration
+.PHONY: install-hooks check-hooks
 
 help:
 	@echo "Available targets:"
+	@echo ""
+	@echo "Testing:"
+	@echo "  test          - Run unit and integration tests"
+	@echo "  test-fast     - Run unit tests only (fast, for pre-commit)"
+	@echo "  test-unit     - Run unit tests only"
+	@echo "  test-integration - Run integration tests only"
+	@echo "  test-coverage - Run tests with coverage report"
+	@echo ""
+	@echo "Git Hooks:"
+	@echo "  install-hooks - Install git pre-commit hooks"
+	@echo "  check-hooks   - Check if git hooks are installed"
 	@echo ""
 	@echo "Documentation:"
 	@echo "  pubs-md       - Convert PDFs in refs/publications to markdown using markitdown"
@@ -111,3 +132,69 @@ clean:
 	@# Windows Zone.Identifier artifacts
 	@find . -type f -name '*Zone.Identifier' -delete 2>/dev/null || true
 	@echo "✅ Cleaned up all build artifacts and temporary files"
+
+# Testing targets
+test:
+	@echo "Running standard tests (unit + integration)..."
+	@$(CONDA_ACTIVATE) && $(PYTEST) tests/ -v
+
+test-fast:
+	@echo "Running fast tests (unit tests only)..."
+	@# Check hook configuration unless we're in CI or being called by the hook itself
+	@if [ -z "$$CI" ] && [ -z "$$GIT_HOOK" ] && [ -d ".git" ]; then \
+		echo "🔍 Verifying pre-commit hook configuration..."; \
+		if [ -f ".git/hooks/pre-commit" ]; then \
+			if ! grep -q "make test-fast" ".git/hooks/pre-commit"; then \
+				echo ""; \
+				echo "⚠️  WARNING: Pre-commit hook is NOT configured for fast tests!"; \
+				echo "   Current hook may run ALL tests (slow commits)"; \
+				echo ""; \
+				echo "   To fix, reinstall hooks with: make install-hooks"; \
+				echo ""; \
+			fi; \
+		else \
+			echo ""; \
+			echo "⚠️  WARNING: No pre-commit hook installed!"; \
+			echo "   Tests will NOT run automatically before commits"; \
+			echo ""; \
+			echo "   To install hooks: make install-hooks"; \
+			echo ""; \
+		fi; \
+	fi
+	@$(CONDA_ACTIVATE) && $(PYTEST) tests/unit/ -v
+
+test-unit:
+	@echo "Running unit tests..."
+	@$(CONDA_ACTIVATE) && $(PYTEST) tests/unit/ -v
+
+test-integration:
+	@echo "Running integration tests..."
+	@$(CONDA_ACTIVATE) && $(PYTEST) tests/integration/ -v
+
+test-coverage:
+	@echo "Running tests with coverage..."
+	@$(CONDA_ACTIVATE) && python -m coverage run -m pytest tests/ -v && \
+		python -m coverage report -m && \
+		python -m coverage html
+	@echo ""
+	@echo "Coverage report generated in htmlcov/index.html"
+
+# Git hooks management
+install-hooks:
+	@echo "Installing git hooks..."
+	@.githooks/install-hooks.sh
+
+check-hooks:
+	@echo "Checking git hooks installation..."
+	@if [ -f ".git/hooks/pre-commit" ]; then \
+		echo "✅ Pre-commit hook is installed"; \
+		echo "   Location: .git/hooks/pre-commit"; \
+		if grep -q "make test-fast" ".git/hooks/pre-commit"; then \
+			echo "   Configuration: Running 'make test-fast' (unit tests only)"; \
+		else \
+			echo "   ⚠️  Configuration: NOT using 'make test-fast'"; \
+		fi; \
+	else \
+		echo "❌ Pre-commit hook is NOT installed"; \
+		echo "   Run 'make install-hooks' to install"; \
+	fi

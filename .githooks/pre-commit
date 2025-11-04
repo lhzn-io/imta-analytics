@@ -1,0 +1,54 @@
+#!/bin/bash
+
+# Pre-commit hook to prevent commits that break tests
+# This hook runs the fast test suite before allowing a commit
+
+set -e
+
+echo "Running pre-commit hook: checking tests..."
+
+# Change to the repository root directory
+cd "$(git rev-parse --show-toplevel)"
+
+# Activate conda environment
+CONDA_BASE=$(conda info --base 2>/dev/null || echo "$HOME/.miniconda3")
+source $CONDA_BASE/etc/profile.d/conda.sh
+conda activate imta-analytics
+
+# Check if make is available and Makefile exists
+if [ -f "Makefile" ] && command -v make >/dev/null 2>&1; then
+    echo "Running fast test suite via make (unit tests only)..."
+    # Set environment variable to prevent recursive hook checking
+    if ! GIT_HOOK=1 make test-fast; then
+        echo "❌ COMMIT REJECTED: Fast tests are failing!"
+        echo ""
+        echo "Please fix the failing tests before committing."
+        echo "You can run 'make test-fast' to see the detailed test results."
+        echo ""
+        echo "For comprehensive testing including integration tests, run:"
+        echo "  make test"
+        echo ""
+        echo "If you need to commit anyway (not recommended), use:"
+        echo "  git commit --no-verify"
+        exit 1
+    fi
+else
+    # Fallback to direct pytest execution (unit tests only)
+    echo "Running fast test suite via pytest (unit tests only)..."
+    if ! python -m pytest tests/unit/ -v; then
+        echo "❌ COMMIT REJECTED: Fast tests are failing!"
+        echo ""
+        echo "Please fix the failing tests before committing."
+        echo "You can run 'python -m pytest tests/unit/ -v' to see the detailed test results."
+        echo ""
+        echo "For comprehensive testing including integration tests, run:"
+        echo "  python -m pytest tests/ -v"
+        echo ""
+        echo "If you need to commit anyway (not recommended), use:"
+        echo "  git commit --no-verify"
+        exit 1
+    fi
+fi
+
+echo "✅ All tests passed! Proceeding with commit..."
+exit 0
