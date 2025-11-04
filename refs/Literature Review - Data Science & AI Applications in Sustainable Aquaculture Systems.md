@@ -35,7 +35,7 @@ This literature review synthesizes current research on the application of data s
 
 ---
 
-## 1. Introduction & Research Context {#1-introduction}
+## 1. Introduction & Research Context
 
 ### 1.1 The Aquaculture Imperative
 
@@ -57,7 +57,7 @@ Despite IMTA's theoretical advantages, commercial adoption remains limited, part
 
 ---
 
-## 2. IMTA Systems: Evolution & Current State {#2-imta-fundamentals}
+## 2. IMTA Systems: Evolution & Current State
 
 ### 2.1 Historical Development
 
@@ -99,7 +99,7 @@ Andika et al. (2024) investigated stocking density effects on milkfish (*Chanos 
 
 ---
 
-## 3. Environmental Factors Affecting Aquaculture Yield {#3-environmental-factors}
+## 3. Environmental Factors Affecting Aquaculture Yield
 
 ### 3.1 Critical Water Quality Parameters
 
@@ -181,7 +181,7 @@ These interactions necessitate multivariate predictive models that capture non-l
 
 ---
 
-## 4. Predictive Modeling Approaches {#4-predictive-modeling}
+## 4. Predictive Modeling Approaches
 
 ### 4.1 Bioenergetic Models (Mechanistic Approach)
 
@@ -314,7 +314,7 @@ This approach has shown success in other domains (climate modeling, fluid dynami
 
 ---
 
-## 5. AI-Driven Decision Support Systems {#5-ai-decision-support}
+## 5. AI-Driven Decision Support Systems
 
 ### 5.1 Real-Time Monitoring Platforms
 
@@ -478,7 +478,7 @@ AI Response:
 
 ---
 
-## 6. Data Integration Challenges & Solutions {#6-data-integration}
+## 6. Data Integration Challenges & Solutions
 
 ### 6.1 Multi-Source Data Heterogeneity
 
@@ -577,7 +577,7 @@ graph LR
 
 ---
 
-## 7. Economic Viability & Adoption Barriers {#7-economics}
+## 7. Economic Viability & Adoption Barriers
 
 ### 7.1 Financial Performance of IMTA Systems
 
@@ -755,7 +755,7 @@ New Brunswick regulations inadvertently **prevent** IMTA innovation by:
 
 ---
 
-## 8. Research Gaps & Opportunities {#8-research-gaps}
+## 8. Research Gaps & Opportunities
 
 ### 8.1 Critical Knowledge Gaps Identified
 
@@ -1003,7 +1003,7 @@ Block 4: IMTA Certification
 
 ---
 
-## 9. Implementation Considerations for IMTA Deployments {#9-implications}
+## 9. Implementation Considerations for IMTA Deployments
 
 ### 9.1 Project #1: Predictive Yield Modeling
 
@@ -1481,7 +1481,7 @@ Farmer Action:
 
 ---
 
-## 10. Conclusion & Recommendations {#10-conclusion}
+## 10. Conclusion & Recommendations
 
 ### 10.1 Key Takeaways
 
@@ -1583,7 +1583,7 @@ Successful pilot implementations create a blueprint for **regional and global sc
 
 ---
 
-## References {#references}
+## References
 
 Altan, O. (2020). The first comparative study on the growth performance of European seabass (*Dicentrarchus labrax*, L. 1758) and gilthead seabream (*Sparus aurata*, L. 1758) commercially farmed in low salinity brackish water and earthen ponds. *Iranian Journal of Fisheries Sciences*, 19(4), 1681–1689.
 
