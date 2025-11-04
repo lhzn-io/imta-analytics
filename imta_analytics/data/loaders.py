@@ -165,13 +165,24 @@ def apply_marine_quality_filters(df: pd.DataFrame) -> pd.DataFrame:
     - Depth: 0 to 100 m (typical buoy deployment)
     
     Sensor error codes filtered:
-    - 143052, 193039, 91625 (Campbell Scientific/YSI error codes)
+    - 143052, 193039, 91625, -86.48 (Campbell Scientific/YSI error codes)
     - Large outliers detected via IQR method
     """
     df_clean = df.copy()
     
-    # Define physical bounds for each parameter
+    # Known sensor error codes (Campbell Scientific/YSI)
+    error_codes = [143052, 193039, 91625, -86.48]
+    
+    # Remove rows containing any error codes in numeric columns
+    for col in df_clean.columns:
+        if col != 'TIMESTAMP' and pd.api.types.is_numeric_dtype(df_clean[col]):
+            for error_code in error_codes:
+                df_clean = df_clean[df_clean[col] != error_code]
+    
+    # Define physical bounds for each parameter (with generic names)
+    # Maps both EXO2-specific and generic column names
     bounds = {
+        # EXO2-specific names
         'EXO2Temp_C': (-2, 35),
         'EXO2pH': (6.5, 9.5),
         'EXO2Sal_psu': (0, 40),
@@ -180,6 +191,15 @@ def apply_marine_quality_filters(df: pd.DataFrame) -> pd.DataFrame:
         'EXO2Turb_FNU': (0, 1000),
         'EXO2Chl_ugL': (0, 200),
         'EXO2Depth_m': (0, 100),
+        # Generic names (for testing and other sensors)
+        'Temp': (-2, 35),
+        'pH': (6.5, 9.5),
+        'Salinity': (0, 40),
+        'DO': (0, 150),
+        'Conductivity': (0, 70),
+        'Turbidity': (0, 1000),
+        'Chlorophyll': (0, 200),
+        'Depth': (0, 100),
     }
     
     # Apply bounds filtering

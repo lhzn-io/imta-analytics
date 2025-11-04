@@ -1,12 +1,12 @@
 # Makefile for imta-analytics
 
-# Use bash instead of sh
+# Use bash instead of sh for conda activation
 SHELL := /bin/bash
 
-# Variables
-CONDA_ENV := imta-analytics
-PYTEST := python -m pytest
-CONDA_ACTIVATE := source $$(conda info --base)/etc/profile.d/conda.sh && conda activate $(CONDA_ENV)
+# Define conda environment activation command
+CONDA_BASE := $(shell conda info --base 2>/dev/null || echo "$$HOME/.miniconda3")
+CONDA_ACTIVATE = source $(CONDA_BASE)/etc/profile.d/conda.sh && conda activate imta-analytics
+PYTEST = $(CONDA_ACTIVATE) && python -m pytest
 
 .PHONY: help pubs-md tech-md refs-md clean-md clean-tech-md clean
 .PHONY: test test-fast test-coverage test-unit test-integration
@@ -133,12 +133,16 @@ clean:
 	@find . -type f -name '*Zone.Identifier' -delete 2>/dev/null || true
 	@echo "✅ Cleaned up all build artifacts and temporary files"
 
-# Testing targets
-test:
-	@echo "Running standard tests (unit + integration)..."
-	@$(CONDA_ACTIVATE) && $(PYTEST) tests/ -v
+# Utility target to activate conda environment
+activate-env:
+	@echo "Activating imta-analytics conda environment..."
 
-test-fast:
+# Testing targets
+test: activate-env
+	@echo "Running standard tests (unit + integration)..."
+	@$(PYTEST) tests/ -v
+
+test-fast: activate-env
 	@echo "Running fast tests (unit tests only)..."
 	@# Check hook configuration unless we're in CI or being called by the hook itself
 	@if [ -z "$$CI" ] && [ -z "$$GIT_HOOK" ] && [ -d ".git" ]; then \
@@ -161,17 +165,17 @@ test-fast:
 			echo ""; \
 		fi; \
 	fi
-	@$(CONDA_ACTIVATE) && $(PYTEST) tests/unit/ -v
+	@$(PYTEST) tests/unit/ -v
 
-test-unit:
+test-unit: activate-env
 	@echo "Running unit tests..."
-	@$(CONDA_ACTIVATE) && $(PYTEST) tests/unit/ -v
+	@$(PYTEST) tests/unit/ -v
 
-test-integration:
+test-integration: activate-env
 	@echo "Running integration tests..."
-	@$(CONDA_ACTIVATE) && $(PYTEST) tests/integration/ -v
+	@$(PYTEST) tests/integration/ -v
 
-test-coverage:
+test-coverage: activate-env
 	@echo "Running tests with coverage..."
 	@$(CONDA_ACTIVATE) && python -m coverage run -m pytest tests/ -v && \
 		python -m coverage report -m && \
