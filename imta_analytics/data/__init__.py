@@ -6,6 +6,6 @@ aquaculture monitoring systems, with a focus on Campbell Scientific
 TOA5 format files.
 """
 
-from .loaders import load_toa5_file
+from .loaders import load_toa5_file, apply_marine_data_quality_filters
 
-__all__ = ["load_toa5_file"]
+__all__ = ["load_toa5_file", "apply_marine_data_quality_filters"]

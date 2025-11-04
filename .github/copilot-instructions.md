@@ -73,8 +73,7 @@
 - **TOA5 format specifics**:
   - Line 4 contains "Smp" strings that break type inference
   - Use `load_toa5_file()` from `imta_analytics.data` to load correctly
-  - Apply `apply_marine_quality_filters()` to remove sensor error codes
-- **Sensor error codes** to watch for: 143052, 193039, 91625, -86.48
+- **Data quality philosophy**: Prefer behavioral heuristics (e.g., detecting cascading identical values) over exhaustive hardcoded error lists for robustness and maintainability
 - Always validate data shapes and types at loading boundaries
 - Use existing utility functions in `imta_analytics/data/loaders.py`
 

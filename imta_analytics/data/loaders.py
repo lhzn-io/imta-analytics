@@ -183,17 +183,41 @@ def load_toa5_file(filepath: Union[str, Path]) -> Tuple[pd.DataFrame, Dict[str, 
     return df, metadata, units
 
 
-def apply_marine_quality_filters(df: pd.DataFrame) -> pd.DataFrame:
+def apply_marine_data_quality_filters(df: pd.DataFrame) -> pd.DataFrame:
     """
-    Apply physical bounds filtering for marine water quality parameters.
+    Apply data quality filtering for marine sensor data.
     
-    Removes sensor error codes and physically impossible values based on
-    typical marine/estuarine conditions.
+    This function performs post-load data quality control to remove:
+    1. YSI EXO2 sensor malfunction artifacts (cascading identical values)
+    2. YSI-specific error codes in date/time/voltage fields
+    3. Physically impossible values based on marine/estuarine bounds
+    
+    NOTE: This operates AFTER load_toa5_file() has already converted Campbell
+    Scientific NaN sentinels (-7999, -2147483648, etc.) to proper NaN values.
+    
+    YSI EXO2 Sensor Malfunctions
+    -----------------------------
+    When the YSI EXO2 water quality sonde experiences a malfunction, it outputs
+    the same garbage value across multiple measurement fields. For example, a 
+    single row might have the value 143052 appearing in EXO2Time, EXO2Temp, 
+    EXO2Chlor, EXO2DO, and EXO2ExtPwr simultaneously. This function detects 
+    these "cascading errors" by identifying rows where the same numeric value 
+    appears in 5 or more columns.
+    
+    Additionally, specific error codes appear in date/time/voltage fields:
+    - 143052, 193039: Appear in EXO2Time, EXO2Temp, and sensor readings
+    - 91625: Appears in EXO2Date and EXO2Time (date/time encoding failure)
+    - -86.48: Appears in EXO2pHmV and voltage readings (sensor error)
+    
+    These are NOT Campbell Scientific datalogger error codes - they are
+    artifacts from the YSI EXO2 probe itself during sensor malfunctions.
     
     Parameters
     ----------
     df : pandas.DataFrame
-        DataFrame with water quality columns (must contain TIMESTAMP)
+        DataFrame with water quality columns (must contain TIMESTAMP).
+        Expected to have been loaded via load_toa5_file() with Campbell
+        Scientific NaN sentinels already converted to NaN.
         
     Returns
     -------
@@ -202,29 +226,55 @@ def apply_marine_quality_filters(df: pd.DataFrame) -> pd.DataFrame:
         
     Notes
     -----
-    Physical bounds used:
-    - Temperature: -2 to 35°C (marine/estuarine range)
-    - pH: 6.5 to 9.5 (natural water range)
-    - Salinity: 0 to 40 psu (fresh to hypersaline)
+    Physical bounds used (marine/estuarine):
+    - Temperature: -2 to 35°C
+    - pH: 6.5 to 9.5
+    - Salinity: 0 to 40 psu
     - Dissolved Oxygen: 0 to 150% saturation
     - Conductivity: 0 to 70 mS/cm
-    - Turbidity: 0 to 1000 FNU (practical upper limit)
-    - Chlorophyll: 0 to 200 μg/L (very high for blooms)
-    - Depth: 0 to 100 m (typical buoy deployment)
+    - Turbidity: 0 to 1000 FNU
+    - Chlorophyll: 0 to 200 μg/L
+    - Depth: 0 to 100 m
     
-    Sensor error codes filtered:
-    - 143052, 193039, 91625, -86.48 (Campbell Scientific/YSI error codes)
-    - Large outliers detected via IQR method
+    Examples
+    --------
+    >>> from imta_analytics.data import load_toa5_file, apply_marine_data_quality_filters
+    >>> df, metadata, units = load_toa5_file('data.dat')
+    >>> df_clean = apply_marine_data_quality_filters(df)
+    >>> print(f"Removed {len(df) - len(df_clean)} rows with data quality issues")
+    
+    See Also
+    --------
+    load_toa5_file : Load TOA5 files with Campbell Scientific NaN sentinel conversion
     """
     df_clean = df.copy()
     
-    # Known sensor error codes (Campbell Scientific/YSI)
-    error_codes = [143052, 193039, 91625, -86.48]
+    # Get numeric columns for cascading error detection
+    numeric_cols = [col for col in df_clean.columns 
+                    if col not in ['TIMESTAMP', 'RECORD'] 
+                    and pd.api.types.is_numeric_dtype(df_clean[col])]
+    
+    # Step 1: Remove rows with cascading sensor failures
+    # (same value appears in 5+ columns - indicates sensor malfunction)
+    def has_cascading_error(row, threshold=5):
+        """Detect if same value appears in multiple columns (sensor malfunction)."""
+        row_clean = row.dropna()
+        if len(row_clean) == 0:
+            return False
+        value_counts = row_clean.value_counts()
+        return (value_counts >= threshold).any()
+    
+    cascading_mask = df_clean[numeric_cols].apply(has_cascading_error, axis=1)
+    df_clean = df_clean[~cascading_mask]
+    
+    # Step 2: Remove rows with YSI-specific error codes
+    # These appear in date/time/voltage fields during sensor errors
+    ysi_error_codes = [143052, 193039, 91625, -86.48]
     
     # Remove rows containing any error codes in numeric columns
     for col in df_clean.columns:
         if col != 'TIMESTAMP' and pd.api.types.is_numeric_dtype(df_clean[col]):
-            for error_code in error_codes:
+            for error_code in ysi_error_codes:
                 df_clean = df_clean[df_clean[col] != error_code]
     
     # Define physical bounds for each parameter (with generic names)

@@ -5,7 +5,7 @@ import pandas as pd
 import numpy as np
 from pathlib import Path
 from imta_analytics.data import load_toa5_file
-from imta_analytics.data.loaders import apply_marine_quality_filters
+from imta_analytics.data.loaders import apply_marine_data_quality_filters
 
 
 class TestLoadTOA5File:
@@ -49,13 +49,13 @@ class TestLoadTOA5File:
         df, metadata, units = load_toa5_file(sample_toa5_with_errors)
         
         # Error codes should be loaded as numeric values (not NaN yet)
-        # They get filtered by apply_marine_quality_filters()
+        # They get filtered by apply_marine_data_quality_filters()
         assert pd.api.types.is_numeric_dtype(df['Temp'])
         assert pd.api.types.is_numeric_dtype(df['DO'])
         assert pd.api.types.is_numeric_dtype(df['pH'])
         
         # Check that the filter function removes them
-        df_filtered = apply_marine_quality_filters(df)
+        df_filtered = apply_marine_data_quality_filters(df)
         assert len(df_filtered) < len(df)  # Should have removed error rows
     
     def test_timestamp_parsing(self, sample_toa5_file):
@@ -76,18 +76,18 @@ class TestLoadTOA5File:
 
 
 class TestMarineQualityFilters:
-    """Tests for apply_marine_quality_filters() function."""
+    """Tests for apply_marine_data_quality_filters() function."""
     
     def test_clean_data_unchanged(self, sample_clean_dataframe):
         """Test that clean data passes through filters unchanged."""
-        df_filtered = apply_marine_quality_filters(sample_clean_dataframe.copy())
+        df_filtered = apply_marine_data_quality_filters(sample_clean_dataframe.copy())
         
         assert len(df_filtered) == len(sample_clean_dataframe)
         pd.testing.assert_frame_equal(df_filtered, sample_clean_dataframe)
     
     def test_outliers_removed(self, sample_dataframe_with_outliers):
         """Test that physical outliers are removed."""
-        df_filtered = apply_marine_quality_filters(sample_dataframe_with_outliers.copy())
+        df_filtered = apply_marine_data_quality_filters(sample_dataframe_with_outliers.copy())
         
         # Should have fewer rows after filtering
         assert len(df_filtered) < len(sample_dataframe_with_outliers)
@@ -118,7 +118,7 @@ class TestMarineQualityFilters:
             'Temp': [15.5, error_code, 15.7]
         })
         
-        df_filtered = apply_marine_quality_filters(df)
+        df_filtered = apply_marine_data_quality_filters(df)
         
         # The row with error code should be removed
         assert len(df_filtered) < len(df)
@@ -126,7 +126,7 @@ class TestMarineQualityFilters:
     
     def test_timestamp_preserved(self, sample_dataframe_with_outliers):
         """Test that TIMESTAMP column is preserved after filtering."""
-        df_filtered = apply_marine_quality_filters(sample_dataframe_with_outliers.copy())
+        df_filtered = apply_marine_data_quality_filters(sample_dataframe_with_outliers.copy())
         
         assert 'TIMESTAMP' in df_filtered.columns
         assert pd.api.types.is_datetime64_any_dtype(df_filtered['TIMESTAMP'])
@@ -134,6 +134,6 @@ class TestMarineQualityFilters:
     def test_empty_dataframe(self):
         """Test handling of empty dataframe."""
         df = pd.DataFrame()
-        df_filtered = apply_marine_quality_filters(df)
+        df_filtered = apply_marine_data_quality_filters(df)
         
         assert len(df_filtered) == 0
