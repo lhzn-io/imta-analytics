@@ -17,4 +17,19 @@ __author__ = "UNH CSSS"
 # Import main data loading functions for convenience
 from .data import load_toa5_file
 
+# Notebook utilities (optional - only works in Jupyter)
+try:
+    from .notebook_utils import (
+        display_result,
+        display_info,
+        display_success,
+        display_warning,
+        display_error,
+        format_dict_as_list,
+        format_stats_table
+    )
+    _notebook_utils_available = True
+except ImportError:
+    _notebook_utils_available = False
+
 __all__ = ["load_toa5_file"]

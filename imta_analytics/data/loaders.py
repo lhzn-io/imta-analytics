@@ -14,7 +14,7 @@ import pandas as pd
 
 def load_toa5_file(filepath: Union[str, Path]) -> Tuple[pd.DataFrame, Dict[str, str], List[str]]:
     """
-    Load a Campbell Scientific TOA5 format file.
+    Load a Campbell Scientific TOA5 format file with proper NaN handling.
     
     TOA5 files have a specific 4-line header structure:
     - Line 1: File metadata (station, logger model, OS version, etc.)
@@ -26,6 +26,28 @@ def load_toa5_file(filepath: Union[str, Path]) -> Tuple[pd.DataFrame, Dict[str, 
     CRITICAL: Line 4 contains strings like "Smp" which confuse pandas type
     inference. We skip all 4 header lines and explicitly convert types.
     
+    Campbell Scientific NaN Sentinel Values
+    ----------------------------------------
+    Campbell Scientific dataloggers represent NaN (invalid measurements) using 
+    data-type-specific sentinel values:
+    
+    - **FP2 (Float Point 2)**: NaN appears as **-7999**
+      - Range: -7999 to +7999
+      - Common for most sensor measurements
+      
+    - **Long Integer**: NaN appears as **-2147483648** (most negative 32-bit int)
+      - Used for integer-only data types
+      
+    - **Overrange values**: ±6999, ±7999 may indicate measurement overrange
+    
+    These sentinel values occur when:
+    1. Input signals exceed the voltage range chosen for the measurement
+    2. An invalid SDI-12 command is sent
+    3. An SDI-12 sensor does not respond or aborts without sending data
+    4. Measurement overrange (values exceed sensor specifications)
+    
+    This function automatically converts these sentinel values to proper NaN.
+    
     Parameters
     ----------
     filepath : str or Path
@@ -34,8 +56,9 @@ def load_toa5_file(filepath: Union[str, Path]) -> Tuple[pd.DataFrame, Dict[str, 
     Returns
     -------
     df : pandas.DataFrame
-        Loaded data with proper column names and types (numeric columns
-        are float64/int64, TIMESTAMP is datetime64)
+        Loaded data with proper column names and types. Campbell Scientific
+        sentinel values (-7999, -2147483648, etc.) are converted to NaN.
+        Numeric columns are float64/int64, TIMESTAMP is datetime64.
     metadata : dict
         File metadata from header line containing:
         - format: File format identifier (e.g., "TOA5")
@@ -58,17 +81,27 @@ def load_toa5_file(filepath: Union[str, Path]) -> Tuple[pd.DataFrame, Dict[str, 
     Shape: (8640, 21)
     >>> print(df['TIMESTAMP'].dtype)
     datetime64[ns]
+    >>> # Campbell Scientific sentinel values are now NaN
+    >>> print(df['EXO2Temp'].isna().sum())
+    142  # -7999 values converted to NaN
     
     Notes
     -----
-    - Sensor error codes (143052, 193039, 91625, -86.48) appear as numeric
-      values and should be filtered using physical bounds for marine parameters
-    - Missing or invalid values are converted to NaN via pd.to_numeric()
+    - Campbell Scientific NaN sentinels (-7999, -2147483648, ±6999, ±7999) are
+      automatically converted to proper NaN values during loading
+    - Missing or invalid values are also converted to NaN via pd.to_numeric()
     - All columns except TIMESTAMP are explicitly converted to numeric types
     - TIMESTAMP column is parsed to pandas datetime objects
+    - Additional quality filtering may be needed using physical bounds for
+      marine parameters (see apply_marine_quality_filters)
+    
+    References
+    ----------
+    Campbell Scientific CR1000X Product Manual, Section 14.2 "Understanding NAN"
     
     See Also
     --------
+    apply_marine_quality_filters : Apply physical bounds for marine data
     pandas.read_csv : Underlying CSV parser
     pandas.to_numeric : Type conversion with error handling
     """
@@ -128,6 +161,21 @@ def load_toa5_file(filepath: Union[str, Path]) -> Tuple[pd.DataFrame, Dict[str, 
     for col in df.columns:
         if col != 'TIMESTAMP':
             df[col] = pd.to_numeric(df[col], errors='coerce')
+    
+    # Convert Campbell Scientific NaN sentinel values to proper NaN
+    # These are data-type-specific sentinel values used by Campbell dataloggers
+    CAMPBELL_NAN_SENTINELS = [
+        -7999,          # FP2 (Float Point 2) NaN representation
+        7999,           # FP2 positive overrange
+        -6999,          # FP2 near-limit value
+        6999,           # FP2 near-limit value
+        -2147483648,    # Long Integer NaN representation (most negative 32-bit int)
+    ]
+    
+    for col in df.columns:
+        if col != 'TIMESTAMP' and pd.api.types.is_numeric_dtype(df[col]):
+            # Replace sentinel values with NaN
+            df[col] = df[col].replace(CAMPBELL_NAN_SENTINELS, pd.NA)
     
     # Parse the TIMESTAMP column
     df['TIMESTAMP'] = pd.to_datetime(df['TIMESTAMP'], errors='coerce')
