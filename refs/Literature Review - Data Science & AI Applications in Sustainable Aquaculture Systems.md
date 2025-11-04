@@ -412,7 +412,7 @@ Effective DSS for IMTA must balance comprehensiveness with usability (Wenkel et 
 
 #### Threshold-Based Rules
 
-```
+```text
 IF (DO < 5.5 mg/L) OR (DO_saturation < 40%) THEN
    TRIGGER Critical_Alert
    RECOMMEND: Increase aeration, reduce feeding, harvest consideration
@@ -426,7 +426,8 @@ IF (predicted_weight ≥ target_market_weight - 50g) THEN
    RECOMMEND: Plan harvest logistics within 7-14 days
 ```
 
-#### Risk Scoring:
+#### Risk Scoring
+
 Widowati et al. (2020) assigned multi-criteria scores for site suitability:
 
 - Temperature, DO, pH weighted at 5 (highest importance)
@@ -439,7 +440,7 @@ Sites scoring 48-74 = Suitable; 24-47 = Less Suitable; <24 = Not Suitable
 
 Critical insight from all reviewed systems: **Automation should augment, not replace, farmer decision-making.**
 
-#### Recommended Approach:
+#### Recommended Approach
 
 1. **Alerts with Explanations:** Don't just warn "DO is low" — explain *why* it matters and *what* typically causes it
 2. **Action Recommendations:** Suggest interventions with expected outcomes ("Reduce feeding 30% → DO recovery in 12-24 hours")
@@ -448,7 +449,7 @@ Critical insight from all reviewed systems: **Automation should augment, not rep
 
 #### Example: IMTA Operator Co-Pilot
 
-```
+```text
 User Query: "My oxygen readings are dropping faster than usual. What should I do?"
 
 AI Response:
@@ -491,7 +492,7 @@ IMTA monitoring requires synthesis of:
 
 **Challenge:** These data exist in incompatible formats, projections, and temporal scales.
 
-#### Solution (Aquasafe Approach):
+#### Solution (Aquasafe Approach)
 
 1. **Standardized Schema:** Common data model with fields for:
 
@@ -617,7 +618,7 @@ Tested three scenarios of salmon production variability (disease, weather impact
 
 #### Chambers et al. (2024) - Revenue Streams
 
-```
+```text
 Steelhead trout: 416 kg × $13.20/kg = $5,491
 Blue mussels: 3,072 kg × $2.50/kg = $7,680 (estimated market price)
 Sugar kelp: 638 kg × $3.00/kg = $1,914 (estimated market price)
@@ -629,15 +630,15 @@ Diversification Benefit: +174%
 
 ### 7.2 Environmental Cost Internalization
 
-#### Nobre et al. (2010) - South African Abalone-Seaweed IMTA:
+#### Nobre et al. (2010) - South African Abalone-Seaweed IMTA
 
 Conducted full social accounting using DPSIR framework (Drivers-Pressure-State-Impact-Response):
 
-#### Private Benefits (Farm Perspective):
+#### Private Benefits (Farm Perspective)
 
 - Profit increase: 1.4-5% from adding seaweed to abalone monoculture
 
-#### Social Benefits (Valuing Environmental Services):
+#### Social Benefits (Valuing Environmental Services)
 
 - Nutrient discharge reduction
 - Prevention of natural kelp bed degradation
@@ -651,7 +652,7 @@ Conducted full social accounting using DPSIR framework (Drivers-Pressure-State-I
 2. **Carbon Credits:** Kelp sequesters 38-180 kg N/ha and 1,100-1,800 kg C/ha annually (Yarish et al., 2017)
 3. **Eco-Certification Premiums:** Label-based market differentiation
 
-#### Zheng et al. (2009) - Chinese Bay Ecosystem Services Valuation:
+#### Zheng et al. (2009) - Chinese Bay Ecosystem Services Valuation
 
 Quantified four ecosystem services from IMTA mariculture in Sanggou Bay:
 
@@ -664,7 +665,7 @@ Quantified four ecosystem services from IMTA mariculture in Sanggou Bay:
 
 ### 7.3 Consumer Willingness-to-Pay (WTP) for IMTA Products
 
-#### Price Premium Evidence:
+#### Price Premium Evidence
 
 | Study | Location | Product | Premium | Method |
 |-------|----------|---------|---------|--------|
@@ -674,14 +675,14 @@ Quantified four ecosystem services from IMTA mariculture in Sanggou Bay:
 | Barrington et al. (2010) | Eastern Canada | Mixed | 10% | Market Survey |
 | Shuve et al. (2009) | New York City | Mussels | 10-20% | Survey |
 
-#### Key Insights:
+#### Key Insights
 
 1. **Awareness Matters:** Premiums only realized when consumers understand IMTA benefits (sustainability, ecosystem services)
 2. **"Natural" Perception:** 70% of Yip et al. respondents preferred IMTA over closed containment aquaculture (CCA) because IMTA felt more "natural"
 3. **Increased Purchase Frequency:** 38.4% would buy farmed salmon more often if IMTA available (mean: +5.87 purchases/year)
 4. **Non-Consumer Benefits:** Martínez-Espiñeira et al. (2016) found non-consumers willing to pay $43-65M/year as subsidies for IMTA adoption (environmental benefits)
 
-#### Social Acceptance:
+#### Social Acceptance
 
 - Ridler et al. (2006): 88% support for IMTA in Bay of Fundy survey
 - Shuve et al. (2009): 88% of NYC consumers support IMTA; viewed as better for environment and animal welfare
@@ -693,7 +694,7 @@ Quantified four ecosystem services from IMTA mariculture in Sanggou Bay:
 
 #### 7.4.1 Energy Consumption (Critical Bottleneck)
 
-#### Channa et al. (2024) - Energy Analysis:
+#### Channa et al. (2024) - Energy Analysis
 
 Small-scale aquaponics energy costs (likely generalizable to IMTA):
 
@@ -704,7 +705,7 @@ Small-scale aquaponics energy costs (likely generalizable to IMTA):
 
 At current UK energy rates (£0.34/kWh), **energy costs dominate operating expenses**, particularly in cold climates requiring heating/cooling.
 
-#### Mitigation Strategies:
+#### Mitigation Strategies
 
 1. **Renewable Energy:** Solar, wind integration (reduces fossil fuel dependence)
 2. **Heat Recovery:** Recirculate waste heat from equipment
@@ -715,14 +716,14 @@ At current UK energy rates (£0.34/kWh), **energy costs dominate operating expen
 
 #### 7.4.2 Initial Investment & Payback Period
 
-#### Widowati et al. (2020) - Indonesian IMTA:
+#### Widowati et al. (2020) - Indonesian IMTA
 
 - **Payback Period:** 2.7 cycles (suitable area), 3.5 cycles (less suitable area)
 - **Break-Even Point:** $5.6M (suitable), $4.2M (less suitable)
 
 **Interpretation:** Higher initial investment in better sites pays off through faster returns.
 
-#### Chambers et al. (2024) - Infrastructure Costs:
+#### Chambers et al. (2024) - Infrastructure Costs
 
 - Two 300 m³ HDPE cages with nets, anchors, bridles
 - Mussel dropper lines (55 lines × 4 m)
@@ -737,14 +738,14 @@ At current UK energy rates (£0.34/kWh), **energy costs dominate operating expen
 
 ### 7.5 Policy & Regulatory Barriers
 
-#### Skladany et al. (2007), Tisdell et al. (2010), Young et al. (2019) - Institutional Constraints:
+#### Skladany et al. (2007), Tisdell et al. (2010), Young et al. (2019) - Institutional Constraints
 
 1. **Permitting Complexity:** Multi-agency jurisdiction (EPA, NOAA, state environmental/fisheries departments) creates bureaucratic delays
 2. **Food Safety Regulations:** Shellfish grown near finfish face closure due to proximity to "pollution source" (despite being the remediation mechanism!)
 3. **Lack of IMTA-Specific Guidelines:** Regulators evaluate each species separately; no framework for integrated system assessment
 4. **Spatial Competition:** Coastal zone conflicts with shipping, recreation, conservation
 
-#### Chopin (2019) - Canadian Case Study:
+#### Chopin (2019) - Canadian Case Study
 
 New Brunswick regulations inadvertently **prevent** IMTA innovation by:
 
@@ -761,10 +762,11 @@ New Brunswick regulations inadvertently **prevent** IMTA innovation by:
 
 #### 8.1.1 Data Availability & Reproducibility
 
-#### Channa et al. (2024):
+#### Channa et al. (2024)
+>
 > "One challenge with aquaponics is the lack of publicly available data. The training process of an ML model heavily depends on large datasets... In most of the reviewed studies, only a general description of the methodology used was provided, and the datasets and codes used to train the ML models were excluded."
 
-#### Consequences:
+#### Consequences
 
 - Models cannot be independently validated
 - Researchers duplicate efforts rather than building on prior work
@@ -779,7 +781,7 @@ New Brunswick regulations inadvertently **prevent** IMTA innovation by:
 
 #### 8.1.2 Species-Specific Growth Models
 
-#### Current State:
+#### Current State
 
 - DEB models exist for: sea bass, sea bream, salmon, trout, meagre (Stavrakidis-Zachou et al., 2019, 2021)
 - **Missing:** Mussels, oysters, kelp, sea urchins, sea cucumbers
@@ -794,7 +796,7 @@ New Brunswick regulations inadvertently **prevent** IMTA innovation by:
 
 #### 8.1.3 Environmental Prediction at Farm Scale
 
-#### Spatial Resolution Mismatch:
+#### Spatial Resolution Mismatch
 
 - Sentinel-3: 300 m (covers multiple cages, misses micro-scale variability)
 - Sentinel-2: 10 m (good for cage-level, but 5-day revisit time + cloud gaps)
@@ -812,7 +814,7 @@ New Brunswick regulations inadvertently **prevent** IMTA innovation by:
 
 **Current Systems:** Threshold-based alerts (e.g., DO < 5.5 mg/L triggers alarm)
 
-#### Limitations:
+#### Current Systems Limitations
 
 - Reactive (problem already occurring)
 - High false positive rate (nuisance alarms → alert fatigue)
@@ -828,7 +830,7 @@ New Brunswick regulations inadvertently **prevent** IMTA innovation by:
 
 #### 8.1.5 Optimization of Species Ratios & Stocking Densities
 
-#### Existing Work:
+#### Existing Work
 
 - Andika et al. (2024): Empirical testing of 4 density combinations
 - Widowati et al. (2020): Site suitability scoring
@@ -841,7 +843,7 @@ New Brunswick regulations inadvertently **prevent** IMTA innovation by:
 
 #### Opportunity #5: Multi-Objective Optimization Tool
 
-```
+```text
 Inputs: 
   - Site parameters (temperature, currents, depth, nutrient baseline)
   - Cage specifications (volume, number, configuration)
@@ -871,9 +873,9 @@ Outputs:
 - **LIME (Local Interpretable Model-agnostic Explanations):** Train interpretable model (linear regression, decision tree) locally around specific prediction
 - **Counterfactual Explanations:** "If temperature had been 2°C lower, DO would be 0.8 mg/L higher"
 
-#### Implementation Example:
+#### Implementation Example
 
-```
+```text
 User: "Why is the model predicting low growth this month?"
 
 AI Response with SHAP:
@@ -899,7 +901,7 @@ growth recovers when SST exceeds 18°C, typically in 2-3 weeks.
 - Integrate domain knowledge (directed acyclic graphs from literature)
 - Enable "what-if" scenario testing: "If I increase aeration by 30%, how much will DO increase?"
 
-#### Methods:
+#### Methods
 
 - DoWhy library (Microsoft Research)
 - Causal Bayesian networks
@@ -917,7 +919,7 @@ growth recovers when SST exceeds 18°C, typically in 2-3 weeks.
 
 **Algorithm:** Proximal Policy Optimization (PPO) or Soft Actor-Critic (SAC)
 
-#### Training Environment:
+#### Training Environment
 
 1. Calibrate simulation (digital twin) using historical farm data
 2. Train RL agent in simulation (millions of iterations)
@@ -926,7 +928,7 @@ growth recovers when SST exceeds 18°C, typically in 2-3 weeks.
 
 **Precedent:** RL successfully applied to data center cooling (DeepMind reduced Google's energy by 40%)
 
-#### Challenges:
+#### Challenges
 
 - Simulation fidelity (model errors compound in RL)
 - Safety constraints (cannot allow catastrophic actions during exploration)
@@ -950,7 +952,7 @@ growth recovers when SST exceeds 18°C, typically in 2-3 weeks.
 - Health monitoring (detect parasites, fin damage, abnormal behavior)
 - Infrastructure inspection (net integrity, biofouling assessment)
 
-#### Examples:
+#### Examples
 
 - Chang et al. (2021): YOLOv5 for fish detection/counting from drone footage
 - Ubina et al. (2021): Automated grow light control based on drone visual surveys
@@ -967,7 +969,7 @@ growth recovers when SST exceeds 18°C, typically in 2-3 weeks.
 - **Google Coral TPU:** 4 TOPS, 2W power (USB accelerator)
 - **Model Optimization:** Quantization (FP32 → INT8), pruning, knowledge distillation
 
-#### Benefits:
+#### Benefits
 
 - <100 ms latency (vs. seconds for cloud inference)
 - Privacy (no data leaves farm)
@@ -981,7 +983,7 @@ growth recovers when SST exceeds 18°C, typically in 2-3 weeks.
 
 **Technology:** Blockchain + IoT sensors create immutable record:
 
-```
+```text
 Block 1: Seedstock Origin
   - Species, hatchery, genetics, date
 
@@ -1015,11 +1017,11 @@ Block 4: IMTA Certification
 - Plan harvest logistics (boat scheduling, processing capacity, market timing)
 - Financial planning (cash flow forecasting for investors)
 
-#### Proposed Approach:
+#### Proposed Approach
 
 #### Phase 1: Data Collection & Integration (Months 1-3)
 
-#### Historical Data Acquisition:
+#### Historical Data Acquisition
 
 1. Farm operational records:
    - Growth measurements (weight, length sampling every 2-4 weeks)
@@ -1033,7 +1035,7 @@ Block 4: IMTA Certification
    - Weather: NOAA buoy data or OpenWeatherMap historical API
    - In-situ: Any available sensor logs (even sporadic measurements useful)
 
-#### Data Preprocessing:
+#### Data Preprocessing
 
 - Synchronize temporal scales (daily aggregation)
 - Handle missing values (interpolation for <30% gaps, flagging for >30%)
@@ -1061,20 +1063,20 @@ Block 4: IMTA Certification
 3. **LSTM Neural Network:** Captures temporal dependencies (week N growth depends on weeks N-1, N-2, ...)
 4. **Hybrid Physics-Informed NN:** Incorporate DEB equations as constraints
 
-#### Training Strategy:
+#### Training Strategy
 
 - Time-series cross-validation (train on years 1-2, test on year 3)
 - Hyperparameter tuning (grid search or Bayesian optimization)
 - Ensemble: Combine multiple models (weighted average based on validation performance)
 
-#### Evaluation Metrics:
+#### Evaluation Metrics
 
 - **R² (coefficient of determination):** Variance explained
 - **MAE/RMSE:** Average prediction error in kg
 - **MAPE (Mean Absolute Percentage Error):** Relative error
 - **Directional Accuracy:** % of times model correctly predicts growth increase/decrease
 
-#### Target Performance:
+#### Target Performance
 
 - R² > 0.75 (75% of yield variance explained)
 - MAPE < 15% (within 15% of actual harvest weight)
@@ -1083,7 +1085,7 @@ Block 4: IMTA Certification
 
 #### Phase 3: Deployment & Validation (Months 6-9)
 
-#### Software Architecture:
+#### Software Architecture
 
 ```mermaid
 graph TB
@@ -1120,9 +1122,7 @@ graph TB
     Dashboard --> Compare
 ```
 
-```
-
-
+```text
 *Story 1 - Farm Manager:*
 > "As a farm manager, I want to see 60-day growth forecasts updated daily, so I can plan harvest windows to coincide with peak market prices."
 
@@ -1131,8 +1131,9 @@ graph TB
 
 *Story 3 - Investor:*
 > "As an investor, I want quarterly reports showing predicted vs. actual yield accuracy, so I can assess farm management competence and financial projections."
+```
 
-#### Validation Protocol:
+#### Validation Protocol
 
 - Deploy model at target IMTA facility for complete growing season
 - Record predictions and actual outcomes
@@ -1145,11 +1146,11 @@ graph TB
 
 **Rationale:** Addresses knowledge gap between scientific research and practical farming. Many farmers lack aquaculture/IMTA training; AI can democratize expertise.
 
-#### Proposed Approach:
+#### Co-Pilot Implementation Proposed Approach
 
 #### Phase 1: Knowledge Base Construction (Months 1-3)
 
-#### Core Knowledge Sources:
+#### Core Knowledge Sources
 
 1. **Research Literature:**
    - Comprehensive corpus of IMTA, precision farming, and water quality research
@@ -1169,7 +1170,7 @@ graph TB
    - Maintenance schedules
    - Troubleshooting guides
 
-#### Knowledge Graph Schema:
+#### Knowledge Graph Schema
 
 ```mermaid
 graph TD
@@ -1213,7 +1214,8 @@ AI System (internal process):
   Step 3: Generate contextualized response
 ```
 
-#### AI Response:
+#### AI Response
+>
 > 🚨 Your DO is below the recommended threshold of 5.5 mg/L. This is concerning.
 >
 > 📊 Based on your current conditions:
@@ -1235,23 +1237,23 @@ AI System (internal process):
 >
 > 📚 Want to learn more about oxygen dynamics in IMTA systems? I can explain the relationship between temperature, biomass, and DO.
 
-#### 2. Proactive Monitoring:
+#### 2. Proactive Monitoring
 
 - Continuous background analysis of sensor streams
 - Pattern recognition (e.g., "DO declining faster than usual for this time of year")
 - Push notifications before parameters breach critical thresholds
 
-#### 3. Training & Education:
+#### 3. Training & Education
 
-```
+```text
 User: "Teach me about the nitrogen cycle in IMTA"
 
 AI: [Generates interactive lesson with diagrams, quizzes, links to relevant papers]
 ```
 
-#### 4. Troubleshooting Wizard:
+#### 4. Troubleshooting Wizard
 
-```
+```text
 User: "My kelp isn't growing well"
 
 AI: "Let's diagnose this step-by-step:
@@ -1262,9 +1264,9 @@ Q3: When did you last check for epiphytic growth on the blades?"
 [Guides user through systematic diagnosis]
 ```
 
-#### 5. Scenario Simulation:
+#### 5. Scenario Simulation
 
-```
+```text
 User: "What would happen if I increased stocking density by 20%?"
 
 AI: [Runs growth model + DO model]
@@ -1275,7 +1277,7 @@ AI: [Runs growth model + DO model]
 - Recommendation: Proceed only if you upgrade aeration capacity by 15%"
 ```
 
-#### Technology Stack:
+#### Scenario Simulation Technology Stack
 
 - **GPT-4 or Claude-3:** Foundation LLM for language understanding/generation
 - **RAG (Retrieval-Augmented Generation):** Ground responses in farm data + knowledge base
@@ -1284,7 +1286,7 @@ AI: [Runs growth model + DO model]
 
 #### Phase 3: Integration & Testing (Months 6-9)
 
-#### User Interface Options:
+#### User Interface Options
 
 #### Option A: Web Chat (Like Aquasafe)
 
@@ -1306,7 +1308,7 @@ AI: [Runs growth model + DO model]
 
 **Recommended:** Start with Option A (web), add Option C (SMS) for alerts.
 
-#### Testing Protocol:
+#### Testing Protocol
 
 1. **Internal Alpha (Month 6):** Development team tests with synthetic scenarios
 2. **Beta with Farm Staff (Month 7-8):** 5 operators use daily, provide feedback
@@ -1318,7 +1320,7 @@ AI: [Runs growth model + DO model]
 
 ### 9.3 Synergies Between Projects
 
-#### Integration Points:
+#### Integration Points
 
 1. **Yield Model → Co-Pilot:**
    - User: "Why is growth slower than expected?"
@@ -1333,9 +1335,9 @@ AI: [Runs growth model + DO model]
    - Yield model predictions inform Co-Pilot's advice
    - Co-Pilot user queries reveal information needs → prioritize model improvements
 
-#### User Workflow Example:
+#### User Workflow Example
 
-```
+```text
 Morning: 
 - Farmer opens dashboard, sees yield forecast updated overnight
 - Notice: "Predicted harvest weight 8% below target"
@@ -1369,7 +1371,7 @@ Farmer Action:
 
 ### 9.4 Differentiation from Existing Systems
 
-#### Aquasafe (Chatziantoniou et al., 2023) - Comparison:
+#### Aquasafe (Chatziantoniou et al., 2023) - Comparison
 
 | Feature | Aquasafe | Proposed IMTA System |
 |---------|----------|---------------------|
@@ -1382,7 +1384,7 @@ Farmer Action:
 | **Explainability** | Alert thresholds shown | SHAP analysis + causal reasoning |
 | **Open Source** | Proprietary | Potential for open-source components (differentiator) |
 
-#### Competitive Advantages:
+#### Competitive Advantages
 
 1. **Hyperlocal Expertise:** Models trained on region-specific conditions and environmental patterns
 
@@ -1396,7 +1398,7 @@ Farmer Action:
 
 ### 9.5 Funding & Partnership Strategy
 
-#### Phase 1 Funding Sources (Prototyping: $50-150K):
+#### Phase 1 Funding Sources (Prototyping: $50-150K)
 
 1. **NSF SBIR Phase I** (~$275K if pursuing commercialization path)
    - Program: IIP (Industrial Innovation and Partnerships)
@@ -1418,7 +1420,7 @@ Farmer Action:
    - **Schmidt Marine Technology Partners** (Ocean Technology Innovation)
    - **Moore Foundation** (Data-Driven Discovery)
 
-#### Phase 2 Funding (Scaling: $500K - $2M):
+#### Phase 2 Funding (Scaling: $500K - $2M)
 
 1. **NSF SBIR Phase II** (~$1M)
 2. **NOAA Saltonstall-Kennedy Grant** (Variable, up to $250K/year)
@@ -1427,7 +1429,7 @@ Farmer Action:
    - **RSF Social Finance** (Food systems transformation)
    - **Meloy Fund** (Small-scale fisheries & aquaculture)
 
-#### Strategic Partnerships:
+#### Strategic Partnerships
 
 1. **Technology Providers:**
    - **Planet Labs / Sentinel Hub:** Satellite data access, co-marketing
@@ -1472,7 +1474,7 @@ Farmer Action:
 - Q3: Spin-out company or integrate into university extension services
 - Q4: Secure multi-year funding for maintenance & continuous improvement
 
-#### Success Metrics (3-Year Horizon):
+#### Success Metrics (3-Year Horizon)
 
 - **Technical:** Yield prediction MAE < 10%, Co-Pilot user satisfaction > 75%
 - **Impact:** 20+ farms adopting, 15% average revenue increase, 25% net nitrogen reduction
@@ -1561,19 +1563,19 @@ Based on this comprehensive review, we recommend pursuing **both proposed projec
 
 Successful pilot implementations create a blueprint for **regional and global scaling:**
 
-#### Regional Expansion:
+#### Regional Expansion
 
 - Replicate across displaced fishing communities transitioning to aquaculture
 - Partner with extension networks for farmer training
 - Influence regional policies toward IMTA-friendly permitting
 
-#### National:
+#### National
 
 - Adapt models for different species/environments (Gulf Coast shrimp-oyster-seaweed, Pacific Northwest salmon-mussel-kelp)
 - Collaborate with NOAA on national precision aquaculture strategy
 - Supply data/insights for US aquaculture development plans (address seafood trade deficit)
 
-#### Global (Developing Coastal Nations):
+#### Global (Developing Coastal Nations)
 
 - Low-cost version using open-source components and smartphone interfaces
 - Train-the-trainer programs for NGOs and community organizations
@@ -1678,7 +1680,3 @@ Young, N., Brattland, C., Digiovanni, C., Hersoug, B., Johnsen, J. P., Karlsen, 
 Zheng, W., Shi, H., Chen, S., & Zhu, M. (2009). Benefit and cost analysis of mariculture based on ecosystem services. *Ecological Economics*, 68, 1626–1632.
 
 ---
-
-#### END OF LITERATURE REVIEW v1.0
-
-*Next Steps: Iterative refinement based on stakeholder feedback, expansion of specific sections as needed, integration of additional papers discovered through citation chaining or new searches*
