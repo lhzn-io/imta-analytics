@@ -880,10 +880,10 @@ User: "Why is the model predicting low growth this month?"
 
 AI Response with SHAP:
 📊 Feature Importance for Growth Prediction:
-  Temperature: ████████████ 45% (currently 2°C below optimal)
-  DO: ██████ 23% (adequate but declining trend)
-  Stocking Density: ████ 18% (slightly high)
-  Feed Quality: ███ 14% (within normal range)
+  Temperature:      ============ 45% (currently 2°C below optimal)
+  DO:               ======       23% (adequate but declining trend)
+  Stocking Density: ====         18% (slightly high)
+  Feed Quality:     ===          14% (within normal range)
 
 💡 Insight: Temperature is the dominant factor. Historical data shows 
 growth recovers when SST exceeds 18°C, typically in 2-3 weeks.
@@ -1122,16 +1122,16 @@ graph TB
     Dashboard --> Compare
 ```
 
-```text
-*Story 1 - Farm Manager:*
+#### User Stories
+
+**Farm Manager:**
 > "As a farm manager, I want to see 60-day growth forecasts updated daily, so I can plan harvest windows to coincide with peak market prices."
 
-*Story 2 - Operations Director:*
+**Operations Director:**
 > "As an operations director, I want to receive alerts when predicted yield deviates >10% from target, so I can investigate root causes (disease, suboptimal feeding, equipment failure)."
 
-*Story 3 - Investor:*
+**Investor:**
 > "As an investor, I want quarterly reports showing predicted vs. actual yield accuracy, so I can assess farm management competence and financial projections."
-```
 
 #### Validation Protocol
 
