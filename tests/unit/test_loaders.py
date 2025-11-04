@@ -41,8 +41,10 @@ class TestLoadTOA5File:
         df, metadata, units = load_toa5_file(sample_toa5_file)
         
         assert len(units) == len(df.columns)
-        assert units[df.columns.get_loc('Temp')] == '°C'
-        assert units[df.columns.get_loc('DO')] == 'mg/L'
+        temp_idx = df.columns.get_loc('Temp')
+        do_idx = df.columns.get_loc('DO')
+        assert isinstance(temp_idx, int) and units[temp_idx] == '°C'
+        assert isinstance(do_idx, int) and units[do_idx] == 'mg/L'
     
     def test_sensor_errors_become_nan(self, sample_toa5_with_errors):
         """Test that sensor error codes are loaded as numeric values."""

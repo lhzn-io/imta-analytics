@@ -6,6 +6,8 @@
     "MD041": false
   },
   "markdownlint.ignore": [
-    "refs/publications/*.md"
+    "refs/publications/**",
+    "refs/technical/**",
+    "next_commit.md"
   ]
 }
