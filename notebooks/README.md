@@ -2,12 +2,26 @@
 
 This directory contains Jupyter notebooks for IMTA data analysis, visualization, and modeling.
 
+## Environment Setup
+
+A conda environment has been created for this project:
+
+```bash
+# Create the environment
+conda env create -f ../environment.yml
+
+# Activate the environment
+conda activate imta-analytics
+
+# The Jupyter kernel is pre-registered as "Python (imta-analytics)"
+```
+
 ## Organization
 
 Notebooks are organized by analysis type and research focus area:
 
 ### Data Exploration
-- `01_data_exploration.ipynb` - Initial data exploration and quality assessment
+- `01_initial_data_exploration.ipynb` - ✓ **COMPLETE** - Initial exploration of UNH Aquafort buoy station data
 - `02_descriptive_statistics.ipynb` - Summary statistics and data distributions
 
 ### Ecosystem Analysis

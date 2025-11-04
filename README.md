@@ -100,37 +100,37 @@ Automated data collection, harmonization, and quality control from:
 
 ```text
 imta-analytics/
+├── imta_analytics/         # Python package (pip install -e .)
+│   ├── __init__.py        # Package initialization, version info
+│   ├── data/              # Data loading and parsing
+│   │   ├── __init__.py
+│   │   └── loaders.py     # TOA5 and other format loaders
+│   ├── quality/           # Data quality checks (future)
+│   ├── analysis/          # Analysis functions (future)
+│   └── web/               # Web application components (future)
 ├── notebooks/              # Jupyter notebooks for exploratory analysis
-│   ├── 01_data_exploration/
-│   ├── 02_growth_modeling/
-│   ├── 03_environmental_prediction/
-│   └── 04_economic_analysis/
-├── src/                    # Production-ready code
-│   ├── data/              # ETL pipelines, data loaders
-│   ├── models/            # ML model implementations
-│   │   ├── growth/        # DEB models, yield predictors
-│   │   ├── environment/   # DO, temperature, chl-a forecasting
-│   │   └── optimization/  # Multi-objective optimization
-│   ├── api/               # REST APIs for model serving
-│   ├── copilot/           # AI assistant (RAG, knowledge graphs)
-│   └── utils/             # Shared utilities, config
+│   ├── 01_initial_data_exploration.ipynb
+│   ├── 02_growth_modeling/ (future)
+│   ├── 03_environmental_prediction/ (future)
+│   └── 04_economic_analysis/ (future)
 ├── data/                   # Data directory (not tracked in git)
-│   ├── raw/               # Original datasets
+│   ├── aquafort-buoy-station/  # UNH Aquafort TOA5 files
+│   ├── raw/               # Other original datasets
 │   ├── processed/         # Cleaned, feature-engineered data
 │   └── external/          # Satellite imagery, CMEMS downloads
 ├── models/                 # Trained model artifacts (.pkl, .h5)
 ├── refs/                   # Reference materials
 │   ├── Literature Review - Data Science & AI Applications.md
-│   └── publications/      # 50+ research papers (PDFs, markdown notes)
+│   ├── publications/      # 50+ research papers (PDFs + markdown)
+│   └── technical/         # Instrument manuals (CR1000X, EXO2, etc.)
 ├── docs/                   # Documentation
-│   ├── setup.md           # Installation guide
-│   ├── data_sources.md    # How to access satellite/sensor data
-│   └── model_cards/       # Model documentation (performance, limitations)
-├── tests/                  # Unit and integration tests
-├── docker/                 # Containerization (Docker, docker-compose)
-├── .github/workflows/      # CI/CD pipelines
-├── requirements.txt        # Python dependencies
-├── environment.yml         # Conda environment (alternative)
+│   ├── data-format-analysis.md  # TOA5 format documentation
+│   ├── planning/          # System design documents
+│   └── model_cards/       # Model documentation (future)
+├── tests/                  # Unit and integration tests (future)
+├── setup.py               # Package installation configuration
+├── Makefile               # Build automation (PDF→markdown conversion)
+├── environment.yml         # Conda environment specification
 └── README.md
 ```
 
@@ -250,10 +250,29 @@ python scripts/download_sample_data.py
 python scripts/setup_data_sources.py
 ```
 
-### Quick Start: Run Yield Prediction
+### Quick Start: Load TOA5 Data
 
 ```python
-from src.models.growth import YieldPredictor
+from imta_analytics.data import load_toa5_file
+from imta_analytics.data.loaders import apply_marine_quality_filters
+
+# Load Campbell Scientific TOA5 format data
+df, metadata, units = load_toa5_file('data/aquafort-buoy-station/UNH-G2000B_EXO2SumData.dat')
+
+print(f"Station: {metadata['station']}")
+print(f"Logger: {metadata['logger_model']}")
+print(f"Data shape: {df.shape}")
+
+# Apply data quality filters (remove sensor errors)
+df_clean = apply_marine_quality_filters(df)
+print(f"Removed {len(df) - len(df_clean)} invalid records")
+```
+
+### Quick Start: Run Yield Prediction (Future)
+
+```python
+# Coming soon!
+from imta_analytics.models.growth import YieldPredictor
 
 # Load trained model
 predictor = YieldPredictor.load('models/yield_rf_v1.pkl')

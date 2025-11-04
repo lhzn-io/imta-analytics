@@ -167,3 +167,6 @@ ehthumbs.db
 
 # PDF files
 **/*.pdf
+
+# Commit tracking scratch file
+next_commit.md

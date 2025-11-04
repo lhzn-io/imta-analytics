@@ -1,0 +1,23 @@
+name: imta-analytics
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - numpy
+  - pandas
+  - matplotlib
+  - seaborn
+  - scipy
+  - scikit-learn
+  - jupyter
+  - ipykernel
+  - plotly
+  - statsmodels
+  - ipywidgets
+  - pytest
+  - pytest-cov
+  - pip
+  - pip:
+    - kaleido
+description: Environment for IMTA (Integrated Multi-Trophic Aquaculture) data analysis
