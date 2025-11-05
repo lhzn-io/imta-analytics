@@ -496,7 +496,7 @@ IMTA monitoring requires synthesis of:
 
 1. **Standardized Schema:** Common data model with fields for:
 
-   ```json
+   ```javascript
    {
      "timestamp": "ISO8601",
      "location": {"lat": float, "lon": float, "cage_id": string},
