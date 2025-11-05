@@ -59,7 +59,7 @@
 
 ### Change Documentation Workflow
 - **ALWAYS document significant changes in `next_commit.md`** - this file spans chat sessions and maintains a running log of agent modifications
-- **Structure changes by category**: Use sections like "### Algorithm Implementation", "### Infrastructure Changes", "### Testing & Validation", etc.
+- **Structure changes by category**: Use sections with descriptive headings like "Algorithm Implementation", "Infrastructure Changes", "Testing & Validation", etc.
 - **Include technical details**: Line counts, file impacts, method explanations, and validation results
 - **Persist across sessions**: The file accumulates changes until commit, allowing comprehensive documentation of multi-session work
 - **Post-commit cleanup**: After successful commit, zero out `next_commit.md` to start fresh for next change cycle
@@ -149,8 +149,8 @@
 - **Ordered lists**: Each list under a new heading should restart at 1 (avoid MD029 errors)
 - **Blank lines**: Surround lists, tables, and headings with blank lines (MD032, MD022, MD058)
 - **Fenced code blocks**: Always specify language (`text`, `python`, `yaml`, etc.) to avoid MD040 errors
-- **Avoid emphasis as headings**: Use proper heading levels (`##`, `###`) instead of `**bold**` for section headers (avoid MD036 errors)
-- **For query strings/code**: Use fenced code blocks with `text` language instead of italic emphasis (`*text*`)
+- **Avoid emphasis as headings**: Use proper ATX heading levels instead of bold text for section headers (avoid MD036 errors)
+- **For query strings/code**: Use fenced code blocks with `text` language instead of italic emphasis
 - **For literature review docs**: Use semantic numbering in content but respect markdown list conventions
 - **Check formatting**: Run markdown linter or use editor extensions to catch issues early
 
