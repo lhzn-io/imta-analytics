@@ -6,13 +6,13 @@
 **Partners:** University of New Hampshire (Chambers et al. 2024), UNH-CSSS Analytics Team  
 **Date:** October 29, 2025  
 **Status:** Literature Review Phase - In Progress  
-**Next Phase:** [IMTA Analytics Platform Strategy](imta-analytics-platform-strategy.md) for implementation (Phases 1-4)
+**Next Phase:** Platform Strategy & Implementation (Phases 1-4)
 
 ---
 
 ## Executive Summary
 
-This document guides the **initial learning phase** (Phase 0) for developing an AI-enabled precision aquaculture system for the UNH Aquafort IMTA deployment. This case study serves as the concrete foundation for the broader [IMTA Analytics Platform Strategy](imta-analytics-platform-strategy.md).
+This document guides the **initial learning phase** (Phase 0) for developing an AI-enabled precision aquaculture system for the UNH Aquafort IMTA deployment. This case study establishes the knowledge foundation required before platform implementation.
 
 **Purpose:** Before designing and building the technical platform, we must deeply understand:
 
@@ -360,7 +360,7 @@ We'll know we're ready to move to system design when we can:
 - [x] Literature review findings synthesized (see [Literature Review](../../refs/Literature%20Review%20-%20Data%20Science%20%26%20AI%20Applications%20in%20Sustainable%20Aquaculture%20Systems.md))
 - [ ] All Tier 1 papers read and extracted (Chambers, Chatziantoniou x2, Føre)
 - [ ] Data extraction framework populated with quantitative parameters
-- [ ] Ready to proceed with [Platform Strategy](imta-analytics-platform-strategy.md) (Phases 1-4)
+- [ ] Ready to proceed with platform strategy and implementation (Phases 1-4)
 - [ ] This document serves as reference for UNH Aquafort case study context
 
 ---
