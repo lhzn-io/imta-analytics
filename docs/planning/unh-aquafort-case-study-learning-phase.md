@@ -36,7 +36,7 @@ Following discussions with UNH Aquafort IMTA deployment maintainers, this roadma
 
 Based on our project requirements and available literature, we should absorb these papers in detail **first**:
 
-#### **Tier 1: System Foundation (Must Read Immediately)**
+#### Tier 1: System Foundation (Must Read Immediately)
 
 1. **Chambers et al. (2024)** - *Integrated multi-trophic aquaculture of steelhead trout, blue mussel and sugar kelp from a floating ocean platform*
    - **Why:** This IS the UNH Aquafort deployment we're supporting
@@ -62,41 +62,41 @@ Based on our project requirements and available literature, we should absorb the
    - **Extract:** Feature engineering approach, model performance metrics, seasonal patterns
    - **Action:** Replicate methodology for New England waters
 
-#### **Tier 2: Species-Specific Modeling (Week 2)**
+#### Tier 2: Species-Specific Modeling (Week 2)
 
-5. **Venolia et al. (2020)** - *Modeling the Growth of Sugar Kelp (Saccharina latissima) in Aquaculture Systems using Dynamic Energy Budget Theory*
+1. **Venolia et al. (2020)** - *Modeling the Growth of Sugar Kelp (Saccharina latissima) in Aquaculture Systems using Dynamic Energy Budget Theory*
    - **Why:** Sugar kelp is one of the three species at Aquafort; DEB model for growth prediction
    - **Key Data:** Temperature effects (optimal 10-15°C), nutrient uptake kinetics, seasonality (0.77 cm/day winter → 3.52 cm/day spring)
    - **Extract:** DEB parameters for S. latissima, model equations, validation data
    - **Action:** Integrate kelp growth model into our predictive framework
 
-6. **Stavrakidis-Zachou et al. (2019)** - *A DEB model for European sea bass (Dicentrarchus labrax): Parameterisation and application in aquaculture*
+2. **Stavrakidis-Zachou et al. (2019)** - *A DEB model for European sea bass (Dicentrarchus labrax): Parameterisation and application in aquaculture*
    - **Why:** DEB methodology applicable to steelhead trout with species-specific calibration
    - **Key Methods:** Parameter estimation from controlled experiments, temperature corrections (Arrhenius), feed conversion
    - **Extract:** Model structure, calibration procedure, sensitivity analysis
    - **Action:** Adapt for O. mykiss (steelhead trout) using Chambers' data
 
-7. **Andika et al. (2024)** - *Growth and survival of milkfish, tiger prawns, and oysters in IMTA system with varying stocking densities*
+3. **Andika et al. (2024)** - *Growth and survival of milkfish, tiger prawns, and oysters in IMTA system with varying stocking densities*
    - **Why:** Only recent paper examining stocking density optimization in multi-species IMTA
    - **Key Findings:** Treatment B (15 fish, 20 prawns, 30 oysters/300m³) achieved 100% survival, highest SGR (2.67%/day)
    - **Extract:** Density-growth relationships, DO consumption patterns, species interactions
    - **Action:** Inform optimal stocking recommendations for Aquafort configuration
 
-#### **Tier 3: ML/AI Decision Support (Week 2-3)**
+#### Tier 3: ML/AI Decision Support (Week 2-3)
 
-8. **Barzegar et al. (2020)** - *Short-term water quality variable prediction using a hybrid CNN-LSTM deep learning model*
+1. **Barzegar et al. (2020)** - *Short-term water quality variable prediction using a hybrid CNN-LSTM deep learning model*
    - **Why:** Time-series prediction for DO, temperature, pH; hybrid CNN-LSTM outperformed standalone models
    - **Key Architecture:** 1D CNN for feature extraction + LSTM for temporal dependencies
    - **Extract:** Network architecture, hyperparameters, training strategy, performance comparisons
    - **Action:** Implement hybrid model for 24-72 hour water quality forecasts
 
-9. **Ta et al. (2018)** - *Research on a dissolved oxygen prediction method for recirculating aquaculture systems based on a convolution neural network*
+2. **Ta et al. (2018)** - *Research on a dissolved oxygen prediction method for recirculating aquaculture systems based on a convolution neural network*
    - **Why:** CNN-based DO prediction with "reverse-understanding" architecture
    - **Key Innovation:** Uses spatial patterns in multi-sensor data for better predictions
    - **Extract:** CNN architecture for DO prediction, comparison with traditional methods
    - **Action:** Evaluate against LSTM approach for our application
 
-10. **Channa et al. (2023)** - *Optimisation of Small-Scale Aquaponics Systems Using Artificial Intelligence and the IoT: Current Status, Challenges, and Opportunities*
+3. **Channa et al. (2023)** - *Optimisation of Small-Scale Aquaponics Systems Using Artificial Intelligence and the IoT: Current Status, Challenges, and Opportunities*
     - **Why:** Comprehensive review of IoT sensor selection, ML applications, energy optimization
     - **Key Insights:** 67% use Arduino, WiFi dominant (85%), energy is primary bottleneck (56 kWh/kg vegetables)
     - **Extract:** Sensor recommendations (DHT22 for temp, Atlas Scientific for pH/DO), communication protocols, optimization strategies
@@ -104,54 +104,54 @@ Based on our project requirements and available literature, we should absorb the
 
 ### 1.2 Secondary Priority (Week 3-4)
 
-#### **Economic Viability & Adoption**
+#### Economic Viability & Adoption
 
-11. **Knowler et al. (2020)** - *The Economics of Integrated Multi-Trophic Aquaculture*
+1. **Knowler et al. (2020)** - *The Economics of Integrated Multi-Trophic Aquaculture*
     - **Why:** Comprehensive economic analysis; B/C ratios 1.1-1.7, 10-36% price premiums
     - **Focus:** Profitability modeling, sensitivity analysis, market considerations
     - **Action:** Build economic optimization module for our DSS
 
-12. **Carras et al. (2019)** - *A discounted cash-flow analysis of salmon monoculture and IMTA in eastern Canada*
-    - **Why:** DCF methodology for IMTA, comparison with monoculture, price premium scenarios
-    - **Focus:** NPV calculations, risk modeling, financial decision support
-    - **Action:** Adapt DCF framework for Aquafort deployment scenarios
+2. **Carras et al. (2019)** - *A discounted cash-flow analysis of salmon monoculture and IMTA in eastern Canada*
+   - **Why:** DCF methodology for IMTA, comparison with monoculture, price premium scenarios
+   - **Focus:** NPV calculations, risk modeling, financial decision support
+   - **Action:** Adapt DCF framework for Aquafort deployment scenarios
 
-#### **System Design & Infrastructure**
+#### System Design & Infrastructure
 
-13. **Føre et al. (2018)** - *Precision fish farming: A new framework to improve production in aquaculture*
+1. **Føre et al. (2018)** - *Precision fish farming: A new framework to improve production in aquaculture*
     - **Why:** Foundational paper defining precision fish farming concept
     - **Focus:** Sensor technologies, real-time monitoring, automated control systems
     - **Action:** Align our system design with precision farming principles
 
-14. **Buck et al. (2018)** - *State of the Art and Challenges for Offshore IMTA*
-    - **Why:** Addresses infrastructure challenges for offshore deployments (relevant to Aquafort's floating platform)
-    - **Focus:** Engineering requirements, environmental exposure, operational logistics
-    - **Action:** Inform infrastructure resilience monitoring module
+2. **Buck et al. (2018)** - *State of the Art and Challenges for Offshore IMTA*
+   - **Why:** Addresses infrastructure challenges for offshore deployments (relevant to Aquafort's floating platform)
+   - **Focus:** Engineering requirements, environmental exposure, operational logistics
+   - **Action:** Inform infrastructure resilience monitoring module
 
-#### **Site Selection & Configuration**
+#### Site Selection & Configuration
 
-15. **Widowati et al. (2020)** - *Ecological and Economical Analysis for Implementing IMTA*
+1. **Widowati et al. (2020)** - *Ecological and Economical Analysis for Implementing IMTA*
     - **Why:** Multi-criteria site suitability scoring (temperature, DO, pH weighted at 5; salinity at 4; nutrients at 3)
     - **Focus:** Suitability index methodology, GIS-based site selection
     - **Action:** Implement weighted suitability scoring algorithm
 
-16. **Kerrigan et al. (2016)** - *A meta-analysis of IMTA: extractive species growth is most successful within close proximity to open-water fish farms*
+2. **Kerrigan et al. (2016)** - *A meta-analysis of IMTA: extractive species growth is most successful within close proximity to open-water fish farms*
     - **Why:** Spatial configuration optimization; proximity effects on nutrient capture
     - **Focus:** Optimal distances between fed species and extractives, spatial arrangement
     - **Action:** Inform configuration recommendations for cage/line placement
 
 ### 1.3 Emerging Research & Adjacent Technologies (Ongoing)
 
-17. **Rusco et al. (2024)** - *Can IMTA System Improve the Productivity and Quality Traits of Aquatic Organisms*
+1. **Rusco et al. (2024)** - *Can IMTA System Improve the Productivity and Quality Traits of Aquatic Organisms*
     - **Why:** Recent analysis of IMTA benefits beyond sustainability (product quality improvements)
     - **Focus:** Quality metrics, comparative analysis
 
-18. **Stavrakidis-Zachou et al. (2021)** - *Projecting climate change impacts on Mediterranean finfish production*
+2. **Stavrakidis-Zachou et al. (2021)** - *Projecting climate change impacts on Mediterranean finfish production*
     - **Why:** Climate adaptation modeling methodology
     - **Focus:** Long-term forecasting under climate scenarios
     - **Action:** Build climate adaptation planning module
 
-19. **Zupa et al. (2021)** - *Calibrating Accelerometer Tags with Oxygen Consumption Rate of Rainbow Trout*
+3. **Zupa et al. (2021)** - *Calibrating Accelerometer Tags with Oxygen Consumption Rate of Rainbow Trout*
     - **Why:** Novel sensor approach for metabolic monitoring (accelerometry as proxy for O₂ consumption)
     - **Focus:** Individual fish monitoring, stress detection
     - **Action:** Explore for advanced fish welfare monitoring
@@ -423,7 +423,7 @@ This is the Phase 0 learning roadmap specific to the UNH Aquafort IMTA case stud
 | Ta 2018 | DO Prediction | CNN | **MEDIUM** | 🔴 Not Started |
 | Channa 2023 | IoT Systems | Hardware, Energy | **MEDIUM** | 🔴 Not Started |
 
-*(Status codes: 🔴 Not Started, 🟡 In Progress, 🟢 Complete, ✅ Extracted to DB)*
+Status codes: 🔴 Not Started, 🟡 In Progress, 🟢 Complete, ✅ Extracted to DB
 
 ---
 
