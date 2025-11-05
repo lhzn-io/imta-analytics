@@ -30,7 +30,7 @@ This literature review synthesizes current research on the application of data s
 6. [Data Integration Challenges & Solutions](#6-data-integration-challenges--solutions)
 7. [Economic Viability & Adoption Barriers](#7-economic-viability--adoption-barriers)
 8. [Research Gaps & Opportunities](#8-research-gaps--opportunities)
-9. [Implementation Considerations for IMTA Deployments](#9-implementation-considerations-for-imta-deployments)
+9. [Conclusion: Research Synthesis](#9-conclusion-research-synthesis)
 10. [References](#references)
 
 ---
@@ -1005,487 +1005,9 @@ Block 4: IMTA Certification
 
 ---
 
-## 9. Implementation Considerations for IMTA Deployments
+## 9. Conclusion: Research Synthesis
 
-### 9.1 Project #1: Predictive Yield Modeling
-
-**Objective:** Develop ML models that forecast biomass yield 30-90 days in advance based on environmental factors.
-
-**Rationale:** Enables proactive management decisions:
-
-- Adjust feeding regimes to optimize growth
-- Plan harvest logistics (boat scheduling, processing capacity, market timing)
-- Financial planning (cash flow forecasting for investors)
-
-#### Proposed Approach
-
-#### Phase 1: Data Collection & Integration (Months 1-3)
-
-#### Historical Data Acquisition
-
-1. Farm operational records:
-   - Growth measurements (weight, length sampling every 2-4 weeks)
-   - Feeding logs (amount, frequency, feed type)
-   - Stocking data (initial count, size, date)
-   - Harvest data (final biomass, survival rate)
-
-2. Environmental data (retrospective):
-   - Satellite: Download Sentinel-2/3 archive for farm location (2019-present)
-   - Reanalysis: CMEMS biogeochemical hindcasts
-   - Weather: NOAA buoy data or OpenWeatherMap historical API
-   - In-situ: Any available sensor logs (even sporadic measurements useful)
-
-#### Data Preprocessing
-
-- Synchronize temporal scales (daily aggregation)
-- Handle missing values (interpolation for <30% gaps, flagging for >30%)
-- Feature engineering:
-  - Rolling averages (7-day, 14-day, 30-day means)
-  - Degree-days (cumulative temperature above/below threshold)
-  - Extreme event indicators (heatwave days, low DO events)
-
-**Expected Deliverable:** Cleaned, merged dataset with:
-
-- Rows: Farm-days (e.g., 3 years × 365 days = 1,095 observations)
-- Columns: Date, species, cage_id, weight_sample, temperature, DO, chl_a, salinity, feeding_rate, biomass_density, days_since_stocking, etc.
-
-#### Phase 2: Model Development (Months 3-6)
-
-**Baseline Model:** Multiple Linear Regression
-
-- Interpretable coefficients
-- Establishes performance floor
-
-**Advanced Models:** Test suite of algorithms
-
-1. **Random Forest:** Handles non-linear relationships, feature importance rankings
-2. **Gradient Boosting (XGBoost, LightGBM):** Often best performance for tabular data
-3. **LSTM Neural Network:** Captures temporal dependencies (week N growth depends on weeks N-1, N-2, ...)
-4. **Hybrid Physics-Informed NN:** Incorporate DEB equations as constraints
-
-#### Training Strategy
-
-- Time-series cross-validation (train on years 1-2, test on year 3)
-- Hyperparameter tuning (grid search or Bayesian optimization)
-- Ensemble: Combine multiple models (weighted average based on validation performance)
-
-#### Evaluation Metrics
-
-- **R² (coefficient of determination):** Variance explained
-- **MAE/RMSE:** Average prediction error in kg
-- **MAPE (Mean Absolute Percentage Error):** Relative error
-- **Directional Accuracy:** % of times model correctly predicts growth increase/decrease
-
-#### Target Performance
-
-- R² > 0.75 (75% of yield variance explained)
-- MAPE < 15% (within 15% of actual harvest weight)
-
-**Benchmark:** Chatziantoniou et al. achieved R² = 0.67 for DO, closely matched weight observations. With high-quality controlled farm data, improvements are expected.
-
-#### Phase 3: Deployment & Validation (Months 6-9)
-
-#### Software Architecture
-
-```mermaid
-graph TB
-    subgraph Data["Data Ingestion Layer"]
-        API[API Connectors<br/>Sentinel Hub, CMEMS,<br/>OpenWeatherMap]
-        DB[(Database<br/>PostgreSQL + TimescaleDB)]
-        API --> DB
-    end
-    
-    subgraph Engine["Prediction Engine"]
-        Serving[Model Serving<br/>FastAPI/Flask REST API]
-        Inference[Scheduled Inference<br/>Daily 6 AM]
-        Inference --> Serving
-    end
-    
-    subgraph UI["User Interface"]
-        Dashboard[Web Dashboard<br/>React Frontend]
-        Viz[Visualizations<br/>Growth plots, Environmental data,<br/>Confidence intervals]
-        Export[Export<br/>CSV, PDF]
-        Dashboard --> Viz
-        Dashboard --> Export
-    end
-    
-    subgraph Monitor["Monitoring & Retraining"]
-        Compare[Compare Predictions<br/>vs Actual Outcomes]
-        Retrain[Retrain Models<br/>Quarterly]
-        ABTest[A/B Testing]
-        Compare --> Retrain
-        Compare --> ABTest
-    end
-    
-    DB --> Inference
-    Serving --> Dashboard
-    Dashboard --> Compare
-```
-
-#### User Stories
-
-**Farm Manager:**
-> "As a farm manager, I want to see 60-day growth forecasts updated daily, so I can plan harvest windows to coincide with peak market prices."
-
-**Operations Director:**
-> "As an operations director, I want to receive alerts when predicted yield deviates >10% from target, so I can investigate root causes (disease, suboptimal feeding, equipment failure)."
-
-**Investor:**
-> "As an investor, I want quarterly reports showing predicted vs. actual yield accuracy, so I can assess farm management competence and financial projections."
-
-#### Validation Protocol
-
-- Deploy model at target IMTA facility for complete growing season
-- Record predictions and actual outcomes
-- Farmer feedback surveys (usability, trust, decision impact)
-- Iterate based on lessons learned
-
-### 9.2 Project #2: IMTA Operator Co-Pilot (AI Assistant)
-
-**Objective:** Build conversational AI system that assists operators with real-time decision support, training, and troubleshooting.
-
-**Rationale:** Addresses knowledge gap between scientific research and practical farming. Many farmers lack aquaculture/IMTA training; AI can democratize expertise.
-
-#### Co-Pilot Implementation Proposed Approach
-
-#### Phase 1: Knowledge Base Construction (Months 1-3)
-
-#### Core Knowledge Sources
-
-1. **Research Literature:**
-   - Comprehensive corpus of IMTA, precision farming, and water quality research
-   - Convert to structured format (vector embeddings for retrieval)
-
-2. **Standard Operating Procedures:**
-   - Industry protocols (feeding schedules, sampling methods, harvest procedures)
-   - Industry best practices (FAO guidelines, regional manuals)
-
-3. **Regulatory Documents:**
-   - EPA/NOAA aquaculture permits
-   - Food safety standards (FDA, USDA)
-   - Regional regulations (state fisheries management)
-
-4. **Equipment Manuals:**
-   - Sensor calibration procedures
-   - Maintenance schedules
-   - Troubleshooting guides
-
-#### Knowledge Graph Schema
-
-```mermaid
-graph TD
-    Species[Species<br/>sea bass, mussels, kelp] -->|REQUIRES| Param[Parameters<br/>DO, temperature, pH]
-    Param -->|IN_RANGE| Thresh[Thresholds<br/>optimal ranges, critical limits]
-    Actions[Actions<br/>increase aeration, reduce feeding, harvest] -->|IMPROVES/AFFECTS| Param
-    Param -->|CAUSES| Outcomes[Outcomes<br/>growth rate, mortality, water quality]
-    
-    LowDO[Low DO] -->|CAUSES| Stress[Stress]
-    Stress -->|LEADS_TO| Mortality[Mortality]
-    HighTemp[High Temperature] -.->|CORRELATES_WITH<br/>r=-0.85| LowDO
-```
-
-#### Technology Stack
-
-- **Neo4j:** Graph database for knowledge storage
-- **Sentence Transformers:** Encode text for semantic search
-- **LangChain:** Orchestrate LLM + retrieval (RAG architecture)
-
-#### Phase 2: AI Development (Months 3-6)
-
-#### AI System Features
-
-#### 1. Conversational Interface
-
-```python
-User: "My dissolved oxygen dropped to 5.2 mg/L overnight. What should I do?"
-
-AI System (internal process):
-  Step 1: Retrieve relevant knowledge
-    - DO optimal range: 5-8 mg/L
-    - Critical threshold: 5.5 mg/L (EFSA)
-    - Common causes: high temp, overstocking, equipment failure
-    - Interventions: aeration, feeding reduction, water exchange
-  
-  Step 2: Query farm data
-    - Current temperature: 27°C (above optimal 24°C)
-    - Biomass density: 28 kg/m³ (high but not critical)
-    - Aerator logs: Last maintenance 45 days ago
-  
-  Step 3: Generate contextualized response
-```
-
-#### AI Response
->
-> 🚨 Your DO is below the recommended threshold of 5.5 mg/L. This is concerning.
->
-> 📊 Based on your current conditions:
->
-> - Temperature (27°C) is elevated, which reduces oxygen solubility
-> - Your biomass (28 kg/m³) is high, increasing oxygen consumption
-> - Aerator due for maintenance check
->
-> ⚡ Immediate Actions:
->
-> 1. Increase aeration intensity by 25% (check aerator is functioning properly)
-> 2. Reduce feeding by 30% for next 24 hours to lower metabolic demand
-> 3. Monitor DO every 4 hours
->
-> 📈 Expected Outcome:
-> If equipment is working, DO should rise to 5.8-6.2 mg/L within 12-18 hours based on similar past events at your farm.
->
-> ⚠️ If DO doesn't improve in 12 hours, consider emergency water exchange or partial harvest.
->
-> 📚 Want to learn more about oxygen dynamics in IMTA systems? I can explain the relationship between temperature, biomass, and DO.
-
-#### 2. Proactive Monitoring
-
-- Continuous background analysis of sensor streams
-- Pattern recognition (e.g., "DO declining faster than usual for this time of year")
-- Push notifications before parameters breach critical thresholds
-
-#### 3. Training & Education
-
-```text
-User: "Teach me about the nitrogen cycle in IMTA"
-
-AI: [Generates interactive lesson with diagrams, quizzes, links to relevant papers]
-```
-
-#### 4. Troubleshooting Wizard
-
-```text
-User: "My kelp isn't growing well"
-
-AI: "Let's diagnose this step-by-step:
-Q1: What is your current nitrate level?
-Q2: How much light is the kelp receiving (hours/day)?
-Q3: When did you last check for epiphytic growth on the blades?"
-
-[Guides user through systematic diagnosis]
-```
-
-#### 5. Scenario Simulation
-
-```text
-User: "What would happen if I increased stocking density by 20%?"
-
-AI: [Runs growth model + DO model]
-"Simulation Results:
-- Harvest yield: +18% (good!)
-- Peak DO levels: -1.2 mg/L (concerning in summer)
-- Risk score: Elevated risk of hypoxia events in July-August
-- Recommendation: Proceed only if you upgrade aeration capacity by 15%"
-```
-
-#### Scenario Simulation Technology Stack
-
-- **GPT-4 or Claude-3:** Foundation LLM for language understanding/generation
-- **RAG (Retrieval-Augmented Generation):** Ground responses in farm data + knowledge base
-- **Function Calling:** Enable LLM to query databases, run models, access sensor APIs
-- **Safety Layer:** Rule-based checks to prevent obviously harmful recommendations
-
-#### Phase 3: Integration & Testing (Months 6-9)
-
-#### User Interface Options
-
-#### Option A: Web Chat (Like Aquasafe)
-
-- Accessible from any device
-- Chat history stored
-- Can include rich media (graphs, images, videos)
-
-#### Option B: Mobile App
-
-- Push notifications
-- Offline mode (cached knowledge for remote locations)
-- Voice interface (hands-free while working on farm)
-
-#### Option C: SMS/WhatsApp Bot
-
-- No internet required (cellular data only)
-- Accessibility for low-tech users
-- Asynchronous communication
-
-**Recommended:** Start with Option A (web), add Option C (SMS) for alerts.
-
-#### Testing Protocol
-
-1. **Internal Alpha (Month 6):** Development team tests with synthetic scenarios
-2. **Beta with Farm Staff (Month 7-8):** 5 operators use daily, provide feedback
-3. **Evaluation Metrics:**
-   - **Usability:** System Usability Scale (SUS) survey, aim for >70
-   - **Accuracy:** Expert panel reviews 100 AI responses, scores correctness
-   - **Impact:** Measure decision time (how quickly operators resolve issues)
-   - **Trust:** Likert scale survey ("How much do you trust AI recommendations?")
-
-### 9.3 Synergies Between Projects
-
-#### Integration Points
-
-1. **Yield Model → Co-Pilot:**
-   - User: "Why is growth slower than expected?"
-   - Co-Pilot queries yield model, identifies limiting factors (e.g., "Temperature 2°C below optimal is primary driver"), suggests interventions
-
-2. **Co-Pilot → Model Improvement:**
-   - Farmer corrections to AI recommendations become training data
-   - "AI suggested reduce feeding, but I found aerator was broken" → update fault diagnosis model
-
-3. **Shared Knowledge Base:**
-   - Both systems access unified data repository
-   - Yield model predictions inform Co-Pilot's advice
-   - Co-Pilot user queries reveal information needs → prioritize model improvements
-
-#### User Workflow Example
-
-```text
-Morning: 
-- Farmer opens dashboard, sees yield forecast updated overnight
-- Notice: "Predicted harvest weight 8% below target"
-- Clicks "Ask Co-Pilot" → "Why is yield below target?"
-
-Co-Pilot Analysis:
-- Retrieves last 14 days of sensor data
-- Runs diagnostic: Identifies low DO events (5 occurrences)
-- Correlates with feeding logs: Feed delivered but not consumed
-
-Co-Pilot Response:
-"Your yield shortfall is primarily due to 5 low DO events in past 2 weeks, 
-causing reduced feeding. I recommend:
-1. Increase aeration schedule from 18 hrs/day to 22 hrs/day
-2. Monitor DO more frequently (every 6 hours instead of daily)
-3. If DO stabilizes above 6 mg/L for 3 consecutive days, gradually 
-   increase feeding to 2.8% body weight
-
-Predicted Impact: Yield should recover to 97% of target within 30 days."
-
-Farmer Action:
-- Approves recommendations
-- System logs action taken
-- Auto-generates reminder to check DO every 6 hours
-
-30 Days Later:
-- Actual yield: 96% of target (model was accurate!)
-- System learns: "Low DO → reduced feeding" pathway confirmed
-- Co-Pilot confidence in this advice type increases
-```
-
-### 9.4 Differentiation from Existing Systems
-
-#### Aquasafe (Chatziantoniou et al., 2023) - Comparison
-
-| Feature | Aquasafe | Proposed IMTA System |
-|---------|----------|---------------------|
-| **Data Sources** | Satellite + in-situ + models | Same + historical farm records |
-| **Spatial Focus** | Regional (multi-farm monitoring) | Farm-scale (individual cage optimization) |
-| **Predictive Capability** | 5-day environmental forecasts + DEB growth | 30-90 day yield forecasts + uncertainty quantification |
-| **AI Assistant** | No conversational interface | Full NLP-based co-pilot with RAG |
-| **Edge Computing** | Cloud-based only | Hybrid edge-cloud (resilient to connectivity loss) |
-| **Farmer Feedback Loop** | Manual data entry | Automated learning from corrections |
-| **Explainability** | Alert thresholds shown | SHAP analysis + causal reasoning |
-| **Open Source** | Proprietary | Potential for open-source components (differentiator) |
-
-#### Competitive Advantages
-
-1. **Hyperlocal Expertise:** Models trained on region-specific conditions and environmental patterns
-
-2. **IMTA-Native Design:** Built from ground-up for multi-species systems (vs. retrofitting monoculture tools)
-
-3. **Academic Credibility:** University-backed research, peer-reviewed methodology, transparent performance metrics
-
-4. **Community Focus:** Target underserved small-medium operators (not just industrial scale)
-
-5. **Extensibility:** Modular architecture allows third-party integrations (e.g., blockchain traceability, market pricing APIs)
-
-### 9.5 Funding & Partnership Strategy
-
-#### Phase 1 Funding Sources (Prototyping: $50-150K)
-
-1. **NSF SBIR Phase I** (~$275K if pursuing commercialization path)
-   - Program: IIP (Industrial Innovation and Partnerships)
-   - Topic: Artificial Intelligence, Bioinformatics
-
-2. **NOAA SBIR** (~$150K)
-   - Topic: Marine Aquaculture, Precision Aquaculture
-
-3. **Sea Grant R/R Awards** ($50-100K)
-   - Regional focus: Coastal regions with active aquaculture
-   - Must demonstrate stakeholder engagement (IMTA farm partnerships strengthen application)
-
-4. **USDA AFRI** (Agriculture and Food Research Initiative)
-   - Program: Sustainable Agricultural Systems
-   - Budget: $50-500K depending on scope
-
-5. **Private Foundations:**
-   - **Walton Family Foundation** (Sustainable Fisheries & Aquaculture)
-   - **Schmidt Marine Technology Partners** (Ocean Technology Innovation)
-   - **Moore Foundation** (Data-Driven Discovery)
-
-#### Phase 2 Funding (Scaling: $500K - $2M)
-
-1. **NSF SBIR Phase II** (~$1M)
-2. **NOAA Saltonstall-Kennedy Grant** (Variable, up to $250K/year)
-3. **Impact Investors:**
-   - **Closed Loop Partners** (Circular economy focus)
-   - **RSF Social Finance** (Food systems transformation)
-   - **Meloy Fund** (Small-scale fisheries & aquaculture)
-
-#### Strategic Partnerships
-
-1. **Technology Providers:**
-   - **Planet Labs / Sentinel Hub:** Satellite data access, co-marketing
-   - **NVIDIA:** Edge AI hardware (Jetson platform), technical support
-   - **AWS / Google Cloud:** Cloud credits for education/research use
-
-2. **Industry Associations:**
-   - **Aquaculture America:** Conference sponsorship, farmer network access
-   - **US Aquaculture Society:** Certification pathways, standards development
-   - **Regional Sea Grant programs:** Extension network for deployment
-
-3. **Academic Collaborators:**
-   - **Regional aquaculture research hubs:** Multi-institutional collaboration
-   - **International IMTA research groups:** Knowledge exchange (e.g., Canadian IMTA pioneers, Mediterranean centers)
-   - **HCMR (Greece):** Aquasafe team (potential licensing or joint development)
-
-4. **Policy Advocacy:**
-   - **NOAA Fisheries:** Regulatory modernization for IMTA
-   - **EPA:** Nutrient credit trading framework development
-   - **State agencies:** Permit streamlining, pilot program designation
-
-### 9.6 Timeline & Milestones
-
-#### Year 1: Proof of Concept
-
-- Q1: Literature review complete, data pipeline operational
-- Q2: Yield prediction model MVP (R² > 0.6), Co-Pilot knowledge base built
-- Q3: Alpha testing at pilot IMTA facility, iterate based on feedback
-- Q4: Grant applications submitted, first peer-reviewed paper draft
-
-#### Year 2: Field Validation
-
-- Q1: Deploy production system at 2-3 partner farms
-- Q2: Continuous monitoring, weekly model updates, user training
-- Q3: Publish results in journal (target: Aquaculture, Reviews in Aquaculture)
-- Q4: Present at Aquaculture America conference, recruit additional beta sites
-
-#### Year 3: Scaling & Sustainability
-
-- Q1: Expand to 10+ farms across target region
-- Q2: Develop commercial pricing model (SaaS subscription or licensing)
-- Q3: Spin-out company or integrate into university extension services
-- Q4: Secure multi-year funding for maintenance & continuous improvement
-
-#### Success Metrics (3-Year Horizon)
-
-- **Technical:** Yield prediction MAE < 10%, Co-Pilot user satisfaction > 75%
-- **Impact:** 20+ farms adopting, 15% average revenue increase, 25% net nitrogen reduction
-- **Financial:** Self-sustaining revenue model (subscription or grants)
-- **Academic:** 5+ publications, 2+ graduate student theses, 1 patent/software copyright
-
----
-
-## 10. Conclusion & Recommendations
-
-### 10.1 Key Takeaways
+### 9.1 Key Takeaways
 
 This literature review has synthesized research across IMTA system design, environmental monitoring, predictive modeling, and decision support systems. Several clear conclusions emerge:
 
@@ -1499,89 +1021,47 @@ This literature review has synthesized research across IMTA system design, envir
 
 **5. Market Demand Exists for Sustainable Seafood** — Consumers demonstrate willingness to pay 10-36% premiums for IMTA products, but **awareness remains low.** Technology systems that automatically document environmental benefits (nitrogen removed, carbon sequestered) can enable eco-certification and price premium capture.
 
-### 10.2 Recommendations for IMTA Deployments
+### 9.2 Priority Research Directions
 
-Based on this comprehensive review, we recommend pursuing **both proposed projects in parallel** with phased integration:
+Based on identified gaps, the following research areas warrant immediate attention:
 
-**Immediate Priority (Months 1-3):** Data Infrastructure
+**1. Multi-Species Growth Model Integration:** Current DEB models exist for finfish but lack integration with extractive species. Research should develop coupled models that account for nutrient transfer (fish effluent → mussel food → kelp nutrients) and optimize harvest timing across trophic levels.
 
-- Establish data pipeline (satellite + sensor + manual records)
-- Retroactively digitize historical farm data (2019-present)
-- Deploy minimum viable sensor network (DO, temperature, biomass sampling)
+**2. Long-Range Environmental Forecasting:** Existing systems provide 5-day forecasts; extending to 30-90 days would enable strategic planning for harvest logistics and market timing. This requires hybrid approaches combining numerical ocean models with machine learning.
 
-**Priority #1 (Months 3-9):** Yield Prediction Model
+**3. Explainable AI for Decision Support:** Black-box ML models face adoption resistance from practitioners. Research on SHAP analysis, causal inference, and physics-informed neural networks can provide transparent, trustworthy predictions.
 
-- Highest immediate value to farm operations
-- Enables data-driven harvest planning and financial forecasting
-- Builds institutional data fluency before attempting more complex AI
+**4. IMTA-Specific Sensor Networks:** Most IoT aquaculture systems target monoculture. Research should optimize sensor placement, sampling intervals, and communication protocols for spatially-distributed multi-species farms.
 
-**Priority #2 (Months 6-12):** Co-Pilot MVP
+**5. Open IMTA Datasets:** Lack of publicly available data hinders model development and validation. Establishment of a data commons with standardized formats would accelerate research and enable meta-analyses across regions.
 
-- Start simple: FAQ chatbot + knowledge retrieval
-- Gradually add predictive capabilities (anomaly detection, scenario simulation)
-- Farmer feedback drives feature prioritization
+### 9.3 Methodological Innovations
 
-**Long-Term Vision (Years 2-3):** Integrated IMTA Management Platform
+Several emerging methodologies show promise for advancing IMTA research:
 
-- Unified dashboard combining yield forecasts, environmental monitoring, conversational AI, and supply chain traceability
-- Open-source core components to encourage adoption and community contribution
-- Commercial support/hosting for farms lacking technical capacity
+**Hybrid Physics-ML Models:** Combining DEB theory with neural networks can improve extrapolation to novel conditions while maintaining interpretability. Physics-informed neural networks (PINNs) enforce biological constraints during training.
 
-### 10.3 Critical Success Factors
+**Causal Inference:** Moving beyond correlation to establish causation enables more reliable interventions. Directed acyclic graphs (DAGs) and structural equation modeling can identify true drivers of yield variation.
 
-#### 1. Co-Design with End Users
+**Transfer Learning:** Models trained on data-rich regions (Mediterranean, Asia) can be adapted to data-scarce regions (North Atlantic, Pacific Northwest) with fewer observations required.
 
-- Monthly farmer advisory board meetings
-- Rapid prototyping with frequent feedback cycles
-- Resist temptation to build "everything" — focus on solving real pain points
+**Federated Learning:** Privacy-preserving ML allows multiple farms to collaboratively train models without sharing proprietary operational data, addressing adoption barriers.
 
-#### 2. Trust Through Transparency
+**Digital Twins:** Real-time simulation environments calibrated to individual farms enable scenario testing before implementing costly interventions in the field.
 
-- Explainable AI (show reasoning, not just predictions)
-- Publish model performance metrics openly
-- When models fail, document why and how improvements were made
+### 9.4 Implementation Considerations
 
-#### 3. Appropriate Technology
+Translating research findings into operational systems requires attention to:
 
-- Avoid over-engineering (farmers don't need 99% accuracy, 85% with interpretability often better)
-- Design for degraded conditions (intermittent connectivity, sensor failures)
-- Prioritize reliability over novelty
+**User-Centered Design:** Technology adoption depends on solving real pain points identified through co-design with practitioners, not imposing researcher-defined solutions.
 
-#### 4. Economic Sustainability
+**Appropriate Technology:** Systems must function in degraded conditions (intermittent connectivity, sensor failures, limited computational resources). Robustness often outweighs marginal accuracy gains.
 
-- Don't rely solely on grant funding (creates dependency)
-- Develop revenue model: SaaS subscription ($200-500/month per farm?), consulting services, data licensing
-- Demonstrate ROI: System should pay for itself within 1 growing season via improved yields/reduced losses
+**Economic Sustainability:** Grant-dependent systems rarely achieve long-term impact. Revenue models (subscriptions, consulting, institutional support) should be considered from project inception.
 
-#### 5. Academic Rigor + Practical Impact
+**Policy Integration:** Technical advances mean little without supportive regulatory frameworks. Researchers should engage policymakers on IMTA-specific permitting and ecosystem service valuation.
 
-- Publish methodology and results (builds credibility)
-- But don't let "perfect be enemy of good" — ship functional prototypes
-- Balance: 60% engineering/deployment, 40% research/publication
-
-### 10.4 Broader Impact Potential
-
-Successful pilot implementations create a blueprint for **regional and global scaling:**
-
-#### Regional Expansion
-
-- Replicate across displaced fishing communities transitioning to aquaculture
-- Partner with extension networks for farmer training
-- Influence regional policies toward IMTA-friendly permitting
-
-#### National
-
-- Adapt models for different species/environments (Gulf Coast shrimp-oyster-seaweed, Pacific Northwest salmon-mussel-kelp)
-- Collaborate with NOAA on national precision aquaculture strategy
-- Supply data/insights for US aquaculture development plans (address seafood trade deficit)
-
-#### Global (Developing Coastal Nations)
-
-- Low-cost version using open-source components and smartphone interfaces
-- Train-the-trainer programs for NGOs and community organizations
-- Adapt to freshwater IMTA (aquaponics) for food security applications
-
-**Ultimate Vision:** Make sustainable, productive IMTA **the default aquaculture practice** rather than the exception — enabled by data science and AI that makes complex systems manageable for operators at any scale.
+**Open Science Principles:** Open-source software, public datasets, and transparent methodology accelerate progress and build trust with skeptical practitioners.
 
 ---
 
@@ -1680,3 +1160,8 @@ Young, N., Brattland, C., Digiovanni, C., Hersoug, B., Johnsen, J. P., Karlsen, 
 Zheng, W., Shi, H., Chen, S., & Zhu, M. (2009). Benefit and cost analysis of mariculture based on ecosystem services. *Ecological Economics*, 68, 1626–1632.
 
 ---
+
+**Document History:**
+
+- v1.0 (October 2025): Initial literature review completed
+- v1.1 (November 4, 2025): Refactored to separate research synthesis from implementation planning

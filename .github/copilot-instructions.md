@@ -66,6 +66,7 @@
 - **Use for commit messages**: Extract comprehensive commit messages from accumulated `next_commit.md` content
 - **Track incremental progress**: Document both completed changes and work-in-progress for better session continuity
 - **Ignore linting errors**: `next_commit.md` is an untracked scratch file - do not waste cycles fixing markdown linting errors in it
+- **NEVER stage or commit `next_commit.md`** - this file is intentionally untracked (in .gitignore) and serves only as a scratch pad for documenting changes before commit
 
 ## Data Handling
 - Real data is in `data/` directory (not tracked in git)
@@ -119,7 +120,7 @@
 - **PREFER edit_notebook_file tool** - this is the primary method for notebook editing and works reliably for content modifications
 - **Cell ID vs Ordinal Position**: Most cells do NOT have explicit IDs and instead use implicit cell-order ordinals to match with attachment metadata - "Cell 16" refers to the 16th cell in the .ipynb file, not a cell with id="16"
 - **Cell ID handling**: VS Code notebooks have cell IDs even when they appear missing - the edit_notebook_tool can find and use them correctly
-- **User references by ordinal**: When users mention "Cell 16" or "cell #16", they mean the 16th cell in sequential order, which may or may not have an explicit ID attribute
+- **User references by ordinal**: When users mention "Cell 16", they mean the 16th cell in sequential order, which may or may not have an explicit ID attribute
 - **For analysis/understanding**: Use unix tools (`grep`, `python -c` JSON parsing) to understand notebook structure before editing
 - **Fallback methods when needed**: If edit_notebook_file fails, can use `grep`/`sed` or Python JSON manipulation as alternatives
 - **For major refactoring**: Edit multiple cells sequentially using edit_notebook_file rather than trying to add new cells

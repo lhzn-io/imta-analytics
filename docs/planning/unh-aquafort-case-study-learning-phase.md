@@ -1,16 +1,27 @@
-# UNH Aquafort IMTA AI-Enabled Precision Aquaculture System
-## Design & Development Planning Document
+# UNH Aquafort IMTA Case Study: Literature Review & Learning Phase
 
-**Project:** AI-Driven Decision Support System for UNH Aquafort IMTA Deployment  
+**Project:** UNH Aquafort IMTA Deployment - Phase 0 Knowledge Foundation  
+**Case Study Focus:** Steelhead trout + Blue mussel + Sugar kelp floating platform system  
+**Phase:** Phase 0 - Literature Review & Knowledge Acquisition (Weeks 1-4)  
 **Partners:** University of New Hampshire (Chambers et al. 2024), UNH-CSSS Analytics Team  
 **Date:** October 29, 2025  
-**Status:** Initial Planning Phase
+**Status:** Literature Review Phase - In Progress  
+**Next Phase:** [IMTA Analytics Platform Strategy](imta-analytics-platform-strategy.md) for implementation (Phases 1-4)
 
 ---
 
 ## Executive Summary
 
-Following discussions with UNH Aquafort IMTA deployment maintainers, this document outlines our approach to designing and building AI-enabled precision aquaculture capabilities. The system will feature a Copilot interface providing assistance across the full lifecycle:
+This document guides the **initial learning phase** (Phase 0) for developing an AI-enabled precision aquaculture system for the UNH Aquafort IMTA deployment. This case study serves as the concrete foundation for the broader [IMTA Analytics Platform Strategy](imta-analytics-platform-strategy.md).
+
+**Purpose:** Before designing and building the technical platform, we must deeply understand:
+
+1. Scientific literature on IMTA systems, predictive modeling, and AI decision support
+2. Existing precision aquaculture platforms (especially Aquasafe)
+3. UNH Aquafort's specific operational context (Chambers et al. 2024)
+4. Technical requirements for the three target species (steelhead trout, blue mussels, sugar kelp)
+
+Following discussions with UNH Aquafort IMTA deployment maintainers, this roadmap prioritizes literature review to inform system design. The system will ultimately feature a Copilot interface providing assistance across the full lifecycle:
 
 1. **Site Selection** - Environmental suitability analysis
 2. **Configuration** - Species selection, infrastructure design, sensor deployment
@@ -150,18 +161,22 @@ Based on our project requirements and available literature, we should absorb the
 From our literature review synthesis, these frequently-cited works should be consulted:
 
 **From Chambers et al. (2024):**
+
 - **Myrick & Cech (2005)** - Steelhead trout temperature optima (9-15°C)
 - **Maar et al. (2015)** - Blue mussel growth rates under varying salinity/temperature
 
 **From Chatziantoniou et al. (2023):**
+
 - **Claireaux & Lagardère (1999)** - DO thresholds and fish physiological impacts
 - **EFSA (2008, 2020)** - Regulatory guidance on fish welfare (5.5 mg/L DO minimum)
 
 **From Economic Papers:**
+
 - **Ridler et al. (2007)** - First comprehensive IMTA economic analysis ($3.3M NPV vs. $2.7M monoculture)
 - **Nobre et al. (2010)** - Social accounting framework for IMTA ecosystem services ($1.1-3.0M annual benefit)
 
 **Foundational IMTA Concepts:**
+
 - **Chopin et al. (2001)** - *Integrating Seaweeds into Marine Aquaculture Systems* (seminal paper)
 - **Chopin (2006)** - *What is IMTA and why you should care* (definitional clarity)
 
@@ -170,21 +185,25 @@ From our literature review synthesis, these frequently-cited works should be con
 ## 2. Strategic Reading Plan
 
 ### Week 1: Foundation & Context
+
 - **Day 1-2:** Chambers et al. (2024) - Deep extraction of all data, methods, challenges
 - **Day 3-4:** Chatziantoniou et al. (2023) - System architecture, alert design, user feedback
 - **Day 5-7:** Føre et al. (2024) - Digital twin framework, implementation strategy
 
 ### Week 2: Predictive Modeling
+
 - **Day 8-9:** Chatziantoniou et al. (2022) + Barzegar et al. (2020) - DO prediction models
 - **Day 10-11:** Venolia et al. (2020) + Stavrakidis-Zachou et al. (2019) - Species growth models
 - **Day 12-14:** Andika et al. (2024) + Channa et al. (2023) - Density optimization, IoT systems
 
 ### Week 3: Decision Support & Economics
+
 - **Day 15-17:** Ta et al. (2018) - CNN architectures for prediction
 - **Day 18-19:** Knowler et al. (2020) + Carras et al. (2019) - Economic modeling
 - **Day 20-21:** Føre et al. (2018) + Buck et al. (2018) - Precision farming, offshore challenges
 
 ### Week 4: Configuration & Site Selection
+
 - **Day 22-24:** Widowati et al. (2020) + Kerrigan et al. (2016) - Site selection, spatial config
 - **Day 25-28:** Secondary papers + reference chaining for gaps
 
@@ -195,23 +214,27 @@ From our literature review synthesis, these frequently-cited works should be con
 As we read, we need to extract answers to these specific questions:
 
 ### 3.1 Site Selection Module
+
 - [ ] What environmental parameters are critical for steelhead trout / blue mussel / sugar kelp co-culture?
 - [ ] What are the validated threshold ranges (optimal, tolerance limits)?
 - [ ] How do we integrate multi-source data (satellite, in-situ, models) for site assessment?
 - [ ] What GIS-based scoring methodology should we use?
 
 ### 3.2 Configuration Module
+
 - [ ] What stocking densities optimize growth while maintaining survival (density-dependent effects)?
 - [ ] What spatial arrangements maximize nutrient capture efficiency?
 - [ ] What sensor suite is required (types, quantities, placements, costs)?
 - [ ] What is the minimum viable IoT infrastructure?
 
 ### 3.3 Deployment Module
+
 - [ ] What is the optimal stocking schedule across species (temporal sequencing)?
 - [ ] How do we predict initial conditions (pre-deployment site assessment)?
 - [ ] What contingency plans are needed for adverse conditions?
 
 ### 3.4 Maintenance Module - Feeding
+
 - [ ] How do we predict daily feed requirements based on:
   - Current biomass (growth model outputs)
   - Environmental conditions (temperature, DO)
@@ -220,18 +243,21 @@ As we read, we need to extract answers to these specific questions:
 - [ ] How do we detect overfeeding (waste) vs. underfeeding (growth loss)?
 
 ### 3.5 Maintenance Module - Resilience
+
 - [ ] What infrastructure failure modes are most critical?
 - [ ] How do we predict DO hypoxia events 24-72 hours ahead?
 - [ ] What early warning indicators exist for harmful algal blooms?
 - [ ] How do we model storm impacts on infrastructure?
 
 ### 3.6 AI/ML Implementation
+
 - [ ] CNN vs. LSTM vs. Hybrid for time-series water quality prediction?
 - [ ] How to handle sparse/irregular in-situ measurements?
 - [ ] How to integrate physics-based models (DEB) with ML predictions?
 - [ ] What edge computing architecture for real-time processing?
 
 ### 3.7 User Experience
+
 - [ ] What are the primary user tasks (based on Aquasafe usability study)?
 - [ ] How do we design conversational AI (Copilot) for aquaculture domain?
 - [ ] What alert fatigue mitigation strategies work?
@@ -244,24 +270,28 @@ As we read, we need to extract answers to these specific questions:
 For each priority paper, we'll systematically extract:
 
 ### 4.1 Quantitative Data
+
 - **Environmental Parameters:** Measured ranges, optimal values, critical thresholds
 - **Species Performance:** Growth rates (SGR, FCR), survival rates, biomass yields
 - **Model Performance:** R², RMSE, MAE, accuracy metrics
 - **Economic Metrics:** Costs, revenues, NPV, B/C ratios, price premiums
 
 ### 4.2 Methodologies
+
 - **Modeling Approaches:** Equations, parameters, assumptions, validation methods
 - **Sensor Technologies:** Types, specifications, costs, accuracy, maintenance
 - **System Architectures:** Data flows, processing pipelines, APIs, databases
 - **Alert Logic:** Thresholds, compound indicators, notification strategies
 
 ### 4.3 Lessons Learned
+
 - **What Worked:** Successful implementations, validated approaches, positive outcomes
 - **What Failed:** Documented challenges, limitations, unsuccessful attempts
 - **User Feedback:** Adoption barriers, usability issues, feature requests
 - **Economic Barriers:** Cost prohibitive elements, energy consumption, market challenges
 
 ### 4.4 Research Gaps
+
 - **Missing Models:** What phenomena lack predictive models? (e.g., kelp yield forecasting)
 - **Data Limitations:** What measurements are sparse/unavailable?
 - **Technology Gaps:** What sensors/tools don't exist yet?
@@ -274,6 +304,7 @@ For each priority paper, we'll systematically extract:
 As we absorb literature, we should simultaneously:
 
 ### 5.1 Stakeholder Engagement
+
 - **Action:** Schedule follow-up meeting with UNH Aquafort maintainers
 - **Questions to Ask:**
   - What are your top 3 operational pain points?
@@ -283,6 +314,7 @@ As we absorb literature, we should simultaneously:
   - What's your budget envelope for sensors/infrastructure?
 
 ### 5.2 Data Inventory
+
 - **Action:** Request access to any existing Aquafort data:
   - Historical production records (harvest weights, survival rates)
   - Environmental measurements (temperature, salinity, DO, pH)
@@ -291,6 +323,7 @@ As we absorb literature, we should simultaneously:
   - Financial records (costs, revenues, if shareable)
 
 ### 5.3 Environmental Data Acquisition
+
 - **Action:** Begin pulling baseline environmental data for Aquafort site:
   - Sentinel-2/3 satellite imagery (Copernicus Open Access Hub)
   - NOAA buoy data (nearest station to deployment site)
@@ -299,6 +332,7 @@ As we absorb literature, we should simultaneously:
   - Oceanographic data (temperature, salinity, currents)
 
 ### 5.4 Technology Stack Exploration
+
 - **Action:** Prototype core technical components:
   - Satellite data API integration (Sentinel Hub, Google Earth Engine)
   - Time-series database setup (InfluxDB, TimescaleDB)
@@ -321,11 +355,20 @@ We'll know we're ready to move to system design when we can:
 - [ ] Calculate expected ROI for AI system investment vs. operational improvements
 - [ ] Design conversational prompts for top 10 user queries
 
+**Phase Completion Criteria:**
+
+- [x] Literature review findings synthesized (see [Literature Review](../../refs/Literature%20Review%20-%20Data%20Science%20%26%20AI%20Applications%20in%20Sustainable%20Aquaculture%20Systems.md))
+- [ ] All Tier 1 papers read and extracted (Chambers, Chatziantoniou x2, Føre)
+- [ ] Data extraction framework populated with quantitative parameters
+- [ ] Ready to proceed with [Platform Strategy](imta-analytics-platform-strategy.md) (Phases 1-4)
+- [ ] This document serves as reference for UNH Aquafort case study context
+
 ---
 
 ## 7. Next Steps
 
 ### Immediate Actions (This Week)
+
 1. **Create detailed notes templates** for each Tier 1 paper (structured data extraction)
 2. **Set up reference management** (Zotero/Mendeley) with our 50+ papers
 3. **Begin deep read of Chambers et al. (2024)** - Extract all quantitative data into spreadsheet
@@ -333,6 +376,7 @@ We'll know we're ready to move to system design when we can:
 5. **Set up development environment** - Python, Jupyter, data science libraries
 
 ### Short-Term Milestones (2-4 Weeks)
+
 1. Complete Tier 1 literature deep-dive (7 papers)
 2. Draft system architecture document
 3. Build proof-of-concept DO prediction model
@@ -340,6 +384,7 @@ We'll know we're ready to move to system design when we can:
 5. Design conversational AI prompts for top use cases
 
 ### Medium-Term Goals (1-3 Months)
+
 1. Deploy minimum viable product (MVP) with core features
 2. Integrate with real Aquafort sensor data (if available)
 3. Conduct user testing with UNH operators
@@ -351,9 +396,15 @@ We'll know we're ready to move to system design when we can:
 ## 8. Document Control
 
 **Authors:** UNH-CSSS Analytics Team  
-**Last Updated:** October 29, 2025  
-**Version:** 0.1 (Initial Draft)  
-**Next Review:** November 5, 2025 (Post Tier-1 Literature Review)
+**Created:** October 29, 2025  
+**Last Updated:** November 4, 2025  
+**Version:** 0.2 (Clarified as Phase 0 - Learning Phase)  
+**Phase:** Phase 0 (Literature Review & Knowledge Acquisition)  
+**Next Phase Document:** `imta-analytics-system-design.md` (Phase 1-4: Implementation)  
+**Next Review:** Upon completion of Tier 1 literature review
+
+**Document Purpose:**  
+This is the Phase 0 learning roadmap specific to the UNH Aquafort IMTA case study. Once literature review is complete, proceed to `imta-analytics-system-design.md` for comprehensive technical implementation planning applicable to any IMTA deployment.
 
 ---
 
@@ -381,6 +432,7 @@ We'll know we're ready to move to system design when we can:
 Based on literature review synthesis, our AI system should include:
 
 ### Core Capabilities
+
 - **Real-time monitoring dashboard** (multi-parameter visualization)
 - **24-72 hour predictive alerts** (DO, temperature, chl-a)
 - **Growth forecasting** (species-specific, DEB-based)
@@ -388,14 +440,15 @@ Based on literature review synthesis, our AI system should include:
 - **Economic tracking** (costs, revenues, profitability projections)
 
 ### Conversational AI (Copilot Interface)
+
 - **Natural language queries** ("Why is my oxygen dropping?")
 - **Scenario simulation** ("What if I harvest 100 kg early?")
 - **Educational explanations** ("Teach me about nitrogen cycling")
 - **Decision support** ("Should I reduce feeding based on forecast?")
 
 ### Advanced Features (Phase 2)
+
 - **Site selection tool** (GIS-based suitability mapping)
 - **Configuration optimizer** (species selection, density, spatial layout)
 - **Climate adaptation planner** (long-term scenario modeling)
 - **Market intelligence** (price forecasting, demand trends)
-
