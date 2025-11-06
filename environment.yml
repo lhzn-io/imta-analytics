@@ -17,6 +17,7 @@ dependencies:
   - ipywidgets
   - pytest
   - pytest-cov
+  - pyarrow
   - pip
   - pip:
     - kaleido

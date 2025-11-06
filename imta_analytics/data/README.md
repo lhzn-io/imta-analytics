@@ -278,6 +278,161 @@ When adding new loader functions:
 4. Return metadata along with data
 5. Add usage examples to this README
 
+## Streaming and Binary Formats
+
+### Feather Format (Blazing Fast Reads)
+
+For iterative streaming algorithms and maximum read speed, we use Apache Arrow Feather format:
+
+```python
+from imta_analytics.data import convert_to_feather, stream_feather_batches
+import pandas as pd
+
+# Convert DataFrame to Feather (10-50x faster reads than CSV)
+df = pd.read_csv('sensor_data.csv')
+convert_to_feather(df, 'sensor_data.feather', compression='lz4')
+
+# Quick full load (zero-copy, memory-mapped)
+df = pd.read_feather('sensor_data.feather')
+
+# Stream in batches for iterative algorithms
+for batch in stream_feather_batches('sensor_data.feather', batch_size=5000):
+    # Process each batch
+    mean_temp = batch['temperature'].mean()
+    process_data(batch)
+```
+
+### Parquet Format (Best Compression)
+
+For long-term storage and archival:
+
+```python
+from imta_analytics.data import stream_parquet_batches
+
+# Write (standard pandas)
+df.to_parquet('sensor_data.parquet', compression='zstd')
+
+# Stream in batches
+for batch in stream_parquet_batches('sensor_data.parquet', batch_size=5000):
+    process_data(batch)
+
+# Selective column reads (columnar advantage)
+df = pd.read_parquet('sensor_data.parquet', columns=['TIMESTAMP', 'temperature'])
+```
+
+### Format Comparison
+
+| Format | Read Speed | File Size | Best For |
+|--------|-----------|-----------|----------|
+| **CSV** | 1x (baseline) | 8 MB | Human readability, external tools |
+| **Parquet** | 10-20x faster | 1 MB | Archival, selective columns |
+| **Feather** | 20-50x faster | 2 MB | Streaming algorithms, hot cache |
+
+### CLI Tool: Convert TOA5 to Feather/Parquet
+
+Convert Campbell Scientific TOA5 files to fast binary formats:
+
+```bash
+# Basic conversion to Feather
+python -m imta_analytics.data.convert_toa5 input.dat output.feather
+
+# With outlier filtering
+python -m imta_analytics.data.convert_toa5 input.dat output.feather --filter-outliers
+
+# Convert to Parquet instead (better compression)
+python -m imta_analytics.data.convert_toa5 input.dat output.parquet --parquet
+
+# Use zstd compression (slower but smaller files)
+python -m imta_analytics.data.convert_toa5 input.dat output.feather --compression zstd
+
+# Quiet mode (no progress output)
+python -m imta_analytics.data.convert_toa5 input.dat output.feather --quiet
+```
+
+**CLI Options:**
+
+- `--filter-outliers`: Apply marine data quality filtering
+- `--parquet`: Output as Parquet instead of Feather
+- `--compression {lz4,zstd,uncompressed}`: Compression algorithm
+- `--quiet`: Suppress progress messages
+
+**Example Output:**
+
+```
+Loading TOA5 file: data/UNH-G2000B_EXO2SumData.dat
+  Station: UNH-G2000B
+  Table: EXO2SumData
+  Shape: 8,640 rows × 21 columns
+  Date range: 2024-08-01 00:00:00 to 2024-08-31 23:45:00
+Writing Feather file: data/processed/exo2_data.feather
+  Output size: 1.23 MB
+✓ Conversion complete
+```
+
+### Recommended Workflow
+
+For production data pipelines:
+
+1. **Raw data → Parquet** (archival storage)
+   ```bash
+   python -m imta_analytics.data.convert_toa5 raw_data.dat archive/data.parquet --parquet --filter-outliers
+   ```
+
+2. **Parquet → Feather** (working data for analysis)
+   ```python
+   df = pd.read_parquet('archive/data.parquet')
+   convert_to_feather(df, 'working/data.feather')
+   ```
+
+3. **Stream from Feather** (model training, iterative algorithms)
+   ```python
+   for batch in stream_feather_batches('working/data.feather', batch_size=10000):
+       train_model(batch)
+   ```
+
+## API Reference (Streaming)
+
+### `convert_to_feather(df, output_path, compression='lz4', chunksize=None)`
+
+Convert DataFrame to Feather format.
+
+**Parameters:**
+- `df` (DataFrame): Data to write
+- `output_path` (str or Path): Output file path
+- `compression` (str): 'lz4' (fast), 'zstd' (smaller), 'uncompressed'
+- `chunksize` (int, optional): Write in chunks for large DataFrames
+
+### `stream_feather_batches(filepath, batch_size=10000, columns=None)`
+
+Stream records from Feather file in batches.
+
+**Parameters:**
+- `filepath` (str or Path): Feather file path
+- `batch_size` (int): Records per batch
+- `columns` (list, optional): Subset of columns to read
+
+**Yields:**
+- DataFrame: Batch of records
+
+### `stream_parquet_batches(filepath, batch_size=10000, columns=None)`
+
+Stream records from Parquet file in batches.
+
+**Parameters:**
+- `filepath` (str or Path): Parquet file path
+- `batch_size` (int): Records per batch
+- `columns` (list, optional): Subset of columns to read
+
+**Yields:**
+- DataFrame: Batch of records
+
+### `get_file_info(filepath)`
+
+Get metadata about a Feather or Parquet file.
+
+**Returns:**
+- dict: File metadata (format, num_rows, num_columns, columns, size_mb, compression)
+
 ## See Also
 
 - **Notebooks:** See `notebooks/01_initial_data_exploration.ipynb` for usage examples
