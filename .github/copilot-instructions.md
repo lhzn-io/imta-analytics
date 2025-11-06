@@ -149,7 +149,7 @@
 - **Ordered lists**: Each list under a new heading should restart at 1 (avoid MD029 errors)
 - **Blank lines**: Surround lists, tables, and headings with blank lines (MD032, MD022, MD058)
 - **Fenced code blocks**: Always specify language (`text`, `python`, `yaml`, etc.) to avoid MD040 errors
-- **Avoid emphasis as headings**: Use proper heading levels (`##`, `###`) instead of `**bold**` for section headers (avoid MD036 errors)
+- **Avoid emphasis as headings**: Use proper heading levels (e.g., H2, H3) instead of bold text for section headers (avoid MD036 errors)
 - **Unique headings**: Avoid duplicate heading text at the same or different levels (MD024 errors) - add contextual prefixes to disambiguate (e.g., "StreamingProcessor: Key Methods" vs "PerformanceTelemetry: Key Methods")
 - **For query strings/code**: Use fenced code blocks with `text` language instead of italic emphasis (`*text*`)
 - **For literature review docs**: Use semantic numbering in content but respect markdown list conventions
