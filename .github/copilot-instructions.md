@@ -149,10 +149,22 @@
 - **Ordered lists**: Each list under a new heading should restart at 1 (avoid MD029 errors)
 - **Blank lines**: Surround lists, tables, and headings with blank lines (MD032, MD022, MD058)
 - **Fenced code blocks**: Always specify language (`text`, `python`, `yaml`, etc.) to avoid MD040 errors
-- **Avoid emphasis as headings**: Use proper ATX heading levels instead of bold text for section headers (avoid MD036 errors)
-- **For query strings/code**: Use fenced code blocks with `text` language instead of italic emphasis
+- **Avoid emphasis as headings**: Use proper heading levels (e.g., H2, H3) instead of bold text for section headers (avoid MD036 errors)
+- **Unique headings**: Avoid duplicate heading text at the same or different levels (MD024 errors) - add contextual prefixes to disambiguate (e.g., "StreamingProcessor: Key Methods" vs "PerformanceTelemetry: Key Methods")
+- **For query strings/code**: Use fenced code blocks with `text` language instead of italic emphasis (`*text*`)
 - **For literature review docs**: Use semantic numbering in content but respect markdown list conventions
 - **Check formatting**: Run markdown linter or use editor extensions to catch issues early
+
+## Emoji Usage Policy
+- **Professional scientific tone required** - documentation should be pragmatic and grounded in science
+- **Remove decorative emojis** - avoid emojis used for visual appeal or to make content "fun" (e.g., 🧲📉💪🐾📁🎯🧭📏⚡🔍)
+- **Retain functional symbols** - keep check marks (✅✓), x marks (❌), and similar symbols when they enhance clarity in:
+  - Comparison tables (e.g., "Python: ✅" vs "R: ❌")
+  - Validation lists (e.g., "✓ Tests pass")
+  - Status indicators (e.g., "❌ Known limitation")
+- **Unicode range detection**: Use `grep -P '[\x{1F300}-\x{1F9FF}\x{2600}-\x{26FF}\x{2700}-\x{27BF}]'` to find emojis systematically
+- **Exception for critical warnings**: ⚠️ acceptable in CRITICAL section headings for emphasis (e.g., "## ⚠️ CRITICAL: Environment Setup")
+- **Apply systematically**: When cleaning up documentation, search entire files rather than spot-checking individual sections
 
 ## Testing Standards
 - **Test structure**: `tests/unit/` for fast tests (~5-10s), `tests/integration/` for slower end-to-end tests
