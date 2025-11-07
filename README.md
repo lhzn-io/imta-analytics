@@ -8,7 +8,7 @@ A research and development platform for predictive yield modeling, intelligent d
 
 ---
 
-## 🎯 Mission
+## Mission
 
 Bridge the gap between cutting-edge aquaculture research and practical farm operations by developing AI-powered tools that:
 
@@ -20,7 +20,7 @@ Bridge the gap between cutting-edge aquaculture research and practical farm oper
 
 ---
 
-## 🚀 Core Projects
+## Core Projects
 
 ### 1. Predictive Yield Modeling
 
@@ -68,7 +68,7 @@ Automated data collection, harmonization, and quality control from:
 
 ---
 
-## 📊 Research Focus Areas
+## Research Focus Areas
 
 ### Environmental Monitoring & Prediction
 
@@ -96,7 +96,7 @@ Automated data collection, harmonization, and quality control from:
 
 ---
 
-## 🗂️ Repository Structure
+## Repository Structure
 
 ```text
 imta-analytics/
@@ -136,7 +136,7 @@ imta-analytics/
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Data Science & ML
 
@@ -172,7 +172,7 @@ imta-analytics/
 
 ---
 
-## 🚦 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -306,7 +306,7 @@ npm install && npm start
 
 ---
 
-## 📈 Key Results & Validation
+## Key Results & Validation
 
 ### Dissolved Oxygen Prediction
 - **R² = 0.67** on validation set (Mediterranean aquaculture sites)
@@ -330,7 +330,7 @@ npm install && npm start
 
 ---
 
-## 🔬 Research Gaps & Opportunities
+## Research Gaps & Opportunities
 
 1. **Seaweed Yield Modeling**: No published ML models exist (high variability, labor-intensive measurement)
 2. **Integrated Multi-Species Models**: Current models treat species independently; need coupled nutrient transfer
@@ -343,7 +343,7 @@ See full analysis in [`refs/Literature Review - Data Science & AI Applications.m
 
 ---
 
-## 📚 Documentation
+## Documentation
 
 - **[Setup Guide](docs/setup.md)**: Detailed installation instructions
 - **[Data Sources](docs/data_sources.md)**: How to access Sentinel, CMEMS, sensor data
@@ -353,7 +353,7 @@ See full analysis in [`refs/Literature Review - Data Science & AI Applications.m
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 We welcome contributions from researchers, developers, and aquaculture practitioners!
 
@@ -375,7 +375,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the **MIT License** - see [LICENSE](LICENSE) file for details.
 
@@ -383,7 +383,7 @@ This project is licensed under the **MIT License** - see [LICENSE](LICENSE) file
 
 ---
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - **UNH Aquafort**: Farm data, domain expertise, field validation
 - **Literature Sources**: 50+ peer-reviewed papers synthesized in this work (see [Literature Review](refs/Literature%20Review%20-%20Data%20Science%20%26%20AI%20Applications%20in%20Sustainable%20Aquaculture%20Systems.md))
@@ -395,7 +395,7 @@ This project is licensed under the **MIT License** - see [LICENSE](LICENSE) file
 
 ---
 
-## 📧 Contact
+## Contact
 
 - **Project Lead**: [Your Name] - [your.email@unh.edu]
 - **Issues**: [GitHub Issues](https://github.com/lhzn-io/imta-analytics/issues)
@@ -403,7 +403,7 @@ This project is licensed under the **MIT License** - see [LICENSE](LICENSE) file
 
 ---
 
-## 🌊 Why IMTA?
+## Why IMTA?
 
 > "The solution to nitrification is not dilution but conversion."  
 > — Chopin et al., 2001
