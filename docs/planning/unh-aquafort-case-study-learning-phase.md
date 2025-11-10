@@ -412,18 +412,18 @@ This is the Phase 0 learning roadmap specific to the UNH Aquafort IMTA case stud
 
 | Paper | Focus Area | Data Type | Priority | Status |
 |-------|-----------|-----------|----------|---------|
-| Chambers 2024 | UNH System | Production, Environmental | **CRITICAL** | 🔴 Not Started |
-| Chatziantoniou 2023 | DSS Architecture | System Design, UX | **CRITICAL** | 🔴 Not Started |
-| Føre 2024 | Digital Twins | Methodology | **CRITICAL** | 🔴 Not Started |
-| Chatziantoniou 2022 | DO Prediction | ML Models | **HIGH** | 🔴 Not Started |
-| Venolia 2020 | Kelp Growth | DEB Models | **HIGH** | 🔴 Not Started |
-| Stavrakidis-Zachou 2019 | Fish Growth | DEB Models | **HIGH** | 🔴 Not Started |
-| Andika 2024 | Stocking Density | Production Data | **HIGH** | 🔴 Not Started |
-| Barzegar 2020 | Water Quality Prediction | CNN-LSTM | **MEDIUM** | 🔴 Not Started |
-| Ta 2018 | DO Prediction | CNN | **MEDIUM** | 🔴 Not Started |
-| Channa 2023 | IoT Systems | Hardware, Energy | **MEDIUM** | 🔴 Not Started |
+| Chambers 2024 | UNH System | Production, Environmental | **CRITICAL** | Not Started |
+| Chatziantoniou 2023 | DSS Architecture | System Design, UX | **CRITICAL** | Not Started |
+| Føre 2024 | Digital Twins | Methodology | **CRITICAL** | Not Started |
+| Chatziantoniou 2022 | DO Prediction | ML Models | **HIGH** | Not Started |
+| Venolia 2020 | Kelp Growth | DEB Models | **HIGH** | Not Started |
+| Stavrakidis-Zachou 2019 | Fish Growth | DEB Models | **HIGH** | Not Started |
+| Andika 2024 | Stocking Density | Production Data | **HIGH** | Not Started |
+| Barzegar 2020 | Water Quality Prediction | CNN-LSTM | **MEDIUM** | Not Started |
+| Ta 2018 | DO Prediction | CNN | **MEDIUM** | Not Started |
+| Channa 2023 | IoT Systems | Hardware, Energy | **MEDIUM** | Not Started |
 
-Status codes: 🔴 Not Started, 🟡 In Progress, 🟢 Complete, ✅ Extracted to DB
+Status codes: Not Started, In Progress, Complete, ✅ Extracted to DB
 
 ---
 

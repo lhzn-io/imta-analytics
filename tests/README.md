@@ -104,6 +104,6 @@ def test_error_codes_filtered(error_code):
 - ✅ Pre-commit hook configured
 - ✅ Unit tests for TOA5 loaders
 - ✅ Integration tests for data pipeline
-- 🚧 Utility function tests (future)
-- 🚧 Analysis function tests (future)
-- 🚧 Visualization tests (future)
+- Planned: Utility function tests (future)
+- Planned: Analysis function tests (future)
+- Planned: Visualization tests (future)

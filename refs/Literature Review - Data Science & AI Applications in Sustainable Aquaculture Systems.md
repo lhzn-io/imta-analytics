@@ -453,9 +453,9 @@ Critical insight from all reviewed systems: **Automation should augment, not rep
 User Query: "My oxygen readings are dropping faster than usual. What should I do?"
 
 AI Response:
-📊 Analysis: Your DO has declined from 6.8 → 5.9 mg/L in 48 hours (typical drop: 0.3 mg/L).
+Analysis: Your DO has declined from 6.8 → 5.9 mg/L in 48 hours (typical drop: 0.3 mg/L).
 
-🔍 Likely Causes (ranked by probability based on your site):
+Likely Causes (ranked by probability based on your site):
 1. Temperature increased 3°C above seasonal average (reduces O₂ solubility)
 2. Biomass in Cage #3 increased 15% faster than model predicted (higher respiration)
 3. Current velocity decreased 30% (reduced mixing)
@@ -464,17 +464,17 @@ AI Response:
 - Current: MODERATE (5.9 mg/L is above critical threshold of 5.5)
 - Forecast: HIGH risk in 24-36 hours if trend continues (predicted: 5.2 mg/L)
 
-💡 Recommended Actions:
+Recommended Actions:
 1. SHORT-TERM: Increase aeration in Cage #3 by 20% (cost: $15/day)
 2. MEDIUM-TERM: Reduce feeding rate 25% for next 3 days (saves $80, reduces O₂ demand)
 3. MONITOR: Check DO every 6 hours; alert if drops below 5.5 mg/L
 
-📚 Similar Incidents: Farm data shows 3 past occurrences with this pattern:
+Similar Incidents: Farm data shows 3 past occurrences with this pattern:
    - July 2023: Aeration + reduced feeding → recovery in 48 hours
    - August 2023: No action → mortality event (12% loss, $4,200)
    - June 2024: Early harvest → prevented losses, but -8% market price (small size)
 
-❓ Follow-up: Would you like me to simulate the financial impact of each option?
+Follow-up: Would you like me to simulate the financial impact of each option?
 ```
 
 ---
@@ -879,13 +879,13 @@ Outputs:
 User: "Why is the model predicting low growth this month?"
 
 AI Response with SHAP:
-📊 Feature Importance for Growth Prediction:
+Feature Importance for Growth Prediction:
   Temperature:      ============ 45% (currently 2°C below optimal)
   DO:               ======       23% (adequate but declining trend)
   Stocking Density: ====         18% (slightly high)
   Feed Quality:     ===          14% (within normal range)
 
-💡 Insight: Temperature is the dominant factor. Historical data shows 
+Insight: Temperature is the dominant factor. Historical data shows 
 growth recovers when SST exceeds 18°C, typically in 2-3 weeks.
 ```
 
