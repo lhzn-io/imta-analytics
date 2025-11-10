@@ -9,7 +9,7 @@
 
 ## Executive Summary
 
-This literature review synthesizes current research on the application of data science, artificial intelligence, and sensor technologies to integrated multi-trophic aquaculture (IMTA) systems, with emphasis on: (1) predictive yield modeling based on environmental factors, and (2) intelligent decision support systems for farm operators. Our analysis of 50+ peer-reviewed publications reveals significant opportunities for machine learning-driven optimization of IMTA operations, particularly in dissolved oxygen prediction (R² = 0.67), growth modeling (RMSE = 6.92%), and real-time alert systems for environmental thresholds.
+This literature review synthesizes current research on the application of data science, artificial intelligence, and sensor technologies to integrated multi-trophic aquaculture (IMTA) systems, with emphasis on: (1) predictive yield modeling based on environmental factors, and (2) intelligent decision support systems for farm operators. Our analysis of 50+ peer-reviewed publications reveals significant opportunities for machine learning-driven optimization of IMTA operations, particularly in dissolved oxygen prediction (R² = 0.98), growth modeling (RMSE = 6.92%), and real-time alert systems for environmental thresholds.
 
 ### Key Findings
 
@@ -45,15 +45,17 @@ Global aquaculture production has reached 49% of total fish and shellfish produc
 
 IMTA represents a paradigm shift from monoculture to ecosystem-based aquaculture, where "the co-products (organic and inorganic wastes) of one cultured species are recycled to serve as nutritional inputs for others" (Knowler et al., 2020). This approach offers triple-bottom-line benefits:
 
-**Environmental:** Demonstrated net nitrogen reduction of 16.4 kg per production cycle (Chambers et al., 2024), conversion of waste into harvestable biomass, and reduced eutrophication risk.
+**Environmental:** Demonstrated net nitrogen reduction of 16.4 kg per production cycle (Chambers et al., 2024), conversion of waste into harvestable biomass, and reduced eutrophication risk. Shore et al. (2024) identified five macroalgae species (Cladophora sericea, Ulva intestinalis, Ulva lactuca, Ulva prolifera, Porphyra umbilicalis) and three bivalve species (Argopectin irradians, Geukensia demissa, Mya arenaria) suitable for nitrogen bioextraction in Long Island Sound, demonstrating scalability potential across different coastal regions.
 
-**Economic:** Product diversification increases revenue stability, with price premiums of 10-36% documented for IMTA products (Knowler et al., 2020; Kitchen & Knowler, 2013).
+**Economic:** Product diversification increases revenue stability, with price premiums of 10-36% documented for IMTA products (Knowler et al., 2020; Kitchen & Knowler, 2013). Recent cost analyses show variable costs of macroalgae production ranging from $0.23 to $0.68 per wet pound, with total costs between $0.69 and $2.03 per pound depending on productivity (Shore et al., 2024).
 
-**Social:** Improved public perception of aquaculture, alternative income streams for displaced fishermen, and alignment with "blue economy" principles (Hossain et al., 2022).
+**Social:** Improved public perception of aquaculture, alternative income streams for displaced fishermen, and alignment with "blue economy" principles (Hossain et al., 2022). St-Gelais et al. (2022) demonstrated that low-cost kelp farming systems can provide fishermen an 8% return on investment after 3 years and $13.50/hour greater income compared to off-season minimum wage work, offering viable livelihood diversification for seasonal fishing communities.
 
 ### 1.3 The Data Science Opportunity
 
-Despite IMTA's theoretical advantages, commercial adoption remains limited, particularly in Western markets. Key barriers include: (1) complexity of managing multi-species systems, (2) lack of real-time monitoring tools, and (3) insufficient predictive models for yield optimization (Channa et al., 2024). Recent advances in remote sensing, IoT sensor networks, and machine learning present opportunities to overcome these obstacles through "precision fish farming" approaches (Føre et al., 2018; Chatziantoniou et al., 2023).
+Despite IMTA's theoretical advantages, commercial adoption remains limited, particularly in Western markets. Key barriers include: (1) complexity of managing multi-species systems, (2) lack of real-time monitoring tools, (3) insufficient predictive models for yield optimization (Channa et al., 2024), and (4) high capital costs that exclude small-scale operators (St-Gelais et al., 2022). Recent advances in remote sensing, IoT sensor networks, and machine learning present opportunities to overcome these obstacles through "precision fish farming" approaches (Føre et al., 2018; Chatziantoniou et al., 2023).
+
+Critically, cost reduction through engineering innovation enables broader participation. St-Gelais et al. (2022) demonstrated that lightweight, mobile kelp farming systems using simple subsurface flotation and drag embedment anchors can achieve 12.7 kg/m harvest over 8 months while fitting into fish tote boxes and deploying in <4 hours with a 3-person crew, addressing the capital barrier that has historically prevented fishermen from entering aquaculture.
 
 ---
 
@@ -96,6 +98,62 @@ Successful IMTA requires careful species pairing based on:
 4. **Market viability:** All species command profitable prices
 
 Andika et al. (2024) investigated stocking density effects on milkfish (*Chanos chanos*), tiger prawns, and oysters in IMTA configurations. Treatment B (15 milkfish, 20 prawns, 30 oysters per 300 m³ cage) achieved highest specific growth rates (2.67%/day for milkfish, 0.57%/day for prawns) with 100% survival across all species, demonstrating the importance of optimized density ratios.
+
+### 2.4 Coastal Protection Co-Benefits
+
+Beyond food production and nutrient remediation, IMTA systems provide significant wave attenuation benefits that enhance coastal resilience. Zhu et al. (2020) developed frequency-dependent theoretical models showing that:
+
+**Suspended Mussel Farms:**
+
+- Reduce tidal current velocity by >79% in upper layers, 55% in middle layers, and 34% in bottom layers within farm areas (Zhong et al., 2022)
+- Water flux reduction through farm areas reaches 49-59% depending on flow direction and farm configuration (Zhong et al., 2022)
+- Create surface canopy boundary layers 5-10m thick that progressively thicken downstream due to cumulative flow attenuation
+- Achieve wave energy dissipation ratios (EDR) up to 0.32 during storm events when properly configured (dense farm: 0.125 droppers/m², 200m length)
+- More effective at attenuating shorter-period waves and high-frequency components compared to submerged aquatic vegetation (SAV)
+- Less affected by water level changes due to tides and storm surge, maintaining effectiveness during extreme events when SAV performance degrades
+
+**Combined Systems:**
+
+- Integration of suspended aquaculture farms with SAV-based living shorelines provides complementary wave attenuation across wider frequency ranges
+- During January 2015 North American blizzard conditions (significant wave height 3.6m, peak periods 5.2-13.5s), combining mussel farms with SAV improved wave energy dissipation by 31-54% compared to SAV alone
+- Suspended farms maintain performance during high storm tide when SAV effectiveness decreases by up to 49% due to increased water depth
+
+**Kelp Farm Wave Attenuation:**
+
+Zhu et al. (2021) validated these theoretical predictions through 1:10 scale physical model experiments with cultivated Saccharina latissima (sugar kelp) from Saco Bay, Maine, demonstrating:
+
+**Experimental Configuration:**
+
+- 20 longlines perpendicular to wave propagation direction
+- 1-meter-long blades at 100 blades/m density
+- Suspended canopy design mimicking commercial kelp aquaculture
+
+**Wave Energy Dissipation:**
+
+- **Up to 33.7% wave energy dissipation ratio (EDR)** under experimental wave conditions
+- EDR decreases with water depth (optimal in shallower water)
+- EDR insensitive to wave height but varies with wavelength (peaks at intermediate wavelengths)
+- EDR increases with blade size, vertical position in water column, plant density, and number of longlines
+
+**Blade Motion Dynamics:**
+
+- Asymmetric oscillatory motion with more bending opposite to wave propagation direction
+- Severe blade motion in large waves causes blades to roll over attached lines following wave orbital motion
+- Compliant blade behavior differs from rigid vegetation, requiring specialized modeling approaches
+
+**Design Optimization for Coastal Protection:**
+
+To maximize wave attenuation capacity of suspended kelp farms:
+
+1. Install in shallower water (stronger interaction with wave orbital velocities)
+2. Expand farm size by adding more longlines perpendicular to dominant wave direction
+3. Position kelp higher in water column (near surface)
+4. Increase plant density along longlines
+5. Select kelp species with rigid, wider, longer blades (higher biomass per unit length)
+
+The experimental validation confirms that kelp aquaculture farms, when strategically oriented and configured, provide measurable coastal protection benefits beyond their food production and nutrient bioextraction functions.
+
+These findings suggest IMTA systems can serve triple duty: food production, nutrient bioextraction, and nature-based coastal defense, potentially qualifying for additional revenue streams through coastal protection credits or insurance premium reductions.
 
 ---
 
@@ -265,27 +323,42 @@ Chatziantoniou et al. (2022, 2023) developed Support Vector Regression (SVR) mod
 - Model accurately detected hypoxic events (DO < 4.7 mg/L during summer)
 - Seasonal patterns captured: lowest DO in August-September (5-6 mg/L), highest in January-February (7-8 mg/L)
 
-#### Comparison to Other Studies
+#### Advanced Hybrid Architectures
 
-Ta & Wei (2018) achieved similar accuracy using convolutional neural networks (CNNs) with reverse-understanding architecture. Barzegar et al. (2020) found LSTM models outperformed standalone CNNs, but coupled CNN-LSTM hybrid achieved best performance for time-series DO prediction.
+Recent advances in deep learning have significantly improved DO prediction accuracy. Ta & Wei (2018) achieved similar accuracy using convolutional neural networks (CNNs) with reverse-understanding architecture. Barzegar et al. (2020) found LSTM models outperformed standalone CNNs, but coupled CNN-LSTM hybrid achieved best performance for time-series DO prediction.
 
-#### 4.2.2 Growth Estimation via Computer Vision
+Xu et al. (2025) achieved state-of-the-art results using a hybrid CNN-SA-BiSRU (Convolutional Neural Network + Self-Attention + Bidirectional Simple Recurrent Unit) model on intensive aquaculture data from Guangzhou, China:
 
-#### Fish Growth
+#### Architecture Components
 
-Murakami & Yamamoto (2022) employed Mask-RCNN for pixel-level segmentation of fish and plant biomass from depth camera imagery:
+- **CNN Layer**: One-dimensional convolution for feature extraction, reducing data redundancy
+- **Self-Attention Mechanism**: Dynamically weights important information while ignoring less relevant features
+- **BiSRU**: Bidirectional simple recurrent unit captures both past and future temporal dependencies with high parallelization
 
-- **RMSE = 6.92%** for plant growth tracking
-- Sufficient accuracy to detect seasonal growth patterns
-- Real-time processing on NVIDIA Jetson Xavier edge device
+#### Performance Metrics (Xu et al. 2025)
 
-#### Plant Growth Stage Classification
+- **R² = 0.9765** (97.65% of DO variance explained)
+- **MAE = 0.0341 mg/L** (10x improvement over Chatziantoniou)
+- **RMSE = 0.0471 mg/L**
+- **MSE = 0.0022**
 
-Concepcion et al. (2020) compared three ML approaches for lettuce growth stage identification:
+#### Key Advantages
 
-- Quantum Support Vector Machine (QSVM): 87.9% training, 88.3% testing accuracy (best)
-- Artificial Neural Network (ANN): 90% training, 85% testing (overfitting)
-- Latent Dirichlet Allocation (LDA): Unstable performance
+- Superior short-term prediction accuracy for real-time monitoring
+- Efficient parallel processing through BiSRU architecture
+- Robust handling of complex non-linear patterns in intensive aquaculture environments
+- Validated on 3,500 IoT sensor measurements (10-minute intervals) over extended periods
+
+#### 4.2.2 Computer Vision for Feeding Automation
+
+Hu et al. (2022) developed an intelligent fish feeding system using deep learning to analyze water surface waves caused by feeding activity:
+
+- **93.2% accuracy** in determining when to continue or stop feeding
+- Overcomes turbid water conditions that prevent underwater feed recognition
+- Detects feeding behavior via water wave patterns rather than direct visual observation
+- Integrates water quality sensors for comprehensive feeding decisions
+
+This approach demonstrates practical computer vision deployment in challenging outdoor aquaculture conditions.
 
 #### Seaweed Yield Prediction
 
@@ -294,19 +367,6 @@ No published ML models identified for kelp/seaweed yield forecasting, representi
 - Kelp growth rates highly variable (0.77 cm/day in winter → 3.52 cm/day in spring; Chambers et al., 2024)
 - Strong dependence on nutrients, light, temperature, current velocity
 - Difficulty in manual biomass measurement (labor-intensive)
-
-#### 4.2.3 Nutrient Deficiency Detection
-
-Taha et al. (2022) used deep CNNs to detect nutrient deficiencies in lettuce from leaf images:
-
-- **96.5% accuracy** classifying four categories: K deficiency, N deficiency, P deficiency, full nutrition
-- Training on 3,000 images
-- Applicable to aquaponics systems for early intervention
-
-Abbasi et al. (2023) compared YOLOv5s vs. Fast-RCNN for disease detection in leafy greens:
-
-- YOLOv5s achieved **82.13% mAP@0.5 with 52.8 FPS** (real-time capable)
-- Three-stage pipeline: crop type identification → health status → disease classification
 
 ### 4.3 Hybrid Approaches: Physics-Informed Neural Networks
 
@@ -714,7 +774,42 @@ At current UK energy rates (£0.34/kWh), **energy costs dominate operating expen
 
 **Regional Context:** New England and similar cold-climate regions experience energy challenges comparable to Belgium. Energy optimization should be a **primary focus** for economic viability in these areas.
 
-#### 7.4.2 Initial Investment & Payback Period
+#### 7.4.2 Production Cost Structure for Macroalgae
+
+#### Shore et al. (2024) - Long Island Sound Bioextraction Analysis
+
+Recent comprehensive analysis of macroalgae production costs for nutrient bioextraction reveals:
+
+**Variable Costs (per wet pound):**
+
+- Range: $0.23 to $0.68
+- Depends on yield per lineal foot of seeded line (2.5-7.7 lbs)
+- Primary cost drivers: seeding material, labor for deployment/harvest, line maintenance
+
+**Total Costs (per wet pound):**
+
+- Range: $0.69 to $2.03
+- Includes fixed costs: equipment depreciation, permitting, insurance, site access
+
+**Productivity Sensitivity:**
+
+- High productivity (7.7 lbs/lineal foot): Variable cost = $0.23/lb, Total cost = $0.69/lb
+- Low productivity (2.5 lbs/lineal foot): Variable cost = $0.68/lb, Total cost = $2.03/lb
+- **Implication**: Achieving high yields critical for profitability; 3x productivity difference reduces costs by 66-74%
+
+**Demand Elasticities (Maine market data):**
+
+- **Seaweed**: Highly elastic (consumers very responsive to price changes) - competitive market requires cost discipline
+- **Soft-shell clams** (*Mya arenaria*): Moderately elastic - some pricing flexibility
+- **Mussels**: Inelastic (consumers not very sensitive to price changes) - pricing power potential
+
+**Market Differentiation Opportunities:**
+
+- Commodity prices constrain profitability
+- Post-harvest processing (drying, extraction, formulation) can yield premium revenues
+- Target markets: pet food, biostimulants, cosmetics, pharmaceuticals offer higher margins than food-grade applications
+
+#### 7.4.3 Initial Investment & Payback Period
 
 #### Widowati et al. (2020) - Indonesian IMTA
 
@@ -729,6 +824,22 @@ At current UK energy rates (£0.34/kWh), **energy costs dominate operating expen
 - Mussel dropper lines (55 lines × 4 m)
 - Kelp longlines (100 m total)
 - *Exact costs not reported, but estimated $50-100K for pilot scale*
+
+#### St-Gelais et al. (2022) - Low-Cost Community-Scale System
+
+**Capital Requirements:**
+
+- Entire system fits in fish tote boxes, loadable on standard pickup truck
+- Lightweight drag embedment anchors (eliminates heavy deadweight anchor costs)
+- Simple subsurface flotation (pre-tensioned chain catenary)
+- Deployment time: <4 hours with 3-person crew using 10m vessel
+- **System Performance:** 12.7 kg/m yield over 8-month growth period
+
+**Economic Returns:**
+
+- 8% return on investment after 3 years
+- $13.50/hour income premium vs. minimum wage off-season employment
+- **Target Market:** Seasonal fishing communities seeking livelihood diversification without abandoning primary fishery
 
 **Scaling Economics:** Larger operations achieve economies of scale:
 
@@ -826,16 +937,70 @@ New Brunswick regulations inadvertently **prevent** IMTA innovation by:
 - Flag deviations from expected behavior (e.g., DO declining faster than seasonal trend predicts)
 - Provide 24-48 hour advance warning before critical thresholds reached
 
-**Murakami & Yamamoto (2022):** Demonstrated LSTM for time-series anomaly detection but not integrated into operational system.
+**Hu et al. (2022):** Demonstrated deep learning for real-time behavioral pattern recognition (feeding activity detection via water waves) with 93.2% accuracy, showing potential for anomaly detection in aquaculture monitoring systems.
 
-#### 8.1.5 Optimization of Species Ratios & Stocking Densities
+#### 8.1.5 Coastal Protection Value Quantification
 
-#### Existing Work
+Zhu et al. (2020) demonstrated quantifiable wave attenuation by suspended aquaculture farms:
+
+- Mathematical models for frequency-dependent energy dissipation
+- Validated against field data (January 2015 North American blizzard)
+- Showed complementary performance with SAV-based living shorelines
+
+**Gap:** No economic valuation frameworks exist to monetize coastal protection benefits:
+
+- Storm damage reduction quantification
+- Insurance premium impact analysis
+- Coastal infrastructure preservation value
+- Integration with nutrient credit markets
+
+##### Opportunity: Multi-Service Valuation Tool
+
+Develop integrated economic models that capture:
+
+- Food production revenue
+- Nutrient removal credits ($/kg N, P removed)
+- Wave attenuation benefits (avoided storm damage)
+- Carbon sequestration (kelp biomass storage)
+- Habitat provisioning (biodiversity credits)
+
+Enable farmers to stack revenue streams and access climate finance, coastal resilience funding, and water quality improvement payments simultaneously.
+
+#### 8.1.6 Low-Cost System Engineering & Accessibility
+
+St-Gelais et al. (2022) demonstrated that community-scale systems can achieve commercial viability:
+
+- Low capital requirements (fits in pickup truck)
+- Rapid deployment (4 hours, 3-person crew)
+- Competitive yields (12.7 kg/m over 8 months)
+- Positive ROI for seasonal fishermen
+
+**Gap:** Limited research on:
+
+- Design optimization for different environmental conditions
+- Scalability pathways from community to commercial scale
+- Technology transfer mechanisms to fishing communities
+- Integration with existing fishing vessel infrastructure
+
+##### Opportunity: Modular, Adaptive System Design
+
+Develop open-source design libraries with:
+
+- Parametric models adjustable for local wave/current regimes
+- Component standardization for supply chain efficiency
+- Failure mode analysis and redundancy planning
+- Decision support tools for site-specific configuration
+
+**Target Outcome:** Reduce barriers to entry, enabling broader participation in regenerative ocean farming and accelerating IMTA adoption in underutilized coastal waters.
+
+#### 8.1.7 Optimization of Species Ratios & Stocking Densities
+
+##### Existing Work
 
 - Andika et al. (2024): Empirical testing of 4 density combinations
 - Widowati et al. (2020): Site suitability scoring
 
-**Gap:** No **computational optimization** to determine ideal ratios given:
+**Gap:** No computational optimization to determine ideal ratios given:
 
 - Site-specific environmental conditions
 - Target production goals (maximize profit vs. maximize sustainability vs. balanced)
@@ -952,10 +1117,7 @@ growth recovers when SST exceeds 18°C, typically in 2-3 weeks.
 - Health monitoring (detect parasites, fin damage, abnormal behavior)
 - Infrastructure inspection (net integrity, biofouling assessment)
 
-#### Examples
-
-- Chang et al. (2021): YOLOv5 for fish detection/counting from drone footage
-- Ubina et al. (2021): Automated grow light control based on drone visual surveys
+Dhamdhere et al. (2025) demonstrated that AI-powered autonomous underwater vehicles with computer vision achieve biomass estimation accuracy exceeding 90% using CNNs and sonar integration in ocean-based fish farming systems. Commercial platforms like Aquabyte (Norway/USA) use underwater cameras and deep learning to track individual fish health, detect parasites, and estimate biomass, while Aquaai (USA) deploys robotic fish equipped with sensors that mimic natural behavior for minimal-disturbance monitoring.
 
 **Opportunity #7:** Integrate AUV data with satellite + sensor networks for comprehensive monitoring.
 
@@ -1015,7 +1177,7 @@ This literature review has synthesized research across IMTA system design, envir
 
 **2. Data Science & AI Can Bridge the Expertise Gap** — Precision fish farming approaches using IoT sensors, satellite remote sensing, and machine learning have demonstrated 85-90% accuracy in growth prediction and water quality forecasting. These technologies democratize access to scientific knowledge, enabling small-scale operators to achieve outcomes previously reserved for large, well-resourced farms.
 
-**3. Dissolved Oxygen is the Critical Control Point** — Nearly every study identifies DO as the most important parameter affecting survival and growth. Real-time DO prediction (R² = 0.67 achieved by Chatziantoniou et al.) combined with proactive alerts can prevent catastrophic mortality events that devastate farm economics.
+**3. Dissolved Oxygen is the Critical Control Point** — Nearly every study identifies DO as the most important parameter affecting survival and growth. Real-time DO prediction (R² = 0.98 achieved by Xu et al., 2025) combined with proactive alerts can prevent catastrophic mortality events that devastate farm economics.
 
 **4. Integration is the Remaining Challenge** — While individual technologies (satellite monitoring, growth models, sensor networks) show promise, **no system has successfully integrated all components into a user-friendly, deployable platform for small-medium IMTA operators.** This represents a key opportunity for innovation.
 
@@ -1047,7 +1209,7 @@ Several emerging methodologies show promise for advancing IMTA research:
 
 **Federated Learning:** Privacy-preserving ML allows multiple farms to collaboratively train models without sharing proprietary operational data, addressing adoption barriers.
 
-**Digital Twins:** Real-time simulation environments calibrated to individual farms enable scenario testing before implementing costly interventions in the field.
+**Digital Twins:** Real-time simulation environments calibrated to individual farms enable scenario testing before implementing costly interventions in the field. Dhamdhere et al. (2025) describe AI-integrated digital twin frameworks for ocean-based aquaculture that combine physical oceanographic models with machine learning for continuous synchronization between virtual replicas and actual farm conditions. These systems process live sensor data to calibrate hydrodynamic simulations, predict fish growth responses to environmental changes, and enable proactive management decisions under dynamic offshore conditions.
 
 ### 9.4 Implementation Considerations
 
@@ -1068,6 +1230,8 @@ Translating research findings into operational systems requires attention to:
 ## References
 
 Altan, O. (2020). The first comparative study on the growth performance of European seabass (*Dicentrarchus labrax*, L. 1758) and gilthead seabream (*Sparus aurata*, L. 1758) commercially farmed in low salinity brackish water and earthen ponds. *Iranian Journal of Fisheries Sciences*, 19(4), 1681–1689.
+
+Alexander, K. A., Angel, D., Freeman, S., Israel, D., Johansen, J., Kletou, D., Meland, M., Pecorino, D., Rebours, C., Rousou, M., Shorten, M., & Potts, T. (2016). Improving sustainability of aquaculture in Europe: Stakeholder dialogues on Integrated Multi-trophic Aquaculture (IMTA). *Environmental Science & Policy*, 55, 96–106. https://doi.org/10.1016/j.envsci.2015.09.006
 
 Andika, M., Muliani, M., & Khalil, M. (2024). Growth and survival of milkfish (*Chanos chanos*), tiger prawns (*Penaeus monodon*), and oysters (*Crassostrea* sp.) in integrated multi-trophic aquaculture (IMTA) system with varying stocking densities. *Journal of Marine Studies*, 1(1), 1105.
 
@@ -1093,6 +1257,8 @@ Chatziantoniou, A., Papandroulakis, N., Stavrakidis-Zachou, O., Spondylidis, S.,
 
 Chatziantoniou, A., Spondylidis, S., Stavrakidis-Zachou, O., Papandroulakis, N., & Topouzelis, K. (2022). Dissolved oxygen estimation in aquaculture sites using remote sensing and machine learning. *Remote Sensing Applications: Society and Environment*, 28, 100865.
 
+Dhamdhere, P., Dixit, S. M., Tatiya, M., Shinde, B. A., Deone, J., Kaulage, A., Patil, Y., Mahajan, R. G., Kurhade, A. S., & Waware, S. Y. (2025). AI-based monitoring and management in smart aquaculture for ocean fish farming systems. *Applied Chemical Engineering*, 8(3). https://doi.org/10.59429/ace.v8i3.5746
+
 Chopin, T., Buschmann, A. H., Halling, C., Troell, M., Kautsky, N., Neori, A., Kraemer, G. P., Zertuche-González, J. A., Yarish, C., & Neefus, C. (2001). Integrating seaweeds into marine aquaculture systems: A key toward sustainability. *Journal of Phycology*, 37, 975–986.
 
 Chopin, T. (2019). The case of New Brunswick – how regulations may inadvertently prevent innovation in aquaculture. *International Aquafeed*, 22, 32–36.
@@ -1108,6 +1274,8 @@ FAO. (2022). *The State of World Fisheries and Aquaculture 2022*. Food and Agric
 Føre, M., Frank, K., Norton, T., Svendsen, E., Alfredsen, J. A., Dempster, T., Eguiraun, H., Watson, W., Stahl, A., Sunde, L. M., Schellewald, C., Skøien, K. R., Alver, M. O., & Berckmans, D. (2018). Precision fish farming: A new framework to improve production in aquaculture. *Biosystems Engineering*, 173, 176–193.
 
 Hossain, A., Senff, P., & Glaser, M. (2022). Lessons for Coastal Applications of IMTA as a Way towards Sustainable Development: A Review. *Applied Sciences*, 12(23), 11920.
+
+Hu, W.-C., Chen, L.-B., Huang, B.-K., & Lin, H.-M. (2022). A Computer Vision-Based Intelligent Fish Feeding System Using Deep Learning Techniques for Aquaculture. *IEEE Sensors Journal*, 22(7), 7185–7194. https://doi.org/10.1109/jsen.2022.3151777
 
 Kitchen, P., & Knowler, D. (2013). Market implications of adoption of Integrated Multi-Trophic Aquaculture: Shellfish production in British Columbia. *Ocean Canada Network (OCN) Policy Brief Series*, 3(1), 17–20.
 
@@ -1125,17 +1293,29 @@ Myrick, C. A., & Cech, J. J., Jr. (2005). Effects of temperature on the growth, 
 
 Nobre, A. M., Robertson-Andersson, D., Neori, A., & Sankar, K. (2010). Ecological-economic assessment of aquaculture options: Comparison between abalone monoculture and integrated multi-trophic aquaculture of abalone and seaweeds. *Aquaculture*, 306, 116–126.
 
+Pörtner, H. O., & Knust, R. (2007). Climate Change Affects Marine Fishes Through the Oxygen Limitation of Thermal Tolerance. *Science*, 315(5808), 95–97. https://doi.org/10.1126/science.1135471
+
 Ridler, N., Wowchuk, M., Robinson, B., Barrington, K., Chopin, T., Robinson, S., Page, F., Reid, G., & Haya, K. (2007). Integrated multi-trophic aquaculture (IMTA): A potential strategic choice for farmers. *Aquaculture Economics & Management*, 11(1), 99–110.
+
+Shuve, H., Caines, E., Ridler, N., Chopin, T., Reid, G. K., Sawhney, M., Lamontagne, J., Szemerda, M., Marvin, R., Powell, F., Robinson, S., & Boyne-Travis, S. (2009). Survey finds consumers support Integrated Multi-Trophic Aquaculture: Effective marketing concept key. *Global Aquaculture Advocate*, March/April 2009, 19–23.
+
+Zhong, W., Lin, J., Zou, Q., Wen, Y., Yang, W., & Yang, G. (2022). Hydrodynamic effects of large-scale suspended mussel farms: Field observations and numerical simulations. *Frontiers in Marine Science*, 9, 973155. https://doi.org/10.3389/fmars.2022.973155
 
 Shi, H., Zheng, W., Zhang, X., Zhu, M., & Ding, D. (2013). Ecological–economic assessment of monoculture and integrated multi-trophic aquaculture in Sanggou Bay of China. *Aquaculture*, 410, 172–178.
 
+Shore, A., Park, P. J., Ulusoy, E., Viswanathan, N., Zhang, X., Vogel, R., & Clifford, M. C. (2024). *Economic Feasibility of Commercial Nutrient Bioextraction in Long Island Sound*. New England Interstate Water Pollution Control Commission (NEIWPCC). Project Code: 2022-006.
+
 Skladany, M., Clausen, R., & Belton, B. (2007). Offshore aquaculture: The frontier of redefining oceanic property. *Society & Natural Resources*, 20(2), 169–176.
+
+St-Gelais, A. T., Fredriksson, D. W., Dewhurst, T., Miller-Hope, Z. S., Costa-Pierce, B. A., & Johndrow, K. (2022). Engineering a low-cost kelp aquaculture system for community-scale seaweed farming at nearshore exposed sites via user-focused design process. *Frontiers in Sustainable Food Systems*, 6, 848035.
 
 Stavrakidis-Zachou, O., Papandroulakis, N., & Lika, K. (2019). A DEB model for European sea bass (*Dicentrarchus labrax*): Parameterisation and application in aquaculture. *Journal of Sea Research*, 143, 262–271.
 
 Stavrakidis-Zachou, O., Lika, K., Anastasiadis, P., & Papandroulakis, N. (2021). Projecting climate change impacts on Mediterranean finfish production: A case study in Greece. *Climatic Change*, 165, 67.
 
 Ta, X., & Wei, Y. (2018). Research on a dissolved oxygen prediction method for recirculating aquaculture systems based on a convolution neural network. *Computers and Electronics in Agriculture*, 145, 302–310.
+
+Xu, L., Liu, W., Chengqing, C., Liu, T., Gao, X., Sohel, F., Hasan, M., Ghorbanpour, M., Hassan, S. G., & Liu, S. (2025). Hybrid deep learning framework for real-time DO prediction in aquaculture. *Scientific Reports*, 15, 24643. https://doi.org/10.1038/s41598-025-10786-5
 
 Tisdell, C. A., Hishamunda, N., Van Anrooy, R., Pongthanapanich, T., & Upare, M. A. (2010). Investment, insurance and risk management for aquaculture development. In *Farming the Waters for People and Food* (p. 303). FAO.
 
@@ -1158,6 +1338,10 @@ Yip, W., Knowler, D., Haider, W., & Trenholm, R. (2017). Valuing the willingness
 Young, N., Brattland, C., Digiovanni, C., Hersoug, B., Johnsen, J. P., Karlsen, K. M., Kvalvik, I., Olofsson, E., Simonsen, K., Solås, A. M., & Thorarensen, H. (2019). Limitations to growth: Social-ecological challenges to aquaculture development in five wealthy nations. *Marine Policy*, 104, 216–224.
 
 Zheng, W., Shi, H., Chen, S., & Zhu, M. (2009). Benefit and cost analysis of mariculture based on ecosystem services. *Ecological Economics*, 68, 1626–1632.
+
+Zhu, L., Huguenard, K., Zou, Q.-P., & Fredriksson, D. W. (2020). Aquaculture farms as nature-based coastal protection: Random wave attenuation by suspended and submerged canopies. *Coastal Engineering*, 160, 103737.
+
+Zhu, L., Lei, J., Huguenard, K., & Fredriksson, D. W. (2021). Wave attenuation by suspended canopies with cultivated kelp (Saccharina latissima). *Coastal Engineering*, 168, 103947. https://doi.org/10.1016/j.coastaleng.2021.103947
 
 ---
 

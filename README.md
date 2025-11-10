@@ -2,7 +2,7 @@
 
 ![Aquafort IMTA System](assets/aquafort.jpg)
 
-**Data Science & AI Tools for Sustainable Integrated Multi-Trophic Aquaculture**
+## Data Science & AI Tools for Sustainable Integrated Multi-Trophic Aquaculture
 
 A research and development platform for predictive yield modeling, intelligent decision support systems, and precision farming technologies for IMTA operations. Developed in partnership with UNH Aquafort.
 
@@ -12,87 +12,92 @@ A research and development platform for predictive yield modeling, intelligent d
 
 Bridge the gap between cutting-edge aquaculture research and practical farm operations by developing AI-powered tools that:
 
-- **Predict** biomass yields 30-90 days in advance based on environmental factors
-- **Monitor** water quality parameters in real-time using satellite + IoT sensor fusion
-- **Optimize** multi-species stocking densities and harvest timing
-- **Assist** operators with intelligent decision support and troubleshooting
-- **Validate** IMTA's environmental benefits (nitrogen reduction, carbon sequestration)
+- **Predict** biomass yields based on environmental factors (in development)
+- **Monitor** water quality parameters using satellite and IoT sensor fusion (planned)
+- **Optimize** multi-species stocking densities and harvest timing (planned)
+- **Assist** operators with intelligent decision support and troubleshooting (planned)
+- **Validate** IMTA's environmental benefits through data analysis
 
 ---
 
 ## Core Projects
 
-### 1. Predictive Yield Modeling
+### 1. Predictive Yield Modeling (In Development)
 
-Machine learning models that forecast harvest weights for multi-species IMTA systems based on:
+Machine learning models to forecast harvest weights for multi-species IMTA systems based on:
 
 - **Environmental Parameters**: Temperature, dissolved oxygen, chlorophyll-a, salinity
 - **Operational Factors**: Stocking density, feeding regimes, biomass loading
 - **Species-Specific Growth**: Dynamic Energy Budget (DEB) models coupled with data-driven ML
 
-**Target Performance**: R² > 0.75, MAPE < 15% (benchmark: existing systems achieve R² = 0.67)
+**Target Performance**: R² > 0.90, MAPE < 10% (benchmark: published systems achieve R² = 0.98 - Xu et al., 2025)
 
-**Key Technologies**:
+**Planned Technologies**:
+
 - Random Forest, XGBoost, LSTM neural networks
 - Physics-informed neural networks (hybrid mechanistic-ML approach)
 - Sentinel-2/3 satellite imagery + in-situ sensor integration
 
-### 2. IMTA Operator Co-Pilot (AI Assistant)
+### 2. IMTA Operator Co-Pilot (AI Assistant) (Planned)
 
-Conversational AI system providing real-time decision support, training, and troubleshooting:
+Conversational AI system to provide decision support, training, and troubleshooting:
 
 - **Natural Language Interface**: Ask questions like "Why is my kelp growth slow?" or "Should I harvest early?"
 - **Proactive Alerts**: Predictive anomaly detection (24-48 hour advance warnings)
 - **Scenario Simulation**: "What if I increase stocking by 20%?" → model-based forecasting
 - **Knowledge Base**: Integrated access to 50+ research papers, SOPs, and regulatory guidelines
 
-**Key Technologies**:
-- Retrieval-Augmented Generation (RAG) with GPT-4/Claude-3
+**Planned Technologies**:
+
+- Retrieval-Augmented Generation (RAG) with GPT-4/Claude
 - Knowledge graphs (Neo4j) for structured aquaculture domain knowledge
 - Function calling to query databases, run models, access sensor APIs
 
-### 3. Multi-Source Data Integration Pipeline
+### 3. Multi-Source Data Integration Pipeline (In Development)
 
 Automated data collection, harmonization, and quality control from:
 
 - **Satellite Remote Sensing**: Sentinel-2 MSI (10m), Sentinel-3 OLCI/SLSTR (300m-1km)
 - **Biogeochemical Models**: CMEMS numerical forecasts
-- **IoT Sensor Networks**: DO, temperature, pH, salinity (Arduino/ESP32, Raspberry Pi)
+- **IoT Sensor Networks**: DO, temperature, pH, salinity (Campbell Scientific dataloggers, YSI EXO2)
 - **Farm Records**: Growth measurements, feeding logs, harvest data
 
-**Key Technologies**:
-- PostgreSQL + TimescaleDB (time-series optimization)
-- PostGIS (spatial data)
-- Spatiotemporal kriging for gap-filling (cloud coverage, sensor failures)
-- Edge computing (NVIDIA Jetson) for on-farm processing
+**Current Implementation**:
+
+- TOA5 data loader for Campbell Scientific dataloggers
+- Data quality control for marine sensor data
+- PostgreSQL database schema (planned)
+- TimescaleDB for time-series optimization (planned)
 
 ---
 
 ## Research Focus Areas
 
-### Environmental Monitoring & Prediction
+**Current Phase:** Literature review and exploratory data analysis. Focus areas below represent planned research directions informed by published literature and UNH Aquafort case study.
 
-- **Dissolved Oxygen Forecasting**: SVR models (R² = 0.67, MAE = 0.33 mg/L)
+### Environmental Monitoring & Prediction (Planned)
+
+- **Dissolved Oxygen Forecasting**: Target R² > 0.90 (benchmark: published R² = 0.98 - Xu et al., 2025)
 - **Hypoxia Early Warning**: Detection of critical events (DO < 5.5 mg/L) 24-48 hours in advance
-- **Temperature-DO Interaction Modeling**: Capturing synergistic effects (r = -0.85 correlation)
+- **Temperature-DO Interaction Modeling**: Capturing synergistic effects
 
-### Growth & Yield Optimization
+### Growth & Yield Optimization (Planned)
 
 - **Multi-Species Growth Models**: Finfish (DEB-based), bivalves, seaweeds
 - **Feed Conversion Efficiency**: Dynamic FCR prediction based on environmental conditions
 - **Harvest Window Optimization**: Align species cycles, maximize market price capture
 
-### Species Interaction & Nutrient Cycling
+### Species Interaction & Nutrient Cycling (Planned)
 
 - **Bioremediation Quantification**: N/P removal by extractive species
 - **Trophic Transfer Modeling**: Fish effluent → mussel/kelp uptake pathways
-- **Carrying Capacity Assessment**: Optimize ratios (e.g., 15 fish : 20 prawns : 30 oysters)
+- **Carrying Capacity Assessment**: Optimize ratios based on site characteristics
 
-### Economic Analysis & Market Intelligence
+### Economic Analysis & Market Intelligence (Planned)
 
 - **Net Present Value (NPV) Modeling**: IMTA vs. monoculture profitability
 - **Risk-Adjusted Returns**: Product diversification benefits
-- **Price Premium Analysis**: Consumer willingness-to-pay for sustainable products (10-36% documented)
+- **Price Premium Analysis**: Consumer willingness-to-pay for sustainable products
 
 ---
 
@@ -176,15 +181,23 @@ imta-analytics/
 
 ### Prerequisites
 
+#### Current Development Environment
+
 - **Python**: 3.10 or higher
+- **Conda**: For environment management (recommended)
+
+#### Planned Infrastructure
+
 - **Database**: PostgreSQL 14+ with PostGIS and TimescaleDB extensions
 - **Optional**: Docker (for containerized deployment)
-- **API Keys**: 
+- **API Keys** (for future features):
   - Copernicus Data Space (Sentinel satellite imagery)
   - OpenAI or Anthropic (for AI assistant)
   - OpenWeatherMap (meteorological data)
 
 ### Installation
+
+**Current Status:** Basic Python environment and data loading capabilities implemented. Full installation workflow in development.
 
 #### 1. Clone Repository
 
@@ -195,60 +208,20 @@ cd imta-analytics
 
 #### 2. Set Up Python Environment
 
-**Option A: Conda (Recommended for geospatial work)**
+Using Conda (Recommended):
 
 ```bash
 conda env create -f environment.yml
 conda activate imta-analytics
 ```
 
-**Option B: venv + pip**
+#### 3. Install Package
 
 ```bash
-python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
-pip install -r requirements.txt
+pip install -e .
 ```
 
-#### 3. Configure Database
-
-```bash
-# Install PostgreSQL + extensions (Ubuntu/Debian example)
-sudo apt-get install postgresql-14 postgresql-14-postgis-3 postgresql-14-timescaledb
-
-# Create database
-sudo -u postgres psql -c "CREATE DATABASE imta_data;"
-sudo -u postgres psql -d imta_data -c "CREATE EXTENSION postgis;"
-sudo -u postgres psql -d imta_data -c "CREATE EXTENSION timescaledb;"
-
-# Initialize schema
-psql -d imta_data -f src/data/schema.sql
-```
-
-#### 4. Set Environment Variables
-
-```bash
-cp .env.example .env
-# Edit .env with your API keys and database credentials
-```
-
-Example `.env`:
-```bash
-DATABASE_URL=postgresql://user:password@localhost:5432/imta_data
-OPENAI_API_KEY=sk-...
-COPERNICUS_USERNAME=your_email
-COPERNICUS_PASSWORD=your_password
-```
-
-#### 5. Download Sample Data
-
-```bash
-# Download preprocessed test dataset (1GB)
-python scripts/download_sample_data.py
-
-# Or set up data pipelines to fetch from sources
-python scripts/setup_data_sources.py
-```
+**Note:** Database setup, API configuration, and additional installation steps forthcoming.
 
 ### Quick Start: Load TOA5 Data
 
@@ -268,65 +241,36 @@ df_clean = apply_marine_quality_filters(df)
 print(f"Removed {len(df) - len(df_clean)} invalid records")
 ```
 
-### Quick Start: Run Yield Prediction (Future)
-
-```python
-# Coming soon!
-from imta_analytics.models.growth import YieldPredictor
-
-# Load trained model
-predictor = YieldPredictor.load('models/yield_rf_v1.pkl')
-
-# Make prediction
-forecast = predictor.predict(
-    species='steelhead_trout',
-    current_weight_kg=2.5,
-    stocking_date='2024-04-15',
-    temperature_celsius=18.5,
-    do_mg_per_l=6.8,
-    feeding_rate_pct=2.3,
-    forecast_days=60
-)
-
-print(f"Predicted harvest weight: {forecast.mean:.2f} kg ± {forecast.std:.2f}")
-```
-
-### Quick Start: Launch AI Assistant (Local)
-
-```bash
-# Start backend API
-uvicorn src.api.main:app --reload
-
-# In another terminal, start frontend
-cd src/copilot/frontend
-npm install && npm start
-
-# Open browser: http://localhost:3000
-```
+**Note:** Additional quick start examples forthcoming as features are implemented.
 
 ---
 
 ## Key Results & Validation
 
-### Dissolved Oxygen Prediction
-- **R² = 0.67** on validation set (Mediterranean aquaculture sites)
-- **MAE = 0.33 mg/L** (clinically meaningful accuracy)
-- Successfully detected 100% of hypoxic events (DO < 4.7 mg/L) in test period
+**Note:** Results below are from published literature (citations in [Literature Review](refs/Literature%20Review%20-%20Data%20Science%20%26%20AI%20Applications%20in%20Sustainable%20Aquaculture%20Systems.md)). This project aims to validate and extend these findings for New England IMTA systems.
 
-### Growth Modeling
+### Dissolved Oxygen Prediction (Published Benchmarks)
+
+- **R² = 0.98** on validation set - Xu et al. (2025), intensive aquaculture China
+- **MAE = 0.034 mg/L** - state-of-the-art precision (10x improvement over Chatziantoniou 2022)
+- Hybrid CNN-SA-BiSRU architecture using 10-minute IoT sensor data (3,500 measurements)
+
+### Growth Modeling (Published Benchmarks)
+
 - **RMSE = 6.92%** for plant biomass estimation (computer vision)
-- Accurately captured latitudinal growth differences across 3 Greek sites
-- Kelp growth rate modeling: 0.77 cm/day (winter) → 3.52 cm/day (spring)
+- Kelp growth rate modeling: 0.77 cm/day (winter) → 3.52 cm/day (spring) - Venolia et al. (2020)
 
-### Economic Validation
-- IMTA systems demonstrate **24-174% revenue increase** vs. monoculture (product diversification)
+### Economic Validation (Published Literature)
+
+- IMTA systems demonstrate **24-174% revenue increase** vs. monoculture - Knowler et al. (2020)
 - **B/C ratio 1.1-1.7** in suitable sites
-- **10-36% price premium** for eco-certified IMTA products (consumer surveys)
+- **10-36% price premium** for eco-certified IMTA products
 
-### Environmental Benefits
+### Environmental Benefits (Chambers et al. 2024 - UNH Aquafort)
+
 - **16.4 kg net nitrogen reduction** per production cycle (validated at commercial scale)
-- **38-180 kg N/ha** annual kelp uptake
-- **1,100-1,800 kg C/ha** carbon sequestration
+- **416 kg steelhead trout, 3,072 kg mussels, 638 kg kelp** produced in trial period
+- Demonstrated feasibility of multi-species offshore system
 
 ---
 
@@ -345,11 +289,13 @@ See full analysis in [`refs/Literature Review - Data Science & AI Applications.m
 
 ## Documentation
 
-- **[Setup Guide](docs/setup.md)**: Detailed installation instructions
-- **[Data Sources](docs/data_sources.md)**: How to access Sentinel, CMEMS, sensor data
-- **[Model Cards](docs/model_cards/)**: Performance metrics, limitations, ethical considerations
-- **[API Reference](docs/api.md)**: REST endpoints for model serving
-- **[Contributing](CONTRIBUTING.md)**: Development workflow, code standards
+- **[Feature Engineering](docs/planning/feature-engineering.md)**: Comprehensive catalog of derived parameters and engineered features
+- **[Data Format Analysis](docs/analysis/20251104-data-format-analysis.md)**: TOA5 format documentation and sensor data handling
+- **Setup Guide** (forthcoming): Detailed installation instructions
+- **Data Sources** (forthcoming): How to access Sentinel, CMEMS, sensor data
+- **Model Cards** (forthcoming): Performance metrics, limitations, ethical considerations
+- **API Reference** (forthcoming): REST endpoints for model serving
+- **Contributing Guidelines** (forthcoming): Development workflow, code standards
 
 ---
 
@@ -358,6 +304,7 @@ See full analysis in [`refs/Literature Review - Data Science & AI Applications.m
 We welcome contributions from researchers, developers, and aquaculture practitioners!
 
 **Priority Areas**:
+
 - Species-specific growth models (mussels, oysters, kelp, sea urchins)
 - Sensor data quality control algorithms
 - User interface improvements for AI assistant
@@ -365,13 +312,14 @@ We welcome contributions from researchers, developers, and aquaculture practitio
 - Documentation and tutorials
 
 **Workflow**:
+
 1. Fork the repository
 2. Create feature branch: `git checkout -b feature/seaweed-yield-model`
 3. Commit changes with clear messages
 4. Add tests: `pytest tests/`
 5. Submit pull request
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
+Contributing guidelines document forthcoming.
 
 ---
 
@@ -387,7 +335,7 @@ This project is licensed under the **MIT License** - see [LICENSE](LICENSE) file
 
 - **UNH Aquafort**: Farm data, domain expertise, field validation
 - **Literature Sources**: 50+ peer-reviewed papers synthesized in this work (see [Literature Review](refs/Literature%20Review%20-%20Data%20Science%20%26%20AI%20Applications%20in%20Sustainable%20Aquaculture%20Systems.md))
-- **Open Data Providers**: 
+- **Open Data Providers**:
   - ESA Copernicus (Sentinel satellite imagery)
   - CMEMS (marine biogeochemical models)
   - NOAA (meteorological data)
@@ -397,7 +345,17 @@ This project is licensed under the **MIT License** - see [LICENSE](LICENSE) file
 
 ## Contact
 
-- **Project Lead**: [Your Name] - [your.email@unh.edu]
+### Team
+
+- **Daniel Fry** - Long Horizon Initiative - Catalyzed Partner[^1]
+- **David Fredriksson** - [UNH CSSS Director](https://marine.unh.edu/person/david-fredriksson)
+- **Michael Chambers** - [UNH CSSS Research Associate Professor](https://marine.unh.edu/person/michael-chambers)
+- **Longhuan Zhu** - [UNH CEPS Ocean Engineering Research Scientist](https://ceps.unh.edu/person/longhuan-zhu)
+
+[^1]: [NSF TTP](https://www.nsf.gov/funding/opportunities/nsf-ttp-national-science-foundation-translation-practice/nsf25-540/solicitation) (National Science Foundation Translation to Practice) - potential
+
+### Project Resources
+
 - **Issues**: [GitHub Issues](https://github.com/lhzn-io/imta-analytics/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/lhzn-io/imta-analytics/discussions)
 
