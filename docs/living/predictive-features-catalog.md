@@ -1,8 +1,8 @@
-# Feature Engineering for IMTA Analytics
+# Predictive Features Catalog for IMTA Analytics
 
 **Status:** Work in Progress - Living Document  
-**Last Updated:** November 10, 2025  
-**Purpose:** Comprehensive catalog of derived parameters and engineered features for IMTA analytics  
+**Last Updated:** November 12, 2025  
+**Purpose:** Comprehensive catalog of derived parameters and engineered features for predictive modeling in IMTA analytics  
 **Scope:** Systematic coverage of planned features organized by domain, temporal scale, and functional purpose
 
 ---

@@ -8,15 +8,31 @@ A research and development platform for predictive yield modeling, intelligent d
 
 ---
 
+## Why IMTA?
+
+> "This project demonstrated a viable method of culturing steelhead trout, blue mussels, and sugar kelp in sea cages without negatively impacting the surrounding environment... This methodology could be adopted by fishers to create a diversified income from three cultured crops."  
+> — Chambers et al., 2024 (UNH Aquafort)
+
+Integrated Multi-Trophic Aquaculture represents a fundamental shift toward ecosystem-based food production:
+
+- **Environmental**: Convert waste into harvestable biomass, reduce eutrophication (16.4 kg nitrogen reduction per cycle at UNH Aquafort)
+- **Economic**: Diversify revenue streams, capture premium prices (24-174% revenue increase vs. monoculture in published studies)
+- **Social**: Align aquaculture with sustainability values, support coastal fishing communities
+
+**The Challenge**: Realizing IMTA's potential at commercial scale requires intelligent systems to manage multi-species complexity, predict outcomes across variable environmental conditions, and optimize operations. This project aims to accelerate IMTA adoption through data-driven optimization and AI-powered decision support.
+
+---
+
 ## Mission
 
-Bridge the gap between cutting-edge aquaculture research and practical farm operations by developing AI-powered tools that:
+Bridge the gap between cutting-edge aquaculture research and practical operations by developing AI-powered tools that:
 
 - **Predict** biomass yields based on environmental factors (in development)
 - **Monitor** water quality parameters using satellite and IoT sensor fusion (planned)
 - **Optimize** multi-species stocking densities and harvest timing (planned)
 - **Assist** operators with intelligent decision support and troubleshooting (planned)
-- **Validate** IMTA's environmental benefits through data analysis
+- **Quantify & extend validation** of IMTA's environmental benefits through data analysis
+- **Advance understanding** of multi-species interactions (future scope)
 
 ---
 
@@ -28,15 +44,19 @@ Machine learning models to forecast harvest weights for multi-species IMTA syste
 
 - **Environmental Parameters**: Temperature, dissolved oxygen, chlorophyll-a, salinity
 - **Operational Factors**: Stocking density, feeding regimes, biomass loading
-- **Species-Specific Growth**: Dynamic Energy Budget (DEB) models coupled with data-driven ML
+- **Species-Specific Growth**: Dynamic Energy Budget (DEB) models coupled with data-driven ML (partnership approach leveraging CSSS domain expertise)
 
-**Target Performance**: R² > 0.90, MAPE < 10% (benchmark: published systems achieve R² = 0.98 - Xu et al., 2025)
+For comprehensive feature definitions, see [Predictive Features Catalog](docs/living/predictive-features-catalog.md).
+
+**Target Performance**: R² > 0.90, MAPE < 10%[^2]
 
 **Planned Technologies**:
 
 - Random Forest, XGBoost, LSTM neural networks
 - Physics-informed neural networks (hybrid mechanistic-ML approach)
-- Sentinel-2/3 satellite imagery + in-situ sensor integration
+- Sentinel-2/3 satellite imagery, public & commercial datasets, and in-situ sensor integration (public & commercial datasets)
+
+[^2]: Aspirational target based on published intensive aquaculture systems (R² = 0.98, Xu et al., 2025). Not yet validated for New England IMTA conditions.
 
 ### 2. IMTA Operator Co-Pilot (AI Assistant) (Planned)
 
@@ -45,12 +65,14 @@ Conversational AI system to provide decision support, training, and troubleshoot
 - **Natural Language Interface**: Ask questions like "Why is my kelp growth slow?" or "Should I harvest early?"
 - **Proactive Alerts**: Predictive anomaly detection (24-48 hour advance warnings)
 - **Scenario Simulation**: "What if I increase stocking by 20%?" → model-based forecasting
-- **Knowledge Base**: Integrated access to 50+ research papers, SOPs, and regulatory guidelines
+- **Knowledge Base**: Integrated access to 60+ research papers (majority Open Access[^3]), SOPs, and regulatory guidelines
+
+[^3]: Open Access status verification in progress via DOI resolution
 
 **Planned Technologies**:
 
-- Retrieval-Augmented Generation (RAG) with GPT-4/Claude
-- Knowledge graphs (Neo4j) for structured aquaculture domain knowledge
+- Conversational AI grounded in IMTA-specific knowledge base leveraging commercial LLMs (Anthropic, OpenAI, Google) and open models aligned with UNH-Ai2 partnership
+- Knowledge graphs (Google Enterprise Knowledge Graph or open-source GraphDB) for structured aquaculture domain knowledge
 - Function calling to query databases, run models, access sensor APIs
 
 ### 3. Multi-Source Data Integration Pipeline (In Development)
@@ -66,28 +88,38 @@ Automated data collection, harmonization, and quality control from:
 
 - TOA5 data loader for Campbell Scientific dataloggers
 - Data quality control for marine sensor data
-- PostgreSQL database schema (planned)
-- TimescaleDB for time-series optimization (planned)
+- Managed cloud services evaluation (GCP BigQuery, Vertex AI) for scalability and cost optimization
+- PostgreSQL/TimescaleDB architecture (planned for edge deployment scenarios with limited connectivity)
 
 ---
 
-## Research Focus Areas
+## Research Focus & Opportunities
 
-**Current Phase:** Literature review and exploratory data analysis. Focus areas below represent planned research directions informed by published literature and UNH Aquafort case study.
+**Current Phase:** Literature review (60+ papers analyzed) and exploratory data analysis of UNH Aquafort buoy station data (2023-2024). Current work includes:
+
+- **Sensor Data Pipeline**: TOA5 format parsing, quality control for Campbell Scientific dataloggers and YSI EXO2 water quality sensors
+- **Baseline Environmental Characterization**: Temperature, dissolved oxygen, salinity, chlorophyll-a, turbidity patterns at offshore site
+- **Data Quality Methods**: Behavioral heuristics for detecting sensor errors and cascading failures in marine IoT systems
+
+Focus areas below represent planned research directions informed by literature and collaboration priorities to be determined with CSSS team.
 
 ### Environmental Monitoring & Prediction (Planned)
 
 - **Dissolved Oxygen Forecasting**: Target R² > 0.90 (benchmark: published R² = 0.98 - Xu et al., 2025)
-- **Hypoxia Early Warning**: Detection of critical events (DO < 5.5 mg/L) 24-48 hours in advance
+- **Hypoxia Early Warning**: Detection of critical events (DO thresholds species-dependent, require CSSS validation for New England conditions)
 - **Temperature-DO Interaction Modeling**: Capturing synergistic effects
 
 ### Growth & Yield Optimization (Planned)
 
-- **Multi-Species Growth Models**: Finfish (DEB-based), bivalves, seaweeds
+- **Multi-Species Growth Models**: Finfish, bivalves, seaweeds (DEB models used in literature for Mediterranean finfish[^4]; applicability to bivalves/seaweeds requires CSSS guidance)
 - **Feed Conversion Efficiency**: Dynamic FCR prediction based on environmental conditions
 - **Harvest Window Optimization**: Align species cycles, maximize market price capture
 
+[^4]: Stavrakidis-Zachou et al. (2021), Chatziantoniou et al. (2023) demonstrate DEB applications for European sea bass and meagre
+
 ### Species Interaction & Nutrient Cycling (Planned)
+
+Key collaboration area - CSSS to lead research and product specification, catalyzed partner to focus on implementation and operations.
 
 - **Bioremediation Quantification**: N/P removal by extractive species
 - **Trophic Transfer Modeling**: Fish effluent → mussel/kelp uptake pathways
@@ -95,255 +127,146 @@ Automated data collection, harmonization, and quality control from:
 
 ### Economic Analysis & Market Intelligence (Planned)
 
+Economic measurement & prediction capabilities provide foundation; opportunity to partner with an Economics PhD or Post-Doc to expand domain expertise and significantly accelerate timeline.
+
 - **Net Present Value (NPV) Modeling**: IMTA vs. monoculture profitability
 - **Risk-Adjusted Returns**: Product diversification benefits
 - **Price Premium Analysis**: Consumer willingness-to-pay for sustainable products
+
+### Research Gaps & Collaboration Opportunities
+
+**AI/ML Development Needs:**
+
+1. **Seaweed Yield Modeling**: No published ML models exist; particularly critical for New England kelp species (high variability, labor-intensive measurement)
+2. **Integrated Multi-Species Models**: Current models treat species independently; need coupled nutrient transfer dynamics
+3. **Causal Inference**: Move beyond correlation → enable "what-if" scenario testing with confidence bounds
+4. **Edge AI Deployment**: Reduce prediction latency for real-time decision support (current cloud models: 12-48 hour lag)
+5. **Explainable AI**: Integrate SHAP/LIME interpretability methods for operator trust and adoption
+
+**Domain Science Needs (CSSS Collaboration):**
+
+1. **Species Interaction Coefficients**: Parameterize DEB models for multi-trophic nutrient transfer (fish → mussel/kelp)
+2. **Validated Environmental Thresholds**: Species-specific DO, temperature, pH tolerance ranges for New England conditions (steelhead, mussels, kelp)
+3. **Biofouling Impact Quantification**: Effects on sensor accuracy, cage dynamics, and extractive species growth
+4. **Seasonal Growth Variability**: Multi-year baseline data for kelp and mussel growth under New England environmental forcing
+
+**Community & Data Infrastructure:**
+
+1. **IMTA Data Commons**: Establish open data repository for reproducibility and model validation across sites
+    - **Vision**: Create network effects through shared datasets, benchmarking, and collaborative model development
+    - **Model**: Tiered data marketplace with freemium access (public baseline data + premium commercial insights)
+    - **Impact**: Accelerate research, reduce barriers to entry for new IMTA operations, enable meta-analyses
+
+See full analysis in [`refs/Literature Review - Data Science & AI Applications.md`](refs/Literature%20Review%20-%20Data%20Science%20%26%20AI%20Applications%20in%20Sustainable%20Aquaculture%20Systems.md)
 
 ---
 
 ## Repository Structure
 
-```text
-imta-analytics/
-├── imta_analytics/         # Python package (pip install -e .)
-│   ├── __init__.py        # Package initialization, version info
-│   ├── data/              # Data loading and parsing
-│   │   ├── __init__.py
-│   │   └── loaders.py     # TOA5 and other format loaders
-│   ├── quality/           # Data quality checks (future)
-│   ├── analysis/          # Analysis functions (future)
-│   └── web/               # Web application components (future)
-├── notebooks/              # Jupyter notebooks for exploratory analysis
-│   ├── 01_initial_data_exploration.ipynb
-│   ├── 02_growth_modeling/ (future)
-│   ├── 03_environmental_prediction/ (future)
-│   └── 04_economic_analysis/ (future)
-├── data/                   # Data directory (not tracked in git)
-│   ├── aquafort-buoy-station/  # UNH Aquafort TOA5 files
-│   ├── raw/               # Other original datasets
-│   ├── processed/         # Cleaned, feature-engineered data
-│   └── external/          # Satellite imagery, CMEMS downloads
-├── models/                 # Trained model artifacts (.pkl, .h5)
-├── refs/                   # Reference materials
-│   ├── Literature Review - Data Science & AI Applications.md
-│   ├── publications/      # 50+ research papers (PDFs + markdown)
-│   └── technical/         # Instrument manuals (CR1000X, EXO2, etc.)
-├── docs/                   # Documentation
-│   ├── data-format-analysis.md  # TOA5 format documentation
-│   ├── planning/          # System design documents
-│   └── model_cards/       # Model documentation (future)
-├── tests/                  # Unit and integration tests (future)
-├── setup.py               # Package installation configuration
-├── Makefile               # Build automation (PDF→markdown conversion)
-├── environment.yml         # Conda environment specification
-└── README.md
-```
+The project follows standard Python package structure with `imta_analytics/` as the installable package, `notebooks/` for exploratory analysis, `data/` for datasets (not tracked in git), `refs/` for literature (60+ papers and technical manuals), and `docs/` for planning and technical documentation. See [PACKAGE.md](PACKAGE.md) for detailed structure and development guidelines.
 
 ---
 
 ## Tech Stack
 
-### Data Science & ML
+Python-based data science and ML platform leveraging industry-standard tools for geospatial analysis, time-series modeling, and AI/NLP capabilities. Cloud-first architecture (GCP) with consideration for edge deployment scenarios.
 
-- **Core**: Python 3.10+, NumPy, Pandas, Scikit-learn
-- **Deep Learning**: PyTorch, TensorFlow/Keras
-- **Time Series**: statsmodels, Prophet, LSTM/GRU networks
-- **Optimization**: SciPy, Optuna (hyperparameter tuning), DEAP (genetic algorithms)
-
-### Geospatial & Remote Sensing
-
-- **Processing**: GDAL, Rasterio, Sentinelsat, Google Earth Engine API
-- **Analysis**: GeoPandas, Shapely, Folium (interactive maps)
-- **Database**: PostGIS (spatial extensions for PostgreSQL)
-
-### AI & NLP
-
-- **LLMs**: OpenAI API, Anthropic Claude, LangChain
-- **Vector DB**: Chroma, Pinecone (semantic search)
-- **Knowledge Graphs**: Neo4j, RDFlib
-
-### Web & APIs
-
-- **Backend**: FastAPI, Flask
-- **Frontend**: React, Plotly Dash (dashboards)
-- **Database**: PostgreSQL, TimescaleDB
-
-### DevOps
-
-- **Containerization**: Docker, docker-compose
-- **Orchestration**: Kubernetes (production), Airflow (data pipelines)
-- **Monitoring**: Prometheus, Grafana
-- **Version Control**: Git, DVC (data version control)
+**Infrastructure Provider**: Long Horizon Initiative provides cloud infrastructure and API access as catalyzed partner. See [Infrastructure Architecture](docs/living/infrastructure-architecture.md) for detailed technology selections, cost estimates, and evaluation criteria.
 
 ---
 
 ## Getting Started
 
-### Prerequisites
+### For UNH CSSS Collaborators
 
-#### Current Development Environment
+**Data Access**: Sensor data from the UNH Aquafort buoy station is shared via email or institutional file sharing. Contact the project team for access credentials. Data files are not tracked in the git repository.
 
-- **Python**: 3.10 or higher
-- **Conda**: For environment management (recommended)
-
-#### Planned Infrastructure
-
-- **Database**: PostgreSQL 14+ with PostGIS and TimescaleDB extensions
-- **Optional**: Docker (for containerized deployment)
-- **API Keys** (for future features):
-  - Copernicus Data Space (Sentinel satellite imagery)
-  - OpenAI or Anthropic (for AI assistant)
-  - OpenWeatherMap (meteorological data)
-
-### Installation
-
-**Current Status:** Basic Python environment and data loading capabilities implemented. Full installation workflow in development.
-
-#### 1. Clone Repository
+**Repository Access**: Clone the repository to explore analysis notebooks and documentation:
 
 ```bash
 git clone https://github.com/lhzn-io/imta-analytics.git
 cd imta-analytics
 ```
 
-#### 2. Set Up Python Environment
+**Exploratory Analysis**: See [notebooks/01_initial_data_exploration.ipynb](notebooks/01_initial_data_exploration.ipynb) for working examples of TOA5 data loading and quality control methods.
 
-Using Conda (Recommended):
+### For Developers
+
+**Prerequisites**: Python 3.10+, Conda (recommended)
+
+**Installation**:
 
 ```bash
 conda env create -f environment.yml
 conda activate imta-analytics
-```
-
-#### 3. Install Package
-
-```bash
 pip install -e .
 ```
 
-**Note:** Database setup, API configuration, and additional installation steps forthcoming.
-
-### Quick Start: Load TOA5 Data
-
-```python
-from imta_analytics.data import load_toa5_file
-from imta_analytics.data.loaders import apply_marine_quality_filters
-
-# Load Campbell Scientific TOA5 format data
-df, metadata, units = load_toa5_file('data/aquafort-buoy-station/UNH-G2000B_EXO2SumData.dat')
-
-print(f"Station: {metadata['station']}")
-print(f"Logger: {metadata['logger_model']}")
-print(f"Data shape: {df.shape}")
-
-# Apply data quality filters (remove sensor errors)
-df_clean = apply_marine_quality_filters(df)
-print(f"Removed {len(df) - len(df_clean)} invalid records")
-```
-
-**Note:** Additional quick start examples forthcoming as features are implemented.
+See [docs/living/infrastructure-architecture.md](docs/living/infrastructure-architecture.md) for detailed infrastructure requirements and [PACKAGE.md](PACKAGE.md) for development guidelines.
 
 ---
 
-## Key Results & Validation
+## Literature Benchmarks & UNH Aquafort Validation
 
-**Note:** Results below are from published literature (citations in [Literature Review](refs/Literature%20Review%20-%20Data%20Science%20%26%20AI%20Applications%20in%20Sustainable%20Aquaculture%20Systems.md)). This project aims to validate and extend these findings for New England IMTA systems.
+This section highlights published research results that demonstrate the potential of AI/ML for IMTA systems, alongside validation data from our UNH Aquafort partnership. Our goal is to replicate these methods and validate findings for New England conditions.
+
+### UNH Aquafort Partnership (Chambers et al. 2024)
+
+**Demonstrated at commercial scale in offshore New England waters:**
+
+- **16.4 kg net nitrogen reduction** per production cycle - quantified bioremediation benefit
+- **Multi-species production**: 416 kg steelhead trout, 3,072 kg mussels, 638 kg kelp harvested
+- **Feasibility validation**: Successful operation of integrated multi-trophic system in exposed offshore environment
+- **Data collaboration**: Partnership provides sensor data, operational records, and domain expertise for model development
+
+This partnership serves as the foundation for validating predictive models developed from published literature.
 
 ### Dissolved Oxygen Prediction (Published Benchmarks)
 
-- **R² = 0.98** on validation set - Xu et al. (2025), intensive aquaculture China
-- **MAE = 0.034 mg/L** - state-of-the-art precision (10x improvement over Chatziantoniou 2022)
+**State-of-the-art performance from intensive aquaculture systems:**
+
+- **R² = 0.98** on validation set - Xu et al. (2025), intensive pond aquaculture, China
+- **MAE = 0.034 mg/L** - precision represents 10x improvement over earlier methods (Chatziantoniou 2022)
 - Hybrid CNN-SA-BiSRU architecture using 10-minute IoT sensor data (3,500 measurements)
+
+**Validation goal**: Replicate methodology for New England offshore IMTA conditions using UNH Aquafort sensor data. Performance targets may differ due to environmental variability and species composition.
 
 ### Growth Modeling (Published Benchmarks)
 
-- **RMSE = 6.92%** for plant biomass estimation (computer vision)
-- Kelp growth rate modeling: 0.77 cm/day (winter) → 3.52 cm/day (spring) - Venolia et al. (2020)
+**Published performance for aquaculture species:**
 
-### Economic Validation (Published Literature)
+- **RMSE = 6.92%** for plant biomass estimation using computer vision
+- **Kelp seasonal growth**: 0.77 cm/day (winter) → 3.52 cm/day (spring) - Venolia et al. (2020)
+- **DEB models**: Validated for Mediterranean finfish species (Stavrakidis-Zachou et al. 2021, Chatziantoniou et al. 2023)
 
-- IMTA systems demonstrate **24-174% revenue increase** vs. monoculture - Knowler et al. (2020)
-- **B/C ratio 1.1-1.7** in suitable sites
-- **10-36% price premium** for eco-certified IMTA products
+**Validation goal**: Develop species-specific models for New England IMTA species (steelhead trout, mussels, kelp) using UNH Aquafort growth measurements.
 
-### Environmental Benefits (Chambers et al. 2024 - UNH Aquafort)
+### Economic Performance (Published Literature)
 
-- **16.4 kg net nitrogen reduction** per production cycle (validated at commercial scale)
-- **416 kg steelhead trout, 3,072 kg mussels, 638 kg kelp** produced in trial period
-- Demonstrated feasibility of multi-species offshore system
+**IMTA profitability analyses from global case studies:**
 
----
+- **Revenue increase**: 24-174% vs. monoculture systems - Knowler et al. (2020) meta-analysis
+- **Benefit-cost ratio**: 1.1-1.7 in suitable sites
+- **Price premiums**: 10-36% for eco-certified IMTA products (consumer willingness-to-pay studies)
 
-## Research Gaps & Opportunities
-
-1. **Seaweed Yield Modeling**: No published ML models exist (high variability, labor-intensive measurement)
-2. **Integrated Multi-Species Models**: Current models treat species independently; need coupled nutrient transfer
-3. **Causal Inference**: Move beyond correlation → enable "what-if" scenario testing with confidence
-4. **Edge AI Deployment**: Reduce latency from 12-48 hours (cloud) to 1-3 hours (on-farm processing)
-5. **Explainable AI**: Integrate SHAP/LIME for farmer trust and adoption
-6. **Public Datasets**: Establish IMTA Data Commons for reproducibility
-
-See full analysis in [`refs/Literature Review - Data Science & AI Applications.md`](refs/Literature%20Review%20-%20Data%20Science%20%26%20AI%20Applications%20in%20Sustainable%20Aquaculture%20Systems.md)
+**Validation goal**: Economic modeling for New England market conditions, incorporating species-specific costs and regional market prices.
 
 ---
 
 ## Documentation
 
-- **[Feature Engineering](docs/planning/feature-engineering.md)**: Comprehensive catalog of derived parameters and engineered features
+- **[Predictive Features Catalog](docs/living/predictive-features-catalog.md)**: Comprehensive catalog of derived parameters and engineered features for predictive modeling
+- **[Infrastructure Architecture](docs/living/infrastructure-architecture.md)**: Technology selections, cost estimates, and evaluation criteria
+- **[Data Sources](docs/living/data-sources.md)**: Satellite, sensor, and model data access methods and specifications
 - **[Data Format Analysis](docs/analysis/20251104-data-format-analysis.md)**: TOA5 format documentation and sensor data handling
 - **Setup Guide** (forthcoming): Detailed installation instructions
-- **Data Sources** (forthcoming): How to access Sentinel, CMEMS, sensor data
 - **Model Cards** (forthcoming): Performance metrics, limitations, ethical considerations
 - **API Reference** (forthcoming): REST endpoints for model serving
 - **Contributing Guidelines** (forthcoming): Development workflow, code standards
 
 ---
 
-## Contributing
-
-We welcome contributions from researchers, developers, and aquaculture practitioners!
-
-**Priority Areas**:
-
-- Species-specific growth models (mussels, oysters, kelp, sea urchins)
-- Sensor data quality control algorithms
-- User interface improvements for AI assistant
-- Economic optimization models
-- Documentation and tutorials
-
-**Workflow**:
-
-1. Fork the repository
-2. Create feature branch: `git checkout -b feature/seaweed-yield-model`
-3. Commit changes with clear messages
-4. Add tests: `pytest tests/`
-5. Submit pull request
-
-Contributing guidelines document forthcoming.
-
----
-
-## License
-
-This project is licensed under the **MIT License** - see [LICENSE](LICENSE) file for details.
-
-**Note**: Research papers in `refs/publications/` retain their original copyrights. Included under fair use for academic research.
-
----
-
-## Acknowledgments
-
-- **UNH Aquafort**: Farm data, domain expertise, field validation
-- **Literature Sources**: 50+ peer-reviewed papers synthesized in this work (see [Literature Review](refs/Literature%20Review%20-%20Data%20Science%20%26%20AI%20Applications%20in%20Sustainable%20Aquaculture%20Systems.md))
-- **Open Data Providers**:
-  - ESA Copernicus (Sentinel satellite imagery)
-  - CMEMS (marine biogeochemical models)
-  - NOAA (meteorological data)
-- **Open Source Community**: Scikit-learn, PyTorch, LangChain, PostGIS
-
----
-
-## Contact
+## Contact & Collaboration
 
 ### Team
 
@@ -354,6 +277,22 @@ This project is licensed under the **MIT License** - see [LICENSE](LICENSE) file
 
 [^1]: [NSF TTP](https://www.nsf.gov/funding/opportunities/nsf-ttp-national-science-foundation-translation-practice/nsf25-540/solicitation) (National Science Foundation Translation to Practice) - potential
 
+### Strategic Partnership Model
+
+This platform's success depends on **intentional, deeply integrated research partnerships** that combine domain expertise with AI capabilities. The current collaboration with UNH CSSS (Fredriksson, Chambers, Zhu) demonstrates this model:
+
+**Current Partnership Priorities**:
+
+- **Product Vision**: User stories and interaction design for IMTA Operator Co-Pilot AI assistant
+- **Domain Knowledge**: Species-specific thresholds, DEB model parameters, environmental tolerance ranges
+- **Data Integration**: Multi-site validation datasets, growth measurements, operational context
+- **Field Validation**: Testing predictive models in real operating conditions
+- **Documentation**: Best practices for IMTA monitoring, quality control protocols, interpretation guides
+
+**Philosophy**: Research collaboration focuses on translating domain expertise into intelligent systems—documentation and product specification often precedes code development.
+
+Future strategic partnerships will be carefully selected to expand validation sites, species coverage, and environmental gradients while maintaining deep technical integration.
+
 ### Project Resources
 
 - **Issues**: [GitHub Issues](https://github.com/lhzn-io/imta-analytics/issues)
@@ -361,15 +300,9 @@ This project is licensed under the **MIT License** - see [LICENSE](LICENSE) file
 
 ---
 
-## Why IMTA?
+## Inspiration
+
+IMTA's elegance lies in turning pollution into production—waste nitrogen from finfish becomes nutrition for seaweed and shellfish. This foundational insight, articulated by Chopin over two decades ago, remains the organizing principle for sustainable marine aquaculture:
 
 > "The solution to nitrification is not dilution but conversion."  
 > — Chopin et al., 2001
-
-Integrated Multi-Trophic Aquaculture represents a fundamental shift toward ecosystem-based food production:
-
-- **Environmental**: Convert waste into harvestable biomass, reduce eutrophication
-- **Economic**: Diversify revenue streams, capture premium prices
-- **Social**: Align aquaculture with sustainability values, support coastal communities
-
-This project aims to make IMTA commercially viable through data-driven optimization and intelligent automation.
