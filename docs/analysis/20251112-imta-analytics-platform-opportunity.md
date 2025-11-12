@@ -223,98 +223,57 @@ The project maintains three living documents that will evolve as research progre
 
 ## 4. Research Translation Opportunities
 
-### 4.1 IMTA Industry Context
+**Target Context:** Emerging IMTA industry where economic viability is proven (20-40% NPV increase, 10-36% price premiums) but adoption is limited by operational complexity requiring multi-species expertise.
 
-**Target Context:** Emerging IMTA industry - small-to-medium scale operators seeking to adopt multi-species aquaculture systems.
+**Adoption Barrier:** Operational complexity requiring expertise across multiple species, environmental monitoring, and trophic interactions - **research indicates AI decision support can bridge this gap** ([Literature Review Section 9.1](../../refs/Literature%20Review%20-%20Data%20Science%20%26%20AI%20Applications%20in%20Sustainable%20Aquaculture%20Systems.md#9-conclusion-research-synthesis)).
 
-**Industry Drivers:**
+**Platform Value Proposition:**
 
-- **Environmental Regulation:** Increasing pressure to reduce aquaculture environmental impact (nutrient pollution, coastal eutrophication)
-- **Consumer Demand:** 10-36% willingness to pay premiums for sustainably-produced seafood (Knowler et al. 2020)
-- **Economic Evidence:** 20-40% NPV increase vs. monoculture (Carras et al. 2019, Knowler et al. 2020)
-- **Climate Adaptation:** Need for resilient aquaculture systems under changing ocean conditions
+- **For Researchers:** Hypothesis testing, automated analysis, publication-quality tools, digital twin simulation for experiment design
+- **For Operators:** AI-assisted decision support, early warning systems, feeding/stocking optimization, documentation for certification
+- **For Institutions:** Educational platform, data commons for collaborative research, extension service integration
+- **For Policy:** Real-time environmental monitoring, transparent compliance reporting, ecosystem service valuation frameworks
 
-**Adoption Barrier:** Operational complexity requiring expertise across multiple species, environmental monitoring, and trophic interactions - **research indicates AI decision support can bridge this gap** (Literature Review Section 9.1).
-
-### 4.2 Potential Research Impact
-
-**For IMTA Researchers & Practitioners:**
-
-- Reduce operational complexity through AI-assisted decision support
-- Enable data-driven optimization of feeding, stocking, and harvest timing
-- Provide early warning systems for mortality events (DO hypoxia, harmful algal blooms)
-- Document environmental benefits for eco-certification and policy advocacy
-- Quantify ecosystem services (nutrient credits, wave attenuation, carbon sequestration)
-
-**For Research Institutions:**
-
-- Digital twin simulation enables experiment design and hypothesis testing at lower cost
-- Data commons supports collaborative model development across institutions
-- Educational platform for aquaculture training programs
-- Publication-quality data analysis and visualization tools
-
-**For Policy & Management:**
-
-- Real-time environmental impact monitoring (nutrient removal, water quality)
-- Transparent reporting for compliance verification
-- Evidence-based ecosystem service valuation frameworks
-- Demonstration of precision aquaculture feasibility
-
-### 4.3 Translation Pathways
-
-Multiple pathways exist for translating research findings into operational impact:
-
-**Academic Research Tools:**
-
-- Open-source platform for research community
-- Collaborative data commons with standardized formats
-- Publication of validation studies and methodology
-
-**Institutional Partnerships:**
-
-- University-operated pilot deployments (UNH Aquafort model)
-- Extension service integration for farmer outreach
-- Government agency collaboration for policy development
-
-**Industry Engagement:**
-
-- Professional training and consulting services
-- Technology transfer to aquaculture operations
-- Partnerships with sensor manufacturers and service providers
+**Translation Pathways:** Open-source research tools, university pilot deployments (UNH Aquafort model), extension services, technology transfer partnerships.
 
 ---
 
-## 5. Technical Validation Requirements
+## 5. Validation Framework (Partnership-Defined)
 
-For operational deployment, the platform would demonstrate:
+Rather than prescribing validation targets prematurely, this section outlines a **collaborative approach** to defining success metrics that reflect operational priorities, resource constraints, and research objectives at UNH Aquafort.
 
-### 5.1 Model Performance Targets
+### 5.1 Model Performance Standards
 
-- **DO Forecasting:** R² > 0.90 (24-hour), R² > 0.70 (72-hour) vs. in-situ measurements
-- **Growth Prediction:** RMSE < 10% vs. actual harvest weights across all three species
-- **Behavioral Detection:** Accuracy > 85% for feeding activity, stress indicators
-- **Alert Precision:** False positive rate < 15%, false negative rate < 5% for critical thresholds
+The partnership should collaboratively establish:
 
-### 5.2 System Reliability
+- **Prediction accuracy thresholds** (DO forecasting, growth models, behavioral detection) based on operational decision requirements
+- **Alert system performance** (false positive/negative rates) balancing caution with alert fatigue
+- **Temporal resolution requirements** (nowcast vs. 24-hour vs. 72-hour forecasts) for different decisions
+- **Uncertainty quantification standards** for transparent communication of model limitations
 
-- **Uptime:** 99.5% availability for dashboard and alert delivery
-- **Latency:** <5 seconds for dashboard refresh, <60 seconds for alert generation
-- **Edge Computing:** <100ms inference latency for on-device models
-- **Data Recovery:** <24 hour backfill for sensor outages using satellite data fusion
+**Validation Approach:** Benchmarking against existing operational practices, not abstract targets. What accuracy would make predictions *useful enough* to change decisions?
 
-### 5.3 User Experience
+### 5.2 Operational Value Demonstration
 
-- **Conversational AI:** 80% query success rate (correct answer, no clarification needed)
-- **Dashboard Usability:** >75% user satisfaction (SUS score), <5 minutes to key insight
-- **Alert Actionability:** >70% of alerts result in preventive action taken
-- **Learning Curve:** <2 hours onboarding for basic operations, <8 hours for advanced features
+Success metrics should be **co-defined** based on:
 
-### 5.4 Economic Validation
+- **Mortality reduction potential:** What percentage decrease would justify platform adoption?
+- **Feeding efficiency improvements:** How much FCR gain is operationally meaningful?
+- **Labor savings:** Which manual monitoring/analysis tasks consume most time?
+- **Decision quality:** How do we measure "better decisions" beyond proxy metrics?
 
-- **ROI:** Demonstrate >2x return on platform investment within 12 months
-- **Mortality Reduction:** >20% decrease in mortality events vs. baseline
-- **Feeding Efficiency:** >10% improvement in FCR (Feed Conversion Ratio)
-- **Premium Capture:** Enable >15% price premium through traceability/certification
+**Critical Question:** What outcomes would make the UNH CSSS team enthusiastic advocates for the platform?
+
+### 5.3 Research Validation Priorities
+
+Academic validation requirements determined collaboratively:
+
+- **Publishable model performance:** What benchmarks support peer-reviewed publication?
+- **Hypothesis testing capabilities:** What predictions enable new research questions?
+- **Data quality standards:** What level of rigor satisfies scientific reproducibility?
+- **Timeline constraints:** How do validation milestones align with research cycles and grant reporting?
+
+**Collaborative Design:** Let operational needs and research priorities drive validation approach, not predetermined technical specifications.
 
 ---
 
@@ -338,21 +297,21 @@ Analysis of 50+ publications reveals strategic opportunities for platform differ
 
 **Strategic Value:** Critical for IMTA viability - kelp represents 60-70% of biomass in successful deployments.
 
-### 6.3 Ecosystem Service Valuation Gap
-
-**Current State:** Wave attenuation benefits quantified (Zhu et al. 33.7% EDR) but no economic valuation frameworks exist.
-
-**Innovation Opportunity:** Develop multi-service valuation tool integrating food production, nutrient credits, coastal protection, carbon sequestration, and habitat provisioning.
-
-**Strategic Value:** Unlocks new revenue streams through climate finance, coastal resilience funding, and water quality improvement payments.
-
-### 6.4 Explainable AI Gap
+### 6.3 Explainable AI Gap
 
 **Current State:** Farmers distrust "black box" ML recommendations (Literature Review Section 8.2.1).
 
 **Innovation Opportunity:** Industry-leading transparency through SHAP analysis, causal inference, and physics-informed constraints with literature citations.
 
 **Strategic Value:** Addresses primary adoption barrier - trust and interpretability.
+
+### 6.4 Ecosystem Service Valuation Gap
+
+**Current State:** Wave attenuation benefits quantified (Zhu et al. 33.7% EDR) but no economic valuation frameworks exist.
+
+**Innovation Opportunity:** Develop multi-service valuation tool integrating food production, nutrient credits, coastal protection, carbon sequestration, and habitat provisioning.
+
+**Strategic Value:** Unlocks new revenue streams through climate finance, coastal resilience funding, and water quality improvement payments.
 
 ---
 
@@ -364,23 +323,23 @@ Following initial conversations with the UNH CSSS team, these topics can guide d
 
 **Understanding Daily Workflows:**
 
-- What are the top 3 operational challenges at UNH Aquafort right now?
+- Which decisions currently rely on guesswork or experience rather than data?
 - What decisions are made daily/weekly/seasonally that need better information?
 - How do information needs differ across roles (researchers, operators, managers)?
 - What operational pain points could AI-assisted decision support address?
 
-**Data Landscape:**
+**Data & Ground-Truth Collection:**
 
 - What data is currently collected? What's missing or unreliable?
-- What sensor integration opportunities or constraints exist?
-- How do data quality issues impact current operations?
+- What public data vs. in-situ sensor data integration opportunities or constraints exist?
+- How do you currently record ground-truth measurements (harvest weights, mortality events, water quality spot checks)?
+- What data labeling or curation efforts have been employed to date?
+- How could we streamline ground-truth collection to enable model validation without adding operator burden?
 
 **Trust & Validation:**
 
-- What level of prediction accuracy is "good enough" for operational use?
-- How should the platform communicate uncertainty and limitations?
-- What human-in-the-loop controls are essential?
-- How do we validate against ground truth while minimizing extra operator burden?
+- What level of prediction accuracy is "good enough" for operational use, and how should the platform communicate uncertainty and limitations?
+- Which decisions could you trust AI to make autonomously vs. which require human confirmation before action?
 
 ### 7.2 Research Priorities & Capabilities
 
@@ -446,13 +405,9 @@ This document synthesizes comprehensive literature review (50+ publications) and
 
 **Strategic Opportunity:** No existing system comprehensively addresses multi-species optimization, explainable AI, and ecosystem service valuation. Research gaps represent innovation opportunities, not predetermined solutions.
 
-**Partnership Model:** UNH Aquafort deployment offers real-world validation context. Platform development can be **co-owned and co-designed** with UNH CSSS team, driven by operational needs and research priorities rather than technology capabilities alone.
+**Partnership Model:** UNH Aquafort deployment offers real-world validation context. Platform development can be **collaboratively designed** with UNH CSSS team, driven by operational needs and research priorities rather than technology capabilities alone.
 
-**Collaborative Approach:** Following initial discussions with UNH CSSS team, deeper conversations can explore operational priorities, validation requirements, and research opportunities. Success comes from listening before building, validating before scaling, and co-designing solutions that serve real operational needs.
-
-**Next Phase:** Continue partnership discussions to refine priorities, establish validation protocols, and co-develop proof-of-concept scope. Let the collaboration define the path forward.
-
-The convergence of marine science expertise, AI/ML capabilities, and sustainable aquaculture urgency creates opportunity for meaningful research impact through partnership that respects domain knowledge and operational experience.
+The convergence of marine science domain expertise and AI/ML technical capabilities creates opportunity to address urgent challenges: strengthening coastal economies through viable aquaculture operations, improving water quality through nutrient bioextraction, and building climate resilience via living shoreline infrastructure.
 
 ---
 
