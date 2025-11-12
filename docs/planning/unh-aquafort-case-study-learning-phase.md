@@ -39,28 +39,33 @@ Based on our project requirements and available literature, we should absorb the
 #### Tier 1: System Foundation (Must Read Immediately)
 
 1. **Chambers et al. (2024)** - *Integrated multi-trophic aquaculture of steelhead trout, blue mussel and sugar kelp from a floating ocean platform*
-   - **Why:** This IS the UNH Aquafort deployment we're supporting
+   - **Why:** This is the UNH Aquafort deployment we're supporting
    - **Key Data:** Actual production data (416 kg trout, 3,072 kg mussels, 638 kg kelp), 16.4 kg net N reduction
    - **Extract:** Species performance, environmental conditions, operational challenges, infrastructure design
-   - **Action:** Extract all quantitative data for baseline model calibration
+   - **Action:** Full deep read - Extract all quantitative data for baseline model calibration
+   - **Status:** Priority 1
 
-2. **Chatziantoniou et al. (2023)** - *Aquasafe: A Remote Sensing Web-Based Platform for the Support of Precision Fish Farming*
+2. **Xu et al. (2025)** - *Hybrid deep learning framework for real-time DO prediction in aquaculture*
+   - **Why:** State-of-the-art DO prediction; R² = 0.9765, MAE = 0.0341 mg/L (10x improvement over previous benchmarks)
+   - **Key Architecture:** CNN-SA-BiSRU hybrid model with 3,500 IoT measurements at 10-min intervals
+   - **Key Data:** Conductivity as critical feature, high-frequency temporal patterns, self-attention mechanism
+   - **Extract:** Network architecture, feature engineering strategy, hyperparameters, training methodology
+   - **Action:** Implement hybrid model for 24-72 hour DO forecasts (target R² > 0.90)
+   - **Status:** Priority 2 - GenAI summary + targeted deep-dive on architecture sections
+
+3. **Chatziantoniou et al. (2023)** - *Aquasafe: A Remote Sensing Web-Based Platform for the Support of Precision Fish Farming*
    - **Why:** Most directly relevant reference architecture for our DSS
    - **Key Features:** Alert system design (DO, chl-a, SST thresholds), DEB model integration, multi-source data fusion
    - **Extract:** System architecture, API design, alert logic, user feedback (82% found interface clear, but 45% wanted simplification)
    - **Action:** Adapt their three-tier architecture and alert framework
+   - **Status:** Priority 3 - GenAI summary + targeted sections on UX/alert design
 
-3. **Føre et al. (2024)** - *Digital Twins in intensive aquaculture - Challenges, opportunities and future prospects*
+4. **Føre et al. (2024)** - *Digital Twins in intensive aquaculture - Challenges, opportunities and future prospects*
    - **Why:** Cutting-edge framework for predictive modeling in aquaculture
    - **Key Concepts:** Digital twin architecture, real-time data integration, what-if scenario simulation
    - **Extract:** Implementation challenges, data requirements, model calibration approaches
    - **Action:** Design our system as a digital twin of Aquafort deployment
-
-4. **Chatziantoniou et al. (2022)** - *Dissolved oxygen estimation in aquaculture sites using remote sensing and machine learning*
-   - **Why:** DO is critical limiting factor; R² = 0.67 using SVR models
-   - **Key Methods:** Support Vector Regression, Sentinel-3 SLSTR (SST), Sentinel-2 MSI (chl-a), temporal lags
-   - **Extract:** Feature engineering approach, model performance metrics, seasonal patterns
-   - **Action:** Replicate methodology for New England waters
+   - **Status:** Priority 4 - GenAI summary focusing on implementation challenges
 
 #### Tier 2: Species-Specific Modeling (Week 2)
 
@@ -76,7 +81,14 @@ Based on our project requirements and available literature, we should absorb the
    - **Extract:** Model structure, calibration procedure, sensitivity analysis
    - **Action:** Adapt for O. mykiss (steelhead trout) using Chambers' data
 
-3. **Andika et al. (2024)** - *Growth and survival of milkfish, tiger prawns, and oysters in IMTA system with varying stocking densities*
+3. **Zhu et al. (2020)** - *Aquaculture farms as nature-based coastal protection: Random wave attenuation by suspended and submerged canopies*
+   - **Why:** Wave energy dissipation by kelp canopies (33.7% EDR); infrastructure resilience and coastal protection co-benefits
+   - **Key Data:** Field observations + numerical simulations, wave height reduction, drag coefficients
+   - **Extract:** Hydrodynamic modeling approach, infrastructure design implications, UNH Fredriksson co-author
+   - **Action:** Inform infrastructure resilience monitoring module and coastal protection value proposition
+   - **Note:** Co-authored by UNH's Fredriksson - direct partnership connection
+
+4. **Andika et al. (2024)** - *Growth and survival of milkfish, tiger prawns, and oysters in IMTA system with varying stocking densities*
    - **Why:** Only recent paper examining stocking density optimization in multi-species IMTA
    - **Key Findings:** Treatment B (15 fish, 20 prawns, 30 oysters/300m³) achieved 100% survival, highest SGR (2.67%/day)
    - **Extract:** Density-growth relationships, DO consumption patterns, species interactions
@@ -88,15 +100,23 @@ Based on our project requirements and available literature, we should absorb the
    - **Why:** Time-series prediction for DO, temperature, pH; hybrid CNN-LSTM outperformed standalone models
    - **Key Architecture:** 1D CNN for feature extraction + LSTM for temporal dependencies
    - **Extract:** Network architecture, hyperparameters, training strategy, performance comparisons
-   - **Action:** Implement hybrid model for 24-72 hour water quality forecasts
+   - **Action:** Compare with Xu et al. (2025) hybrid approach for implementation decision
+   - **Note:** Superseded by Xu et al. but useful for understanding evolution of hybrid architectures
 
-2. **Ta et al. (2018)** - *Research on a dissolved oxygen prediction method for recirculating aquaculture systems based on a convolution neural network*
+2. **Chatziantoniou et al. (2022)** - *Dissolved oxygen estimation in aquaculture sites using remote sensing and machine learning*
+   - **Why:** Remote sensing approach for DO prediction; R² = 0.67 using SVR models
+   - **Key Methods:** Support Vector Regression, Sentinel-3 SLSTR (SST), Sentinel-2 MSI (chl-a), temporal lags
+   - **Extract:** Feature engineering approach, model performance metrics, seasonal patterns
+   - **Action:** Evaluate satellite data integration for spatial DO mapping (complement in-situ predictions)
+   - **Note:** Performance now exceeded by Xu et al., but remote sensing approach still valuable for spatial coverage
+
+3. **Ta et al. (2018)** - *Research on a dissolved oxygen prediction method for recirculating aquaculture systems based on a convolution neural network*
    - **Why:** CNN-based DO prediction with "reverse-understanding" architecture
    - **Key Innovation:** Uses spatial patterns in multi-sensor data for better predictions
    - **Extract:** CNN architecture for DO prediction, comparison with traditional methods
-   - **Action:** Evaluate against LSTM approach for our application
+   - **Action:** Evaluate against LSTM and hybrid approaches for our application
 
-3. **Channa et al. (2023)** - *Optimisation of Small-Scale Aquaponics Systems Using Artificial Intelligence and the IoT: Current Status, Challenges, and Opportunities*
+4. **Channa et al. (2024)** - *Optimisation of Small-Scale Aquaponics Systems Using Artificial Intelligence and the IoT: Current Status, Challenges, and Opportunities*
     - **Why:** Comprehensive review of IoT sensor selection, ML applications, energy optimization
     - **Key Insights:** 67% use Arduino, WiFi dominant (85%), energy is primary bottleneck (56 kWh/kg vegetables)
     - **Extract:** Sensor recommendations (DHT22 for temp, Atlas Scientific for pH/DO), communication protocols, optimization strategies
@@ -184,28 +204,79 @@ From our literature review synthesis, these frequently-cited works should be con
 
 ## 2. Strategic Reading Plan
 
-### Week 1: Foundation & Context
+### Phased Deep-Dive Strategy
 
-- **Day 1-2:** Chambers et al. (2024) - Deep extraction of all data, methods, challenges
-- **Day 3-4:** Chatziantoniou et al. (2023) - System architecture, alert design, user feedback
-- **Day 5-7:** Føre et al. (2024) - Digital twin framework, implementation strategy
+Focus on **prioritized review** with full deep reads of highest-priority papers and targeted extraction from supporting literature.
 
-### Week 2: Predictive Modeling
+#### Reading Approach
 
-- **Day 8-9:** Chatziantoniou et al. (2022) + Barzegar et al. (2020) - DO prediction models
-- **Day 10-11:** Venolia et al. (2020) + Stavrakidis-Zachou et al. (2019) - Species growth models
-- **Day 12-14:** Andika et al. (2024) + Channa et al. (2023) - Density optimization, IoT systems
+- **Full Deep Read:** Complete manual reading, annotation, data extraction
+- **Targeted Extraction:** Focus on specific methodologies, quantitative results, and actionable insights
+- **Comparative Analysis:** Synthesize findings across related papers (e.g., DO prediction evolution)
 
-### Week 3: Decision Support & Economics
+### Phase 1: Foundation & State-of-the-Art
 
-- **Day 15-17:** Ta et al. (2018) - CNN architectures for prediction
-- **Day 18-19:** Knowler et al. (2020) + Carras et al. (2019) - Economic modeling
-- **Day 20-21:** Føre et al. (2018) + Buck et al. (2018) - Precision farming, offshore challenges
+#### Chambers et al. (2024) - Full deep read
 
-### Week 4: Configuration & Site Selection
+- Manual reading with systematic data extraction
+- Create quantitative parameter spreadsheet (all production data, environmental measurements)
+- Document operational challenges and infrastructure design decisions
+- Extract species-specific performance metrics
 
-- **Day 22-24:** Widowati et al. (2020) + Kerrigan et al. (2016) - Site selection, spatial config
-- **Day 25-28:** Secondary papers + reference chaining for gaps
+#### Xu et al. (2025) - Architecture focus
+
+- Model architecture and performance analysis
+- CNN-SA-BiSRU hybrid model implementation details
+- Feature engineering strategy: conductivity, temporal patterns, self-attention
+- Extract: Network architecture, hyperparameters, training methodology
+
+#### Chatziantoniou et al. (2023) + Føre et al. (2024) - System design
+
+- Aquasafe: System architecture, alert design, UX feedback analysis
+- Digital Twins: Implementation framework, data requirements, calibration approaches
+- Focus: Alert threshold logic, what-if scenario simulation
+
+### Phase 2: Modeling & Decision Support
+
+#### Species Growth Models
+
+- Venolia et al. (2020) - Kelp DEB model: Extract parameters, equations, validation
+- Stavrakidis-Zachou et al. (2019) - Fish DEB model: Methodology for O. mykiss adaptation
+- Zhu et al. (2020) - Wave attenuation: Hydrodynamic modeling, infrastructure implications
+
+#### DO Prediction Evolution - Comparative analysis
+
+- Chatziantoniou et al. (2022) - Remote sensing approach (R² = 0.67)
+- Barzegar et al. (2020) - Hybrid CNN-LSTM
+- Ta et al. (2018) - CNN architecture
+- Generate: Comparative table of approaches, performance progression, complementary strategies
+
+#### Integration & Synthesis
+
+- Andika et al. (2024) - Stocking density optimization
+- Channa et al. (2024) - IoT sensor selection and architecture
+- Create synthesis document: Key parameters, model selection matrix, implementation priorities
+
+### GenAI Summary Template
+
+For systematic extraction from each paper:
+
+1. **Context & Motivation:** Why was this research conducted?
+2. **Methodology:** Models, sensors, experimental design (focus on reproducible details)
+3. **Quantitative Results:** All performance metrics, growth rates, economic data (table format)
+4. **Key Parameters:** Equations, thresholds, calibration values (extractable format)
+5. **Lessons Learned:** What worked, what failed, limitations acknowledged
+6. **Actionable Insights:** Specific recommendations for our Aquafort implementation
+7. **Critical Sections:** Which sections require detailed analysis?
+
+### Parallel Efficiency Strategy
+
+While conducting literature review:
+
+- Set up data extraction spreadsheet templates
+- Begin environmental data acquisition for Aquafort site
+- Prototype basic data flow diagrams
+- Draft initial sensor requirements list
 
 ---
 
@@ -355,10 +426,10 @@ We'll know we're ready to move to system design when we can:
 - [ ] Calculate expected ROI for AI system investment vs. operational improvements
 - [ ] Design conversational prompts for top 10 user queries
 
-**Phase Completion Criteria:**
+**Phase 0 Completion Status:**
 
 - [x] Literature review findings synthesized (see [Literature Review](../../refs/Literature%20Review%20-%20Data%20Science%20%26%20AI%20Applications%20in%20Sustainable%20Aquaculture%20Systems.md))
-- [ ] All Tier 1 papers read and extracted (Chambers, Chatziantoniou x2, Føre)
+- [ ] Tier 1 papers read and extracted (Chambers, Xu, Chatziantoniou, Føre)
 - [ ] Data extraction framework populated with quantitative parameters
 - [ ] Ready to proceed with platform strategy and implementation (Phases 1-4)
 - [ ] This document serves as reference for UNH Aquafort case study context
@@ -367,23 +438,23 @@ We'll know we're ready to move to system design when we can:
 
 ## 7. Next Steps
 
-### Immediate Actions (This Week)
+### Immediate Actions
 
 1. **Create detailed notes templates** for each Tier 1 paper (structured data extraction)
 2. **Set up reference management** (Zotero/Mendeley) with our 50+ papers
 3. **Begin deep read of Chambers et al. (2024)** - Extract all quantitative data into spreadsheet
-4. **Contact UNH Aquafort team** - Schedule 1-hour technical discussion
+4. **Contact UNH Aquafort team** - Schedule technical discussion
 5. **Set up development environment** - Python, Jupyter, data science libraries
 
-### Short-Term Milestones (2-4 Weeks)
+### Near-Term Milestones
 
-1. Complete Tier 1 literature deep-dive (7 papers)
+1. Complete Tier 1 literature deep-dive (4 papers)
 2. Draft system architecture document
 3. Build proof-of-concept DO prediction model
 4. Create interactive site suitability map prototype
 5. Design conversational AI prompts for top use cases
 
-### Medium-Term Goals (1-3 Months)
+### Medium-Term Goals
 
 1. Deploy minimum viable product (MVP) with core features
 2. Integrate with real Aquafort sensor data (if available)
@@ -393,62 +464,84 @@ We'll know we're ready to move to system design when we can:
 
 ---
 
-## 8. Document Control
-
-**Authors:** UNH-CSSS Analytics Team  
-**Created:** October 29, 2025  
-**Last Updated:** November 4, 2025  
-**Version:** 0.2 (Clarified as Phase 0 - Learning Phase)  
-**Phase:** Phase 0 (Literature Review & Knowledge Acquisition)  
-**Next Phase Document:** `imta-analytics-system-design.md` (Phase 1-4: Implementation)  
-**Next Review:** Upon completion of Tier 1 literature review
-
-**Document Purpose:**  
-This is the Phase 0 learning roadmap specific to the UNH Aquafort IMTA case study. Once literature review is complete, proceed to `imta-analytics-system-design.md` for comprehensive technical implementation planning applicable to any IMTA deployment.
-
----
-
 ## Appendix A: Paper Inventory Matrix
 
 | Paper | Focus Area | Data Type | Priority | Status |
 |-------|-----------|-----------|----------|---------|
-| Chambers 2024 | UNH System | Production, Environmental | **CRITICAL** | Not Started |
-| Chatziantoniou 2023 | DSS Architecture | System Design, UX | **CRITICAL** | Not Started |
-| Føre 2024 | Digital Twins | Methodology | **CRITICAL** | Not Started |
-| Chatziantoniou 2022 | DO Prediction | ML Models | **HIGH** | Not Started |
-| Venolia 2020 | Kelp Growth | DEB Models | **HIGH** | Not Started |
-| Stavrakidis-Zachou 2019 | Fish Growth | DEB Models | **HIGH** | Not Started |
-| Andika 2024 | Stocking Density | Production Data | **HIGH** | Not Started |
-| Barzegar 2020 | Water Quality Prediction | CNN-LSTM | **MEDIUM** | Not Started |
-| Ta 2018 | DO Prediction | CNN | **MEDIUM** | Not Started |
-| Channa 2023 | IoT Systems | Hardware, Energy | **MEDIUM** | Not Started |
+| Chambers 2024 | UNH System | Production, Environmental | **Highest** | Not Started - Full Deep Read |
+| Xu 2025 | DO Prediction (SOTA) | ML Model, R²=0.98 | **Highest** | Not Started - Architecture Focus |
+| Chatziantoniou 2023 | DSS Architecture | System Design, UX | **High** | Not Started - System Design |
+| Føre 2024 | Digital Twins | Methodology | **High** | Not Started - Implementation Framework |
+| Venolia 2020 | Kelp Growth | DEB Models | **High** | Not Started |
+| Stavrakidis-Zachou 2019 | Fish Growth | DEB Models | **High** | Not Started |
+| Zhu 2020 | Wave Attenuation | Infrastructure, Coastal Protection | **High** | Not Started |
+| Andika 2024 | Stocking Density | Production Data | **Medium** | Not Started |
+| Chatziantoniou 2022 | DO Prediction (Remote Sensing) | ML Models, R²=0.67 | **Medium** | Not Started |
+| Barzegar 2020 | Water Quality Prediction | CNN-LSTM | **Medium** | Not Started |
+| Ta 2018 | DO Prediction | CNN | **Low** | Not Started |
+| Channa 2024 | IoT Systems | Hardware, Energy | **Medium** | Not Started |
 
 Status codes: Not Started, In Progress, Complete, ✅ Extracted to DB
+
+**Reading Strategy:**
+
+- **Full Deep Read:** Highest priority papers (Chambers, Xu, Chatziantoniou, Føre, Venolia)
+- **Targeted Extraction:** Supporting literature with focus on specific methodologies and results
 
 ---
 
 ## Appendix B: Preliminary Feature List
 
-Based on literature review synthesis, our AI system should include:
+Based on literature review synthesis (50+ papers analyzed), our AI system should include:
 
-### Core Capabilities
+### Core Monitoring & Prediction Capabilities
 
-- **Real-time monitoring dashboard** (multi-parameter visualization)
-- **24-72 hour predictive alerts** (DO, temperature, chl-a)
-- **Growth forecasting** (species-specific, DEB-based)
-- **Feeding optimization** (adaptive recommendations)
-- **Economic tracking** (costs, revenues, profitability projections)
+- **Real-time monitoring dashboard** (multi-parameter visualization with spatial context)
+- **Predictive anomaly detection** (LSTM autoencoders learning normal patterns, 24-48 hour advance warning before critical thresholds)
+- **Dissolved oxygen forecasting** (hybrid deep learning models, target R² > 0.97 based on Xu et al. 2025)
+- **Multi-species growth forecasting** (integrated DEB models with nutrient transfer: fish effluent → mussel food → kelp nutrients)
+- **Behavioral pattern recognition** (feeding activity detection via water surface analysis, 93.2% accuracy demonstrated by Hu et al. 2022)
+- **Alert fatigue mitigation** (contextual explanations, human-in-the-loop override, feedback loops)
+
+### Environmental Intelligence
+
+- **Hybrid sensing network fusion** (satellite + moored sensors + drifting sensors, ensemble Kalman filter integration)
+- **Wave attenuation & coastal protection quantification** (Zhu et al. 2020/2021 models: 33.7% energy dissipation rate, storm damage reduction benefits)
+- **Long-range environmental forecasting** (30-90 day outlook combining numerical ocean models with ML for strategic harvest planning)
+- **Data gap-filling & quality control** (satellite + in-situ fusion, missing data interpolation with uncertainty quantification)
+
+### Operational Optimization
+
+- **Feeding optimization** (adaptive recommendations balancing growth, FCR, and waste reduction)
+- **Multi-objective stocking density optimizer** (genetic algorithms optimizing profit vs sustainability vs risk for species mix)
+- **Energy efficiency module** (critical for New England viability: aeration, water exchange, heating cost minimization)
+- **Harvest timing optimizer** (considers multi-species interactions, e.g., kelp harvest before summer dieback)
+
+### Economic & Ecosystem Services
+
+- **Multi-service valuation tool** (integrated economic modeling):
+  - Food production revenue tracking
+  - Nutrient removal credits ($/kg N, P removed)
+  - Wave attenuation benefits (avoided storm damage, infrastructure protection)
+  - Carbon sequestration value (kelp biomass storage)
+  - Habitat provisioning (biodiversity credits)
+- **Revenue stacking analysis** (climate finance, coastal resilience funding, water quality payments)
+- **Market intelligence** (price forecasting, demand trends, premium capture opportunities)
 
 ### Conversational AI (Copilot Interface)
 
-- **Natural language queries** ("Why is my oxygen dropping?")
-- **Scenario simulation** ("What if I harvest 100 kg early?")
-- **Educational explanations** ("Teach me about nitrogen cycling")
-- **Decision support** ("Should I reduce feeding based on forecast?")
+- **Natural language queries with explainability** ("Why is my oxygen dropping?" → SHAP analysis showing temperature 45%, chl-a 23%, density 18%)
+- **Counterfactual scenario simulation** ("What if I harvest 100 kg early?" → NPV impact, environmental trade-offs)
+- **Educational explanations** ("Teach me about nitrogen cycling in IMTA systems" → species-specific uptake rates, optimization strategies)
+- **Causal inference decision support** ("Should I reduce feeding?" → causal graph analysis, not just correlation)
+- **Transparent recommendations** (LIME local explanations, physics-informed constraints, literature citations)
 
-### Advanced Features (Phase 2)
+### Advanced Features (Phase 2+)
 
-- **Site selection tool** (GIS-based suitability mapping)
-- **Configuration optimizer** (species selection, density, spatial layout)
-- **Climate adaptation planner** (long-term scenario modeling)
-- **Market intelligence** (price forecasting, demand trends)
+- **Site selection tool** (GIS-based suitability mapping with wave attenuation co-benefits analysis)
+- **Configuration optimizer** (modular system design library: species selection, density, spatial layout, parametric models for local conditions)
+- **Autonomous underwater vehicle integration** (AUV biomass estimation >90% accuracy, health monitoring, infrastructure inspection)
+- **Climate adaptation planner** (long-term scenario modeling with transfer learning from data-rich regions)
+- **Blockchain traceability** (immutable environmental benefit documentation for eco-certification, premium pricing)
+- **Edge AI deployment** (on-device processing for <100ms latency, offline resilience, privacy preservation)
+- **Digital twin simulation** (real-time calibrated models for "what-if" testing before field implementation)

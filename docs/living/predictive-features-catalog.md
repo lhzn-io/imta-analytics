@@ -12,7 +12,6 @@
 This document serves as the authoritative reference for all engineered features in the IMTA analytics platform. It consolidates feature definitions from:
 
 - Notebook analysis plans (`notebooks/01_initial_data_exploration.ipynb`)
-- Platform strategy documentation (`docs/strategy/imta-analytics-platform-strategy.md`)
 - UNH Aquafort case study requirements (`docs/planning/unh-aquafort-case-study-learning-phase.md`)
 - Literature review findings (`refs/Literature Review - Data Science & AI Applications in Sustainable Aquaculture Systems.md`)
 
