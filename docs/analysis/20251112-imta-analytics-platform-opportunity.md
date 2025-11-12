@@ -66,7 +66,7 @@ Based on literature review synthesis (50+ papers analyzed), the IMTA Analytics P
 
 **Real-time Monitoring & Forecasting:**
 
-- **Real-time monitoring dashboard** (multi-parameter visualization with spatial context)
+- **Real-time monitoring dashboard** (water quality parameters, growth indicators, environmental conditions with spatial context)
 - **Predictive anomaly detection** (LSTM autoencoders learning normal patterns, 24-48 hour advance warning before critical thresholds)
 - **Dissolved oxygen forecasting** (hybrid deep learning models, target R² > 0.97 based on Xu et al. 2025)
 - **Multi-species growth forecasting** (integrated DEB models with nutrient transfer: fish effluent → mussel food → kelp nutrients)
@@ -117,13 +117,11 @@ Based on literature review synthesis (50+ papers analyzed), the IMTA Analytics P
 **Multi-Service Valuation:**
 
 - **Multi-service valuation tool** (integrated economic modeling):
-  - Food production revenue tracking
-  - Nutrient removal credits ($/kg N, P removed)
-  - Wave attenuation benefits (avoided storm damage, infrastructure protection)
-  - Carbon sequestration value (kelp biomass storage)
-  - Habitat provisioning (biodiversity credits)
-- **Revenue stacking analysis** (climate finance, coastal resilience funding, water quality payments)
-- **Market intelligence** (price forecasting, demand trends, premium capture opportunities)
+  - Food production revenue tracking (fish, shellfish, kelp for human consumption)
+  - Non-food kelp applications (fertilizer, animal feed, cosmetics, bioplastics feedstock)
+  - Emerging ecosystem service credits (nutrient removal, carbon sequestration, coastal protection)
+- **Market intelligence** (price forecasting, demand trends, premium capture opportunities for sustainable products)
+- **Cost tracking & optimization** (feed costs, labor, infrastructure maintenance, energy efficiency)
 
 **Research Validation:**
 
@@ -148,17 +146,34 @@ Based on literature review synthesis (50+ papers analyzed), the IMTA Analytics P
 - Chatziantoniou et al. (2023): User feedback showed 45% wanted interface simplification - conversational AI addresses complexity barrier
 - Literature Review Section 9.1: "Primary barrier is operational complexity requiring expertise across multiple species" - AI can democratize access
 
-### 2.6 Advanced Features (Phase 2+)
+### 2.6 Digital Twin Simulation
 
-**Strategic Planning & Technology Integration:**
+**Integrated System Modeling:**
 
-- **Site selection tool** (GIS-based suitability mapping with wave attenuation co-benefits analysis)
+- **Real-time calibrated digital twin** of IMTA deployment integrating all sensor data, growth models (DEB), water quality predictions (DO, temperature, salinity), and trophic interactions
+- **What-if scenario testing** before field implementation (stocking density changes, harvest timing, feeding strategies, infrastructure modifications)
+- **Hypothesis testing for research** (test experimental designs virtually, optimize sampling strategies, predict outcomes)
+- **Model validation & refinement** (continuous calibration against ground truth, uncertainty quantification, sensitivity analysis)
+- **Educational demonstrations** (visualize system dynamics, train operators, support graduate student research)
+
+**Research Validation:**
+
+- Føre et al. (2024): Digital twin framework for aquaculture, real-time data integration, what-if scenario simulation
+- Chatziantoniou et al. (2023): Decision support system architecture integrating predictive models with operational data
+
+### 2.7 Strategic Planning & Advanced Technologies
+
+**Near-Term Opportunities (Software-First):**
+
+- **Edge AI deployment** (on-device processing for <100ms latency, offline resilience, privacy preservation)
 - **Configuration optimizer** (modular system design library: species selection, density, spatial layout, parametric models for local conditions)
+
+**Longer-Term Integration:**
+
+- **Site selection tool** (GIS-based suitability mapping - supporting capability for new deployments)
 - **Autonomous underwater vehicle integration** (AUV biomass estimation >90% accuracy, health monitoring, infrastructure inspection)
 - **Climate adaptation planner** (long-term scenario modeling with transfer learning from data-rich regions)
 - **Blockchain traceability** (immutable environmental benefit documentation for eco-certification, premium pricing)
-- **Edge AI deployment** (on-device processing for <100ms latency, offline resilience, privacy preservation)
-- **Digital twin simulation** (real-time calibrated models for "what-if" testing before field implementation)
 
 **Research Validation:**
 
