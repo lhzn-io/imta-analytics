@@ -1,10 +1,14 @@
-# UNH Aquafort IMTA Case Study: Literature Review & Learning Phase
+---
+title: "UNH Aquafort IMTA Case Study: Literature Review & Learning Phase"
+subtitle: "Phase 0 Knowledge Foundation"
+author: "Daniel Fry (dfry), with assistance from GitHub Copilot"
+date: "October 29, 2025"
+---
 
 **Project:** UNH Aquafort IMTA Deployment - Phase 0 Knowledge Foundation  
 **Case Study Focus:** Steelhead trout + Blue mussel + Sugar kelp floating platform system  
 **Phase:** Phase 0 - Literature Review & Knowledge Acquisition (Weeks 1-4)  
 **Partners:** University of New Hampshire (Chambers et al. 2024), UNH-CSSS Analytics Team  
-**Date:** October 29, 2025  
 **Status:** Literature Review Phase - In Progress  
 **Next Phase:** Platform Strategy & Implementation (Phases 1-4)
 
@@ -428,7 +432,7 @@ We'll know we're ready to move to system design when we can:
 
 **Phase 0 Completion Status:**
 
-- [x] Literature review findings synthesized (see [Literature Review](../../refs/Literature%20Review%20-%20Data%20Science%20%26%20AI%20Applications%20in%20Sustainable%20Aquaculture%20Systems.md))
+- [x] Literature review findings synthesized (see [Literature Review](https://github.com/lhzn-io/imta-analytics/blob/main/refs/Literature%20Review%20-%20Data%20Science%20%26%20AI%20Applications%20in%20Sustainable%20Aquaculture%20Systems.md))
 - [ ] Tier 1 papers read and extracted (Chambers, Xu, Chatziantoniou, Føre)
 - [ ] Data extraction framework populated with quantitative parameters
 - [ ] Ready to proceed with platform strategy and implementation (Phases 1-4)
@@ -490,58 +494,99 @@ Status codes: Not Started, In Progress, Complete, ✅ Extracted to DB
 
 ---
 
-## Appendix B: Preliminary Feature List
+## Appendix B: Ongoing Literature Survey - Emerging Research Domains
 
-Based on literature review synthesis (50+ papers analyzed), our AI system should include:
+The comprehensive literature review (see [Section 10](https://github.com/lhzn-io/imta-analytics/blob/main/refs/Literature%20Review%20-%20Data%20Science%20%26%20AI%20Applications%20in%20Sustainable%20Aquaculture%20Systems.md#10-next-steps-for-literature-review)) identified six research domains requiring continued survey of published research. As the UNH Aquafort case study progresses, we should monitor these areas for methodological advances applicable to our system development:
 
-### Core Monitoring & Prediction Capabilities
+### B.1 Extractive Species Bioenergetics
 
-- **Real-time monitoring dashboard** (multi-parameter visualization with spatial context)
-- **Predictive anomaly detection** (LSTM autoencoders learning normal patterns, 24-48 hour advance warning before critical thresholds)
-- **Dissolved oxygen forecasting** (hybrid deep learning models, target R² > 0.97 based on Xu et al. 2025)
-- **Multi-species growth forecasting** (integrated DEB models with nutrient transfer: fish effluent → mussel food → kelp nutrients)
-- **Behavioral pattern recognition** (feeding activity detection via water surface analysis, 93.2% accuracy demonstrated by Hu et al. 2022)
-- **Alert fatigue mitigation** (contextual explanations, human-in-the-loop override, feedback loops)
+**Research Gap:** While finfish DEB models are well-established (RMSE = 6.92%), validated models for macroalgae and bivalves in IMTA contexts remain sparse.
 
-### Environmental Intelligence
+**Monitoring Strategy:**
 
-- **Hybrid sensing network fusion** (satellite + moored sensors + drifting sensors, ensemble Kalman filter integration)
-- **Wave attenuation & coastal protection quantification** (Zhu et al. 2020/2021 models: 33.7% energy dissipation rate, storm damage reduction benefits)
-- **Long-range environmental forecasting** (30-90 day outlook combining numerical ocean models with ML for strategic harvest planning)
-- **Data gap-filling & quality control** (satellite + in-situ fusion, missing data interpolation with uncertainty quantification)
+- Track publications in *Ecological Modelling*, *Journal of Sea Research*, *Aquaculture*
+- Search terms: "bioenergetic model," "growth model," "Mytilus," "Saccharina," "macroalgae DEB"
+- Target: Parameterized models for *Mytilus edulis* (blue mussel) and *Saccharina latissima* (sugar kelp) specific to North Atlantic conditions
+- **Application to UNH Case:** Direct integration of species-specific growth models for mussels and kelp would complete our multi-species predictive framework
 
-### Operational Optimization
+**Key Question:** Can we adapt Mediterranean bivalve models (Maar et al. 2015) to Gulf of Maine with recalibration for lower salinity and temperature ranges?
 
-- **Feeding optimization** (adaptive recommendations balancing growth, FCR, and waste reduction)
-- **Multi-objective stocking density optimizer** (genetic algorithms optimizing profit vs sustainability vs risk for species mix)
-- **Energy efficiency module** (critical for New England viability: aeration, water exchange, heating cost minimization)
-- **Harvest timing optimizer** (considers multi-species interactions, e.g., kelp harvest before summer dieback)
+### B.2 Physics-Informed Machine Learning
 
-### Economic & Ecosystem Services
+**Research Gap:** Current literature shows separate tracks—mechanistic DEB models OR data-driven ML models—with limited integration of physics constraints into neural network architectures.
 
-- **Multi-service valuation tool** (integrated economic modeling):
-  - Food production revenue tracking
-  - Nutrient removal credits ($/kg N, P removed)
-  - Wave attenuation benefits (avoided storm damage, infrastructure protection)
-  - Carbon sequestration value (kelp biomass storage)
-  - Habitat provisioning (biodiversity credits)
-- **Revenue stacking analysis** (climate finance, coastal resilience funding, water quality payments)
-- **Market intelligence** (price forecasting, demand trends, premium capture opportunities)
+**Monitoring Strategy:**
 
-### Conversational AI (Copilot Interface)
+- Survey computational science literature: arXiv (cs.LG, physics.comp-ph), ACM Digital Library
+- Search terms: "physics-informed neural networks," "PINN aquaculture," "hybrid mechanistic-machine learning"
+- Target: Applications from climate modeling and fluid dynamics transferable to aquaculture
+- **Application to UNH Case:** Hybrid PINN approach could improve growth predictions while maintaining physiological plausibility, addressing both accuracy and interpretability requirements
 
-- **Natural language queries with explainability** ("Why is my oxygen dropping?" → SHAP analysis showing temperature 45%, chl-a 23%, density 18%)
-- **Counterfactual scenario simulation** ("What if I harvest 100 kg early?" → NPV impact, environmental trade-offs)
-- **Educational explanations** ("Teach me about nitrogen cycling in IMTA systems" → species-specific uptake rates, optimization strategies)
-- **Causal inference decision support** ("Should I reduce feeding?" → causal graph analysis, not just correlation)
-- **Transparent recommendations** (LIME local explanations, physics-informed constraints, literature citations)
+**Key Question:** Can PINNs combine the 97.65% accuracy of Xu et al. (2025) hybrid models with the mechanistic interpretability of DEB theory?
 
-### Advanced Features (Phase 2+)
+### B.3 Causal Inference Methods
 
-- **Site selection tool** (GIS-based suitability mapping with wave attenuation co-benefits analysis)
-- **Configuration optimizer** (modular system design library: species selection, density, spatial layout, parametric models for local conditions)
-- **Autonomous underwater vehicle integration** (AUV biomass estimation >90% accuracy, health monitoring, infrastructure inspection)
-- **Climate adaptation planner** (long-term scenario modeling with transfer learning from data-rich regions)
-- **Blockchain traceability** (immutable environmental benefit documentation for eco-certification, premium pricing)
-- **Edge AI deployment** (on-device processing for <100ms latency, offline resilience, privacy preservation)
-- **Digital twin simulation** (real-time calibrated models for "what-if" testing before field implementation)
+**Research Gap:** Existing models predict correlations (temperature ↔ growth, DO ↔ mortality) but few establish causal relationships necessary for intervention recommendations.
+
+**Monitoring Strategy:**
+
+- Target *Fisheries Research*, *ICES Journal of Marine Science*, computational statistics journals
+- Search terms: "causal inference aquaculture," "directed acyclic graph," "causal Bayesian network," "structural equation modeling"
+- Target: Methods for causal discovery from observational farm data
+- **Application to UNH Case:** Enable Copilot to answer intervention questions: "If I increase aeration by 30%, will DO recover?" with confidence intervals on causal effects
+
+**Key Question:** Can causal discovery algorithms (PC algorithm, FCI) identify actionable interventions from UNH Aquafort's historical operational data?
+
+### B.4 Transfer Learning Across Regions
+
+**Research Gap:** Models developed for Mediterranean aquaculture may not generalize to North Atlantic IMTA without validation and recalibration.
+
+**Monitoring Strategy:**
+
+- ML conference proceedings (NeurIPS, ICML) and application journals (*Computers and Electronics in Agriculture*)
+- Search terms: "transfer learning aquaculture," "domain adaptation," "few-shot learning ocean farming"
+- Target: Techniques for cross-regional model transfer with minimal data requirements
+- **Application to UNH Case:** Leverage Chatziantoniou et al. (2023) Aquasafe models trained on Greek data, adapt to Gulf of Maine using Chambers et al. (2024) calibration dataset
+
+**Key Question:** What is the minimum dataset size required to fine-tune Mediterranean-trained models for New England conditions?
+
+### B.5 Ecosystem Service Valuation
+
+**Research Gap:** Zhu et al. (2020, 2021) quantify wave attenuation (33.7% energy dissipation), but economic frameworks to monetize coastal protection benefits are absent from aquaculture literature.
+
+**Monitoring Strategy:**
+
+- Target *Ecological Economics*, *Ecosystem Services*, *Marine Policy*
+- Search terms: "natural capital accounting," "payment for ecosystem services," "coastal protection valuation," "multi-service aquaculture"
+- Target: Methods to integrate food production revenue + nutrient removal credits + wave attenuation benefits + carbon sequestration value
+- **Application to UNH Case:** Develop multi-service valuation tool enabling Aquafort to access climate finance, coastal resilience funding, and water quality improvement payments simultaneously
+
+**Key Question:** Can we quantify avoided storm damage from wave attenuation and translate to insurance premium reductions for coastal infrastructure?
+
+### B.6 Real-World Implementation Studies
+
+**Research Gap:** Literature describes proof-of-concept systems (Aquasafe) but lacks longitudinal studies documenting adoption factors, usage patterns, and measured ROI.
+
+**Monitoring Strategy:**
+
+- Target agricultural technology adoption literature, HCI journals (*Agricultural Systems*, *Computers and Electronics in Agriculture*)
+- Search terms: "DSS adoption aquaculture," "explainable AI trust," "precision farming ROI"
+- Target: Factors predicting farmer acceptance of AI recommendations, impact of explainability features (SHAP, LIME) on system usage
+- **Application to UNH Case:** Inform Copilot interface design and deployment strategy—prioritize features with documented adoption benefits
+
+**Key Question:** What is the documented return-on-investment for precision aquaculture technology in commercial operations comparable to UNH Aquafort scale?
+
+### B.7 Survey Update Protocol
+
+**During Case Study Execution:**
+
+1. **Monthly Literature Scans:** Google Scholar alerts for target search terms across six domains
+2. **Quarterly Assessment:** Evaluate new publications for relevance to UNH implementation
+3. **Selective Deep-Dives:** Full analysis of papers directly applicable to current development phase
+4. **Knowledge Integration:** Update models, algorithms, and documentation with validated findings
+
+**Success Metric:** Maintain awareness of methodological advances without disrupting development momentum—selective incorporation rather than continuous refactoring.
+
+---
+
+**Note:** For comprehensive platform capabilities and feature specifications, see [IMTA Analytics Platform Strategy Document](https://github.com/lhzn-io/imta-analytics/blob/main/docs/analysis/20251112-imta-analytics-platform-opportunity.md) Section 2.

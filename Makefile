@@ -8,7 +8,7 @@ CONDA_BASE := $(shell conda info --base 2>/dev/null || echo "$$HOME/.miniconda3"
 CONDA_ACTIVATE = source $(CONDA_BASE)/etc/profile.d/conda.sh && conda activate imta-analytics
 PYTEST = $(CONDA_ACTIVATE) && python -m pytest
 
-.PHONY: help pubs-md tech-md refs-md clean-md clean-tech-md clean
+.PHONY: help pubs-md tech-md refs-md clean-md clean-tech-md clean docs
 .PHONY: test test-fast test-coverage test-unit test-integration
 .PHONY: install-hooks check-hooks
 
@@ -27,6 +27,7 @@ help:
 	@echo "  check-hooks   - Check if git hooks are installed"
 	@echo ""
 	@echo "Documentation:"
+	@echo "  docs          - Generate PDF documentation from markdown"
 	@echo "  pubs-md       - Convert PDFs in refs/publications to markdown using markitdown"
 	@echo "  tech-md       - Convert PDFs in refs/technical to markdown using markitdown"
 	@echo "  refs-md       - Convert all PDFs in refs/ subdirectories to markdown"
@@ -201,4 +202,50 @@ check-hooks:
 	else \
 		echo "❌ Pre-commit hook is NOT installed"; \
 		echo "   Run 'make install-hooks' to install"; \
+	fi
+
+# Documentation generation (markdown to PDF)
+docs:
+	@echo "Generating PDF documentation from markdown files with YAML frontmatter..."
+	@tmpfile=$$(mktemp); \
+	find docs refs -name "*.md" -type f -print0 | while IFS= read -r -d '' md_file; do \
+		if head -1 "$$md_file" | grep -q "^---$$"; then \
+			pdf_file="$${md_file%.md}.pdf"; \
+			echo "Converting: $$md_file"; \
+			if pandoc "$$md_file" \
+				-o "$$pdf_file" \
+				--pdf-engine=xelatex \
+				-V geometry:"top=1.2in,bottom=1.2in,left=1.3in,right=1.3in" \
+				-V fontsize=11pt \
+				-V linestretch=1.4 \
+				-V documentclass=article \
+				-V mainfont:"Liberation Serif" \
+				-V monofont:"Liberation Mono" \
+				-V sansfont:"Liberation Sans" \
+				--toc \
+				--toc-depth=2 \
+				-V colorlinks=true \
+				-V linkcolor=blue \
+				-V urlcolor=blue \
+				-V toccolor=black 2>/dev/null; then \
+				echo "1" >> "$$tmpfile"; \
+			else \
+				echo "  ⚠️  Failed to convert $$md_file"; \
+			fi; \
+		fi; \
+	done; \
+	if [ -f "$$tmpfile" ]; then \
+		count=$$(wc -l < "$$tmpfile"); \
+		rm "$$tmpfile"; \
+		echo ""; \
+		echo "✅ Converted $$count markdown file(s) to PDF"; \
+	else \
+		echo "No markdown files with YAML frontmatter found."; \
+		echo "Add frontmatter to markdown files to enable PDF generation:"; \
+		echo "---"; \
+		echo "title: \"Document Title\""; \
+		echo "subtitle: \"Optional Subtitle\""; \
+		echo "author: \"Your Name\""; \
+		echo "date: \"YYYY-MM-DD\""; \
+		echo "---"; \
 	fi

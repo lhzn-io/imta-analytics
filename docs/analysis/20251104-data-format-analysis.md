@@ -1,8 +1,11 @@
-# UNH Aquafort Data Format Analysis
+---
+title: "UNH Aquafort Data Format Analysis"
+subtitle: "Campbell Scientific TOA5 Format Documentation"
+author: "GitHub Copilot"
+date: "November 4, 2025"
+---
 
-**Date:** November 4, 2025  
 **Updated:** November 4, 2025  
-**Analyst:** GitHub Copilot  
 **Project:** IMTA Analytics - UNH Aquafort Buoy Station
 
 ## Executive Summary

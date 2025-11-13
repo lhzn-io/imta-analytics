@@ -1,11 +1,11 @@
-# Literature Review: Data Science & AI Applications in Sustainable Aquaculture Systems
-
-## Focus on IMTA and Predictive Yield Modeling
-
-**Date:** October 2025
-**Version:** 1.0
-
 ---
+title: "Literature Review: Data Science & AI Applications in Sustainable Aquaculture Systems"
+subtitle: "Focus on IMTA and Predictive Yield Modeling"
+author: "Daniel Fry (dfry), with assistance from GitHub Copilot"
+date: "October/November 2025"
+---
+
+
 
 ## Executive Summary
 
@@ -1224,6 +1224,88 @@ Translating research findings into operational systems requires attention to:
 **Policy Integration:** Technical advances mean little without supportive regulatory frameworks. Researchers should engage policymakers on IMTA-specific permitting and ecosystem service valuation.
 
 **Open Science Principles:** Open-source software, public datasets, and transparent methodology accelerate progress and build trust with skeptical practitioners.
+
+---
+
+## 10. Next Steps for Literature Review
+
+This synthesis of 50+ publications reveals productive areas for continued survey of published research:
+
+### 10.1 Extractive Species Bioenergetics
+
+**Current Coverage:** Strong foundation for finfish DEB models (European sea bass, gilthead sea bream, steelhead trout) with validated parameters and growth predictions (RMSE = 6.92%).
+
+**Research Gaps Identified:**
+
+- **Macroalgae DEB models:** Venolia et al. (2020) provide preliminary framework for kelp, but published parameterizations remain sparse. Survey needed of algal bioenergetics literature from phycology and marine ecology domains.
+- **Bivalve growth models in IMTA context:** Maar et al. (2015) address *Mytilus edulis* in monoculture; systematic review required of bivalve models accounting for fish waste as food subsidy.
+- **Multi-species DEB coupling:** Investigate ecosystem modeling literature (e.g., Ecopath with Ecosim) for methodologies to couple species-specific DEB models with mass balance constraints.
+
+**Survey Strategy:** Target journals *Ecological Modelling*, *Journal of Sea Research*, *Aquaculture*, with focus on 2015-2025 publications using terms "bioenergetic model," "growth model," "Mytilus," "Saccharina," "macroalgae."
+
+### 10.2 Physics-Informed Machine Learning
+
+**Current Coverage:** Literature documents separate tracks—mechanistic DEB models OR data-driven ML models—but limited integration between approaches.
+
+**Research Opportunity:** Survey emerging "physics-informed neural networks" (PINNs) literature from computational science:
+
+- **Climate modeling:** Applications to ocean biogeochemistry forecasting
+- **Fluid dynamics:** Hybrid physics-ML for turbulence modeling
+- **Ecology:** Lotka-Volterra dynamics constrained neural networks
+
+**Key Question:** Can PINN architectures combine interpretability of DEB models with flexibility of deep learning to improve IMTA growth predictions while maintaining physiological plausibility?
+
+**Survey Strategy:** Search ACM Digital Library, arXiv (cs.LG, physics.comp-ph) for "physics-informed," "hybrid mechanistic-machine learning," published 2020-2025.
+
+### 10.3 Causal Inference in Aquaculture
+
+**Current Coverage:** Reviewed studies document correlations (e.g., temperature ↔ growth, DO ↔ mortality) but few apply causal inference methods to establish causal relationships.
+
+**Research Gap:** Aquaculture decision-making requires causal understanding ("Will reducing feeding *cause* DO recovery?") not just predictive correlation. Survey needed of:
+
+- **Causal discovery algorithms:** PC algorithm, FCI, constraint-based methods applied to observational aquaculture data
+- **Causal Bayesian networks:** Applications in fisheries and marine ecology
+- **Structural equation modeling (SEM):** Environmental drivers → growth outcomes with mediation analysis
+
+**Survey Strategy:** Target *Fisheries Research*, *ICES Journal of Marine Science*, computational statistics journals, search terms "causal inference," "directed acyclic graph," "intervention," 2015-2025.
+
+### 10.4 Transfer Learning Across Aquaculture Systems
+
+**Current Coverage:** Models developed for Mediterranean aquaculture (Chatziantoniou et al., Stavrakidis-Zachou et al.) but transferability to North Atlantic systems unexplored in surveyed literature.
+
+**Research Questions:**
+
+- Can DEB models parameterized in Greece generalize to Gulf of Maine with only recalibration of temperature coefficients?
+- Do LSTM models trained on Asian aquaculture datasets (Xu et al. 2025, intensive pond systems) transfer to extensive ocean-based IMTA?
+- What domain adaptation techniques exist for cross-regional model transfer?
+
+**Survey Strategy:** Machine learning literature on "transfer learning," "domain adaptation," "few-shot learning" + application papers in *Computers and Electronics in Agriculture*, *Precision Agriculture*.
+
+### 10.5 Ecosystem Service Valuation Frameworks
+
+**Current Coverage:** Economic studies quantify food production revenue and consumer willingness-to-pay premiums, but quantification of non-market ecosystem services remains limited.
+
+**Identified Gap:** Zhu et al. (2020, 2021) demonstrate wave attenuation benefits (33.7% energy dissipation rate), but no published economic valuation frameworks translate physical coastal protection into monetary terms.
+
+**Survey Needed:**
+
+- **Natural capital accounting:** Methods from ecological economics literature
+- **Payment for ecosystem services (PES):** Case studies from wetland restoration, living shorelines
+- **Multi-criteria decision analysis (MCDA):** Frameworks integrating food production, nutrient removal, carbon sequestration, coastal protection
+
+**Survey Strategy:** *Ecological Economics*, *Ecosystem Services*, *Marine Policy* journals, focus on coastal aquaculture co-benefits, 2010-2025.
+
+### 10.6 Real-World Implementation Studies
+
+**Current Coverage:** Literature describes proof-of-concept systems (Aquasafe, individual research platforms) but lacks longitudinal studies of decision support system adoption and impact.
+
+**Research Questions:**
+
+- What factors predict farmer adoption of AI-based recommendations in aquaculture?
+- How do explainability features (SHAP, LIME) affect trust and system usage?
+- What is the documented return-on-investment for precision aquaculture technology in commercial operations?
+
+**Survey Strategy:** Agricultural technology adoption literature, human-computer interaction (HCI) studies of AI explainability, search *Agricultural Systems*, *Computers and Electronics in Agriculture*, *AI Magazine* for "adoption," "explainable AI," "decision support."
 
 ---
 

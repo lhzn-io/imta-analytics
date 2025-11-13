@@ -1,9 +1,12 @@
-# IMTA Analytics: Platform Opportunity & Research Translation
+---
+title: "IMTA Analytics: Platform Opportunity & Research Translation"
+subtitle: "Strategic Partnership Document"
+author: "Daniel Fry (dfry), with assistance from GitHub Copilot"
+date: "November 12, 2025"
+---
 
-**Date:** November 12, 2025  
 **Status:** Foundation Phase - Literature Review and Platform Documentation drafted  
-**Purpose:** Strategic synthesis of research findings, system capabilities, and research translation opportunities for precision aquaculture in Integrated Multi-Trophic Aquaculture (IMTA) systems  
-**Authorship:** Daniel Fry (dfry), with assistance from GitHub Copilot
+**Purpose:** Strategic synthesis of research findings, system capabilities, and research translation opportunities for precision aquaculture in Integrated Multi-Trophic Aquaculture (IMTA) systems
 
 ---
 
@@ -13,10 +16,10 @@ This document synthesizes the current state of an emerging **IMTA Analytics Plat
 
 **Project Status:**
 
-- **Literature Review Draft Complete:** [Comprehensive synthesis](../../refs/Literature%20Review%20-%20Data%20Science%20%26%20AI%20Applications%20in%20Sustainable%20Aquaculture%20Systems.md) of data science & AI applications in sustainable aquaculture
-- **Living Documentation Established:** [Predictive features catalog](../living/predictive-features-catalog.md), [infrastructure architecture](../living/infrastructure-architecture.md), [data sources](../living/data-sources.md)
-- **Reference Library:** [50+ papers cataloged](../../references.bib) with systematic analysis
-- **Case Study In Progress:** [UNH Aquafort IMTA deployment](../planning/unh-aquafort-case-study-learning-phase.md) - steelhead trout, blue mussel, sugar kelp platform
+- **Literature Review Draft Complete:** [Comprehensive synthesis](https://github.com/lhzn-io/imta-analytics/blob/main/refs/Literature%20Review%20-%20Data%20Science%20%26%20AI%20Applications%20in%20Sustainable%20Aquaculture%20Systems.md) of data science & AI applications in sustainable aquaculture
+- **Living Documentation Established:** [Predictive features catalog (24+ features)](https://github.com/lhzn-io/imta-analytics/blob/main/docs/living/predictive-features-catalog.md), [infrastructure architecture](https://github.com/lhzn-io/imta-analytics/blob/main/docs/living/infrastructure-architecture.md), [data sources](https://github.com/lhzn-io/imta-analytics/blob/main/docs/living/data-sources.md)
+- **Reference Library:** [50+ papers cataloged](https://github.com/lhzn-io/imta-analytics/blob/main/references.bib) with systematic analysis
+- **Case Study In Progress:** [UNH Aquafort IMTA deployment](https://github.com/lhzn-io/imta-analytics/blob/main/docs/planning/unh-aquafort-case-study-learning-phase.md) - steelhead trout, blue mussel, sugar kelp platform
 - **Partnership Status:** Initial discussions held with UNH team, follow-up conversations in planning
 
 **Key Insight:** Research validation shows IMTA is economically viable (20-40% NPV increase, 10-36% price premiums) but adoption is limited by operational complexity, not profitability. **AI-enabled decision support can bridge the expertise gap** and democratize access to multi-species aquaculture systems.
@@ -39,7 +42,7 @@ Our comprehensive analysis of 50+ publications identifies state-of-the-art capab
 
 **Critical Gap Identified:** While individual technologies (satellite monitoring, growth models, sensor networks) show promise, **no system has successfully integrated all components into a user-friendly, deployable platform for small-medium IMTA operators.**
 
-**Further Reading:** [Full Literature Review](../../refs/Literature%20Review%20-%20Data%20Science%20%26%20AI%20Applications%20in%20Sustainable%20Aquaculture%20Systems.md) | [Reference Library](../../references.bib)
+**Further Reading:** [Full Literature Review](https://github.com/lhzn-io/imta-analytics/blob/main/refs/Literature%20Review%20-%20Data%20Science%20%26%20AI%20Applications%20in%20Sustainable%20Aquaculture%20Systems.md) | [Reference Library](https://github.com/lhzn-io/imta-analytics/blob/main/references.bib)
 
 ### 1.2 Case Study Context: UNH Aquafort
 
@@ -54,7 +57,7 @@ Our comprehensive analysis of 50+ publications identifies state-of-the-art capab
 
 **Strategic Value:** Real-world validation site for platform development, partnership with UNH-CSSS team (Fredriksson, Chambers, Zhu), access to production data and operational insights.
 
-**Case Study Details:** [UNH Aquafort Learning Phase](../planning/unh-aquafort-case-study-learning-phase.md)
+**Case Study Details:** [UNH Aquafort Learning Phase](https://github.com/lhzn-io/imta-analytics/blob/main/docs/planning/unh-aquafort-case-study-learning-phase.md)
 
 ---
 
@@ -130,7 +133,48 @@ Based on literature review synthesis (50+ papers analyzed), the IMTA Analytics P
 - Nobre et al. (2010): Social accounting framework, $1.1-3.0M annual ecosystem service benefits
 - Literature Review Gap: No economic valuation frameworks exist for coastal protection benefits - **innovation opportunity**
 
-### 2.5 Conversational AI (IMTA Copilot Interface)
+### 2.5 Fish Yield Forecasting (Core Competency)
+
+**Operational Priority:** Identified by UNH CSSS team (Dave Fredriksson) as critical capability for farm management decision-making alongside AI-assisted guidance.
+
+**Dynamic Energy Budget (DEB) Models:**
+
+- **Research-validated accuracy:** RMSE = 6.92% for finfish growth prediction (Stavrakidis-Zachou et al. 2019)
+- **Species coverage:** European sea bass, gilthead sea bream, steelhead trout, Atlantic salmon with validated parameters
+- **Physiological grounding:** Models account for temperature effects, feeding rates, metabolic costs, life stage transitions
+- **Platform integration:** Real-time weight predictions, days-to-harvest estimates, biomass forecasts calibrated to site-specific conditions
+
+**Feed Conversion Ratio (FCR) Optimization:**
+
+- **Adaptive feeding recommendations:** Predict optimal feeding rates based on current environmental conditions (temperature, DO, stocking density)
+- **Cost-benefit analysis:** Balance feed costs against growth rates to maximize profitability
+- **Waste minimization:** Reduce overfeeding to lower nutrient loading and improve extractive species (mussel/kelp) performance
+- **Validated performance:** Chambers et al. (2024) achieved FCR = 1.24 for steelhead trout at UNH Aquafort (within optimal 1.03-1.65 range)
+
+**Environmental-Growth Coupling:**
+
+- **Temperature-growth curves:** Species-specific optimal ranges (trout 9-15°C, sea bass 17-24°C, sea bream 18-28°C)
+- **DO threshold modeling:** Quantify growth reduction below 5.5 mg/L critical threshold
+- **Seasonal forecasting:** Account for multi-month temperature trends, phenology effects on metabolism
+- **Latitudinal adaptation:** Transfer models across sites with recalibrated parameters (e.g., Mediterranean → Gulf of Maine)
+
+**Decision Support Integration:**
+
+- **Harvest timing recommendations:** "Target weight (500g) projected in 14 days given current growth rate"
+- **Stocking density optimization:** Multi-objective algorithms balancing growth performance, mortality risk, infrastructure capacity
+- **Early warning alerts:** "Growth rate declining 15% below expected - investigate feeding or environmental stressors"
+- **Multi-species coordination:** Couple fish DEB models with kelp/mussel growth to optimize trophic complementarity
+
+**Research Validation:**
+
+- Stavrakidis-Zachou et al. (2019): DEB parameterization for Mediterranean species, RMSE = 6.92%
+- Chatziantoniou et al. (2023): Aquasafe platform integration, closely matched field measurements across three sites
+- Chambers et al. (2024): UNH Aquafort validation data (416 kg trout production, FCR = 1.24)
+- Myrick & Cech (2005): Steelhead trout temperature optima, 9-15°C for maximum growth
+
+**Strategic Value:** Finfish represent the revenue-generating fed species in IMTA systems. Accurate yield forecasting directly impacts profitability, enables data-driven harvest decisions, and distinguishes platform from generic aquaculture monitoring tools. **This capability, alongside AI Copilot interface, addresses the two primary needs identified by UNH operational team.**
+
+### 2.6 Conversational AI (IMTA Copilot Interface)
 
 **Explainable AI Decision Support:**
 
@@ -146,7 +190,7 @@ Based on literature review synthesis (50+ papers analyzed), the IMTA Analytics P
 - Chatziantoniou et al. (2023): User feedback showed 45% wanted interface simplification - conversational AI addresses complexity barrier
 - Literature Review Section 9.1: "Primary barrier is operational complexity requiring expertise across multiple species" - AI can democratize access
 
-### 2.6 Digital Twin Simulation
+### 2.7 Digital Twin Simulation
 
 **Integrated System Modeling:**
 
@@ -161,7 +205,7 @@ Based on literature review synthesis (50+ papers analyzed), the IMTA Analytics P
 - Føre et al. (2024): Digital twin framework for aquaculture, real-time data integration, what-if scenario simulation
 - Chatziantoniou et al. (2023): Decision support system architecture integrating predictive models with operational data
 
-### 2.7 Strategic Planning & Advanced Technologies
+### 2.8 Strategic Planning & Advanced Technologies
 
 **Near-Term Opportunities (Software-First):**
 
@@ -197,7 +241,7 @@ The project maintains three living documents that will evolve as research progre
 
 **Evolution:** Updates with new research findings, model performance benchmarks, and operational validation results.
 
-**View Document:** [Predictive Features Catalog](../living/predictive-features-catalog.md)
+**View Document:** [Predictive Features Catalog](https://github.com/lhzn-io/imta-analytics/blob/main/docs/living/predictive-features-catalog.md)
 
 ### 3.2 Infrastructure Architecture
 
@@ -207,7 +251,7 @@ The project maintains three living documents that will evolve as research progre
 
 **Evolution:** Updates with deployment decisions, technology selections, and infrastructure optimization strategies.
 
-**View Document:** [Infrastructure Architecture](../living/infrastructure-architecture.md)
+**View Document:** [Infrastructure Architecture](https://github.com/lhzn-io/imta-analytics/blob/main/docs/living/infrastructure-architecture.md)
 
 ### 3.3 Data Sources
 
@@ -217,7 +261,7 @@ The project maintains three living documents that will evolve as research progre
 
 **Evolution:** Updates with new data source integrations, quality assessments, and fusion methodologies.
 
-**View Document:** [Data Sources](../living/data-sources.md)
+**View Document:** [Data Sources](https://github.com/lhzn-io/imta-analytics/blob/main/docs/living/data-sources.md)
 
 ---
 
@@ -225,7 +269,7 @@ The project maintains three living documents that will evolve as research progre
 
 **Target Context:** Emerging IMTA industry where economic viability is proven (20-40% NPV increase, 10-36% price premiums) but adoption is limited by operational complexity requiring multi-species expertise.
 
-**Adoption Barrier:** Operational complexity requiring expertise across multiple species, environmental monitoring, and trophic interactions - **research indicates AI decision support can bridge this gap** ([Literature Review Section 9.1](../../refs/Literature%20Review%20-%20Data%20Science%20%26%20AI%20Applications%20in%20Sustainable%20Aquaculture%20Systems.md#9-conclusion-research-synthesis)).
+**Adoption Barrier:** Operational complexity requiring expertise across multiple species, environmental monitoring, and trophic interactions - **research indicates AI decision support can bridge this gap** ([Literature Review Section 9.1](https://github.com/lhzn-io/imta-analytics/blob/main/refs/Literature%20Review%20-%20Data%20Science%20%26%20AI%20Applications%20in%20Sustainable%20Aquaculture%20Systems.md#9-conclusion-research-synthesis)).
 
 **Platform Value Proposition:**
 
@@ -313,6 +357,37 @@ Analysis of 50+ publications reveals strategic opportunities for platform differ
 
 **Strategic Value:** Unlocks new revenue streams through climate finance, coastal resilience funding, and water quality improvement payments.
 
+### 6.5 Development Pathway: Extractive Species Forecasting
+
+**Gap-to-Capability Translation:** The literature review identifies validated finfish DEB models (RMSE = 6.92%) but absence of predictive models for kelp and mussels—despite representing 60-70% of IMTA biomass. Addressing this gap enables comprehensive multi-species yield forecasting.
+
+**Kelp Growth Models:**
+
+Adapt Venolia et al. (2020) DEB framework + hybrid ML approaches (LSTM, physics-informed neural networks). Requires production records (biomass, blade length), environmental time series (temperature, salinity, PAR, nutrients), and satellite data integration. Target: R² > 0.80 for 30-day forecasts.
+
+**Mussel Growth Models:**
+
+Adapt Maar et al. (2015) *M. edulis* DEB model accounting for trophic interactions with fish waste. Key research question: What spatial configuration maximizes mussel growth via POM capture while avoiding hypoxic zones?
+
+**Coupled Multi-Species Framework:**
+
+```text
+Fish → Uneaten feed/feces (particulates) → Mussels → Dissolved nutrients → Kelp
+```
+
+Integrate fish/kelp/mussel DEB models with mass balance constraints, feedback loops, and optimization engine. Validate against UNH Aquafort 2022-2023 system (416 kg fish, 3,072 kg mussels, 638 kg kelp, 16.4 kg net N reduction).
+
+**Partnership-Driven Priorities:**
+
+Development sequence, timeline, and validation protocols should be **co-defined with UNH CSSS team** based on:
+
+- Which forecasting capability delivers highest operational value first?
+- What data collection is already happening vs. requires new protocols?
+- How do model development milestones align with research cycles and publication opportunities?
+- What resource constraints (personnel, equipment, funding) shape realistic timelines?
+
+**Strategic Value:** Successfully implementing coupled fish-kelp-mussel models positions IMTA Analytics as the first integrated decision support system addressing IMTA's critical adoption barrier: operational complexity requiring multi-species expertise.
+
 ---
 
 ## 7. Follow-Up Discussion Topics
@@ -391,9 +466,9 @@ This research-to-practice collaboration aligns well with NSF's Translating to Pr
 
 **Available Documentation:**
 
-- Living documents: [Predictive Features](../living/predictive-features-catalog.md), [Infrastructure](../living/infrastructure-architecture.md), [Data Sources](../living/data-sources.md)
-- Literature synthesis: [Comprehensive Review](../../refs/Literature%20Review%20-%20Data%20Science%20%26%20AI%20Applications%20in%20Sustainable%20Aquaculture%20Systems.md)
-- Case study context: [Learning Phase Document](../planning/unh-aquafort-case-study-learning-phase.md)
+- Living documents: [Predictive Features](https://github.com/lhzn-io/imta-analytics/blob/main/docs/living/predictive-features-catalog.md), [Infrastructure](https://github.com/lhzn-io/imta-analytics/blob/main/docs/living/infrastructure-architecture.md), [Data Sources](https://github.com/lhzn-io/imta-analytics/blob/main/docs/living/data-sources.md)
+- Literature synthesis: [Comprehensive Review](https://github.com/lhzn-io/imta-analytics/blob/main/refs/Literature%20Review%20-%20Data%20Science%20%26%20AI%20Applications%20in%20Sustainable%20Aquaculture%20Systems.md)
+- Case study context: [Learning Phase Document](https://github.com/lhzn-io/imta-analytics/blob/main/docs/planning/unh-aquafort-case-study-learning-phase.md)
 
 ---
 
@@ -415,15 +490,15 @@ The convergence of marine science domain expertise and AI/ML technical capabilit
 
 **Primary Documentation:**
 
-- [Literature Review - Data Science & AI Applications in Sustainable Aquaculture Systems](../../refs/Literature%20Review%20-%20Data%20Science%20%26%20AI%20Applications%20in%20Sustainable%20Aquaculture%20Systems.md)
-- [Reference Library - 50+ Papers](../../references.bib)
-- [UNH Aquafort Case Study - Learning Phase](../planning/unh-aquafort-case-study-learning-phase.md)
+- [Literature Review - Data Science & AI Applications in Sustainable Aquaculture Systems](https://github.com/lhzn-io/imta-analytics/blob/main/refs/Literature%20Review%20-%20Data%20Science%20%26%20AI%20Applications%20in%20Sustainable%20Aquaculture%20Systems.md)
+- [Reference Library - 50+ Papers](https://github.com/lhzn-io/imta-analytics/blob/main/references.bib)
+- [UNH Aquafort Case Study - Learning Phase](https://github.com/lhzn-io/imta-analytics/blob/main/docs/planning/unh-aquafort-case-study-learning-phase.md)
 
 **Living Documentation:**
 
-- [Predictive Features Catalog](../living/predictive-features-catalog.md)
-- [Infrastructure Architecture](../living/infrastructure-architecture.md)
-- [Data Sources](../living/data-sources.md)
+- [Predictive Features Catalog](https://github.com/lhzn-io/imta-analytics/blob/main/docs/living/predictive-features-catalog.md)
+- [Infrastructure Architecture](https://github.com/lhzn-io/imta-analytics/blob/main/docs/living/infrastructure-architecture.md)
+- [Data Sources](https://github.com/lhzn-io/imta-analytics/blob/main/docs/living/data-sources.md)
 
 **Key Research Papers:**
 
