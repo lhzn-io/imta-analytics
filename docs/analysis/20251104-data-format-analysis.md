@@ -19,7 +19,7 @@ The UNH Aquafort team has provided two data files from their buoy station monito
 ### File 1: UNH-G2000B_EXO2SumData.dat
 
 **Magic Number / File Type:**
-```
+```text
 Unicode text, UTF-8 text, with CRLF line terminators
 ```
 
@@ -40,7 +40,7 @@ Unicode text, UTF-8 text, with CRLF line terminators
   - Internal and External Power (V)
 
 **Structure:**
-```
+```text
 Line 1: "TOA5","UNH-G2000B","CR1000X","50927","CR1000X.Std.06.02",...
 Line 2: "TIMESTAMP","RECORD","EXO2Date","EXO2Time","EXO2pH",...
 Line 3: "TS","RN","","","","mV","QSU","ºC","mS/cm","psu","FNU",...
@@ -51,7 +51,7 @@ Line 5+: Data records (CSV format)
 ### File 2: UNH-G2000B_ZCelEngData.dat
 
 **Magic Number / File Type:**
-```
+```text
 Unicode text, UTF-8 text, with very long lines (921), with CRLF line terminators
 ```
 
@@ -75,7 +75,7 @@ Unicode text, UTF-8 text, with very long lines (921), with CRLF line terminators
     - Current Direction (degrees)
 
 **Structure:**
-```
+```text
 Line 1: "TOA5","UNH-G2000B","CR1000X","50927",...
 Line 2: "TIMESTAMP","RECORD","batt_volt","PTemp","ZCelRecLen",...
        "ZCelDpth1","CurrSpd1","CurrDir1",...,"ZCelDpth20","CurrSpd20","CurrDir20"
@@ -141,22 +141,22 @@ data = np.genfromtxt(filepath, delimiter=',', skip_header=4,
 ### Header Structure
 
 **Line 1: File Information**
-```
+```text
 "TOA5","Station_Name","Logger_Model","Serial_Number","OS_Version","Program_Name","Signature","Table_Name"
 ```
 
 **Line 2: Column Names**
-```
+```text
 "TIMESTAMP","RECORD","Column1","Column2",...
 ```
 
 **Line 3: Units**
-```
+```text
 "TS","RN","unit1","unit2",...
 ```
 
 **Line 4: Processing/Sampling**
-```
+```text
 "","","Smp","Avg","Max",...
 ```
 
@@ -240,7 +240,7 @@ The custom TOA5 loader has been extracted into a reusable Python module:
 - **Notebook Usage:** `notebooks/01_initial_data_exploration.ipynb` now imports from module
 
 The `imta_analytics` package is structured for future expansion:
-```
+```text
 imta_analytics/
 ├── __init__.py
 ├── data/

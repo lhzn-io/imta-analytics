@@ -224,10 +224,15 @@ docs:
 				-V sansfont:"Liberation Sans" \
 				--toc \
 				--toc-depth=2 \
+				--number-sections \
 				-V colorlinks=true \
 				-V linkcolor=blue \
 				-V urlcolor=blue \
-				-V toccolor=black 2>/dev/null; then \
+				-V toccolor=black \
+				--highlight-style=tango \
+				-V parskip=8pt \
+				-V indent=0pt \
+				-V 'header-includes=\usepackage{fancyvrb}\fvset{fontsize=\small,baselinestretch=0.9}' 2>/dev/null; then \
 				echo "1" >> "$$tmpfile"; \
 			else \
 				echo "  ⚠️  Failed to convert $$md_file"; \
