@@ -1,3 +1,6 @@
+# Copyright (c) 2025 Daniel Fry
+# MIT License. See LICENSE file in the project root for full license text.
+#
 """
 Data loading and parsing module for IMTA Analytics.
 
