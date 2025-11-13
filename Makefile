@@ -224,7 +224,6 @@ docs:
 				-V sansfont:"Liberation Sans" \
 				--toc \
 				--toc-depth=2 \
-				--number-sections \
 				-V colorlinks=true \
 				-V linkcolor=blue \
 				-V urlcolor=blue \
