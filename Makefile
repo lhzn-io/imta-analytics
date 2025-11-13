@@ -11,9 +11,13 @@ PYTEST = $(CONDA_ACTIVATE) && python -m pytest
 .PHONY: help pubs-md tech-md refs-md clean-md clean-tech-md clean docs
 .PHONY: test test-fast test-coverage test-unit test-integration
 .PHONY: install-hooks check-hooks
+.PHONY: data
 
 help:
 	@echo "Available targets:"
+	@echo ""
+	@echo "Data Processing:"
+	@echo "  data          - Convert .dat files to .feather format in data/processed/"
 	@echo ""
 	@echo "Testing:"
 	@echo "  test          - Run unit and integration tests"
@@ -137,6 +141,35 @@ clean:
 # Utility target to activate conda environment
 activate-env:
 	@echo "Activating imta-analytics conda environment..."
+
+# Data processing targets
+data: activate-env
+	@echo "Converting TOA5 .dat files to .feather format..."
+	@mkdir -p data/processed
+	@$(CONDA_ACTIVATE) && \
+	converted=0; \
+	skipped=0; \
+	for dat_file in data/aquafort-buoy-station/*.dat; do \
+		if [ -f "$$dat_file" ]; then \
+			base_name=$$(basename "$$dat_file" .dat); \
+			feather_file="data/processed/$${base_name}.feather"; \
+			if [ ! -f "$$feather_file" ] || [ "$$dat_file" -nt "$$feather_file" ]; then \
+				echo "Converting: $$dat_file → $$feather_file"; \
+				python -m imta_analytics.data.convert_toa5 "$$dat_file" "$$feather_file" --filter-outliers || exit 1; \
+				converted=$$((converted + 1)); \
+			else \
+				echo "Skipping: $$feather_file (up to date)"; \
+				skipped=$$((skipped + 1)); \
+			fi; \
+		fi; \
+	done; \
+	echo ""; \
+	echo "Summary:"; \
+	echo "  Converted: $$converted file(s)"; \
+	echo "  Skipped: $$skipped file(s) (already up to date)"; \
+	if [ $$converted -gt 0 ]; then \
+		echo "✓ Data conversion complete"; \
+	fi
 
 # Testing targets
 test: activate-env

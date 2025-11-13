@@ -40,11 +40,12 @@ Bridge the gap between cutting-edge aquaculture research and practical operation
 
 ### 1. Predictive Yield Modeling (In Development)
 
-Machine learning models to forecast harvest weights for multi-species IMTA systems based on:
+Machine learning models to forecast harvest weights for multi-species IMTA systems, with **finfish yield forecasting as primary focus** (identified by UNH CSSS team as critical operational capability):
 
 - **Environmental Parameters**: Temperature, dissolved oxygen, chlorophyll-a, salinity
 - **Operational Factors**: Stocking density, feeding regimes, biomass loading
-- **Species-Specific Growth**: Dynamic Energy Budget (DEB) models coupled with data-driven ML (partnership approach leveraging CSSS domain expertise)
+- **Finfish Growth Priority**: Dynamic Energy Budget (DEB) models for steelhead trout/Atlantic salmon with temperature-growth coupling and FCR optimization (partnership approach leveraging CSSS domain expertise)
+- **Extractive Species**: Seaweed and shellfish models (60-70% of biomass) to follow finfish implementation
 
 For comprehensive feature definitions, see [Predictive Features Catalog](docs/living/predictive-features-catalog.md).
 
@@ -60,12 +61,13 @@ For comprehensive feature definitions, see [Predictive Features Catalog](docs/li
 
 ### 2. IMTA Operator Co-Pilot (AI Assistant) (Planned)
 
-Conversational AI system to provide decision support, training, and troubleshooting:
+Conversational AI system to provide decision support, training, and troubleshooting - **identified by UNH CSSS team alongside finfish yield forecasting as critical operational capability**:
 
-- **Natural Language Interface**: Ask questions like "Why is my kelp growth slow?" or "Should I harvest early?"
+- **Natural Language Interface**: Ask questions like "Why is my oxygen dropping?" or "Should I harvest early?"
 - **Proactive Alerts**: Predictive anomaly detection (24-48 hour advance warnings)
 - **Scenario Simulation**: "What if I increase stocking by 20%?" → model-based forecasting
 - **Knowledge Base**: Integrated access to 60+ research papers (majority Open Access[^3]), SOPs, and regulatory guidelines
+- **Explainable Recommendations**: SHAP analysis, causal inference, physics-informed constraints with literature citations
 
 [^3]: Open Access status verification in progress via DOI resolution
 
@@ -101,7 +103,7 @@ Automated data collection, harmonization, and quality control from:
 - **Baseline Environmental Characterization**: Temperature, dissolved oxygen, salinity, chlorophyll-a, turbidity patterns at offshore site
 - **Data Quality Methods**: Behavioral heuristics for detecting sensor errors and cascading failures in marine IoT systems
 
-Focus areas below represent planned research directions informed by literature and collaboration priorities to be determined with CSSS team.
+Focus areas below represent planned research directions informed by literature and collaboration priorities to be determined with CSSS team. **For comprehensive platform capabilities and research-validated features, see [Platform Opportunity Document](docs/analysis/20251112-imta-analytics-platform-opportunity.md).**
 
 ### Environmental Monitoring & Prediction (Planned)
 
@@ -111,8 +113,9 @@ Focus areas below represent planned research directions informed by literature a
 
 ### Growth & Yield Optimization (Planned)
 
-- **Multi-Species Growth Models**: Finfish, bivalves, seaweeds (DEB models used in literature for Mediterranean finfish[^4]; applicability to bivalves/seaweeds requires CSSS guidance)
-- **Feed Conversion Efficiency**: Dynamic FCR prediction based on environmental conditions
+- **Finfish Growth Models**: Primary revenue driver - DEB models for steelhead trout and Atlantic salmon with temperature-growth coupling, FCR optimization, and harvest timing predictions (Mediterranean finfish models[^4] require New England adaptation)
+- **Extractive Species Models**: Seaweed and shellfish (60-70% of IMTA biomass) require new ML forecasting capabilities for kelp seasonality and mussel bioremediation
+- **Feed Conversion Efficiency**: Dynamic FCR prediction based on environmental conditions (temperature, DO, stocking density)
 - **Harvest Window Optimization**: Align species cycles, maximize market price capture
 
 [^4]: Stavrakidis-Zachou et al. (2021), Chatziantoniou et al. (2023) demonstrate DEB applications for European sea bass and meagre
@@ -137,11 +140,12 @@ Economic measurement & prediction capabilities provide foundation; opportunity t
 
 **AI/ML Development Needs:**
 
-1. **Seaweed Yield Modeling**: No published ML models exist; particularly critical for New England kelp species (high variability, labor-intensive measurement)
-2. **Integrated Multi-Species Models**: Current models treat species independently; need coupled nutrient transfer dynamics
-3. **Causal Inference**: Move beyond correlation → enable "what-if" scenario testing with confidence bounds
-4. **Edge AI Deployment**: Reduce prediction latency for real-time decision support (current cloud models: 12-48 hour lag)
-5. **Explainable AI**: Integrate SHAP/LIME interpretability methods for operator trust and adoption
+1. **Finfish Yield Forecasting**: Primary revenue driver (DEB models validated for Mediterranean species; need New England adaptation for steelhead/salmon with temperature-growth coupling and FCR optimization)
+2. **Extractive Species Yield Models**: Seaweed and shellfish represent 60-70% of IMTA biomass but lack validated ML forecasting (critical gap for kelp seasonality and mussel bioremediation quantification)
+3. **Integrated Multi-Species Models**: Current models treat species independently; need coupled nutrient transfer dynamics
+4. **Causal Inference**: Move beyond correlation → enable "what-if" scenario testing with confidence bounds
+5. **Edge AI Deployment**: Reduce prediction latency for real-time decision support (current cloud models: 12-48 hour lag)
+6. **Explainable AI**: Integrate SHAP/LIME interpretability methods for operator trust and adoption
 
 **Domain Science Needs (CSSS Collaboration):**
 
@@ -216,8 +220,10 @@ This section highlights published research results that demonstrate the potentia
 
 - **16.4 kg net nitrogen reduction** per production cycle - quantified bioremediation benefit
 - **Multi-species production**: 416 kg steelhead trout, 3,072 kg mussels, 638 kg kelp harvested
+- **Feed efficiency**: FCR = 1.24 for steelhead trout (within optimal 1.03-1.65 range)
 - **Feasibility validation**: Successful operation of integrated multi-trophic system in exposed offshore environment
 - **Data collaboration**: Partnership provides sensor data, operational records, and domain expertise for model development
+- **Operational priorities**: Finfish yield forecasting and AI-assisted decision support identified as critical capabilities
 
 This partnership serves as the foundation for validating predictive models developed from published literature.
 
@@ -235,11 +241,12 @@ This partnership serves as the foundation for validating predictive models devel
 
 **Published performance for aquaculture species:**
 
-- **RMSE = 6.92%** for plant biomass estimation using computer vision
+- **RMSE = 6.92%** for finfish growth prediction using Dynamic Energy Budget models - Stavrakidis-Zachou et al. (2019)
 - **Kelp seasonal growth**: 0.77 cm/day (winter) → 3.52 cm/day (spring) - Venolia et al. (2020)
-- **DEB models**: Validated for Mediterranean finfish species (Stavrakidis-Zachou et al. 2021, Chatziantoniou et al. 2023)
+- **DEB models**: Validated for Mediterranean finfish species (European sea bass, gilthead sea bream) with temperature-growth coupling
+- **FCR achievement**: UNH Aquafort steelhead trout FCR = 1.24 (within optimal 1.03-1.65 range) - Chambers et al. (2024)
 
-**Validation goal**: Develop species-specific models for New England IMTA species (steelhead trout, mussels, kelp) using UNH Aquafort growth measurements.
+**Validation goal**: Develop species-specific models for New England IMTA species (steelhead trout, mussels, kelp) using UNH Aquafort growth measurements. Finfish yield forecasting identified by UNH CSSS team as critical capability alongside AI-assisted decision support.
 
 ### Economic Performance (Published Literature)
 
@@ -255,6 +262,7 @@ This partnership serves as the foundation for validating predictive models devel
 
 ## Documentation
 
+- **[Platform Opportunity & Research Translation](docs/analysis/20251112-imta-analytics-platform-opportunity.md)**: Comprehensive platform capabilities, research-validated features, validation framework, and partnership model
 - **[Predictive Features Catalog](docs/living/predictive-features-catalog.md)**: Comprehensive catalog of derived parameters and engineered features for predictive modeling
 - **[Infrastructure Architecture](docs/living/infrastructure-architecture.md)**: Technology selections, cost estimates, and evaluation criteria
 - **[Data Sources](docs/living/data-sources.md)**: Satellite, sensor, and model data access methods and specifications
