@@ -71,7 +71,7 @@ Based on literature review synthesis (50+ papers analyzed), the IMTA Analytics P
 
 - **Real-time monitoring dashboard** (water quality parameters, growth indicators, environmental conditions with spatial context)
 - **Predictive anomaly detection** (LSTM autoencoders learning normal patterns, 24-48 hour advance warning before critical thresholds)
-- **Dissolved oxygen forecasting** (hybrid deep learning models, target R² > 0.97 based on Xu et al. 2025)
+- **Dissolved oxygen forecasting** (hybrid deep learning models, target R² > 0.97 based on Xu et al. 2025; see Section 6.6 for long-horizon forecasting research opportunity)
 - **Multi-species growth forecasting** (integrated DEB models with nutrient transfer: fish effluent → mussel food → kelp nutrients)
 
 **Advanced Monitoring:**
@@ -392,6 +392,37 @@ Development sequence, timeline, and validation protocols should be **co-defined 
 - What resource constraints (personnel, equipment, funding) shape realistic timelines?
 
 **Strategic Value:** Successfully implementing coupled fish-kelp-mussel models positions IMTA Analytics as the first integrated decision support system addressing IMTA's critical adoption barrier: operational complexity requiring multi-species expertise.
+
+### 6.6 Long-Horizon Dissolved Oxygen Forecasting
+
+**Research Gap:** Current state-of-the-art DO prediction models achieve exceptional performance for real-time and short-term forecasting applications. Xu et al. (2025) demonstrated R² = 0.9765 using a hybrid CNN-SA-BiSRU architecture, while Barzegar et al. (2020) and Ta et al. (2018) similarly focused on single-step predictions (~10-minute intervals). However, **no studies in our knowledge base evaluate forecast accuracy at operationally-relevant horizons** including 6-hour, 24-hour, 48-hour, or 7-day forecasts. This represents a critical gap between research capabilities and operational decision-making requirements.
+
+**Operational Need:** Multi-day dissolved oxygen forecasts are essential for proactive aquaculture management decisions that cannot be made in real-time:
+
+- **Feed scheduling optimization:** Planning feeding regimens 24-48 hours in advance based on predicted DO conditions
+- **Stocking timing decisions:** Scheduling fish transfers during predicted favorable oxygen windows
+- **Preventive aeration deployment:** Pre-positioning aeration equipment before forecasted hypoxic events
+- **Harvest planning:** Coordinating harvest operations with multi-day environmental forecasts
+- **Multi-species coordination:** Aligning management decisions across fish, mussel, and kelp production cycles
+
+**Technical Challenge:** Understanding how prediction accuracy degrades with increasing forecast horizon is critical for operational reliability. Key research questions include:
+
+- **Horizon-specific performance curves:** How does R² decline from t+1 to t+144 (10min to 24hr)?
+- **Architecture comparison:** Do recurrent models (LSTM, GRU, BiSRU) or attention mechanisms (Transformer) maintain accuracy better at extended horizons?
+- **Uncertainty quantification:** How should confidence intervals widen with forecast distance?
+- **Multi-step vs. iterative prediction:** Should models predict all horizons simultaneously or iterate single-step predictions?
+
+**Literature Note:** Barzegar et al. (2020) explicitly identifies this research direction: "Future studies should explore the ability of DL models to simulate water quality parameters over medium- and long-term periods." Our literature review confirms this recommendation remains unaddressed in subsequent publications.
+
+**Proposed Approach:** Develop a multi-horizon evaluation framework testing leading architectures at operationally-relevant time steps:
+
+- **Evaluation horizons:** t+1 (10min), t+6 (1hr), t+36 (6hr), t+144 (24hr) forecasts
+- **Architecture comparison:** LSTM, GRU, BiSRU (Xu et al. baseline), Transformer variants
+- **Horizon-specific metrics:** Separate R², MAE, RMSE reporting for each forecast distance
+- **Degradation analysis:** Characterize accuracy decline curves to establish operational thresholds
+- **UNH Aquafort validation:** Test framework using Gulf of Maine deployment data with real-world operational constraints
+
+**Strategic Value:** Addressing this gap positions IMTA Analytics to provide operationally-actionable forecasts beyond research benchmarks. Integration with the platform's AI Copilot interface (Section 2.6) enables transparent communication of forecast uncertainty and horizon-specific reliability, building operator trust in extended-range predictions.
 
 ---
 
