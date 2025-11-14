@@ -124,13 +124,17 @@ Based on literature review synthesis (50+ papers analyzed), the IMTA Analytics P
   - Non-food kelp applications (fertilizer, animal feed, cosmetics, bioplastics feedstock)
   - Emerging ecosystem service credits (nutrient removal, carbon sequestration, coastal protection)
 - **Market intelligence** (price forecasting, demand trends, premium capture opportunities for sustainable products)
-- **Cost tracking & optimization** (feed costs, labor, infrastructure maintenance, energy efficiency)
+- **Input cost optimization** (feed costs represent largest variable expense; FCR improvements directly impact profitability)
+- **Demand elasticity modeling** (seaweed highly elastic requiring cost discipline; mussels inelastic offering pricing power)
+- **Energy efficiency tracking** (56-159 kWh/kg production; primary bottleneck in cold climates like New England)
 
 **Research Validation:**
 
-- Knowler et al. (2020): IMTA economics, B/C ratios 1.1-1.7, 10-36% price premiums
-- Carras et al. (2019): DCF analysis, IMTA $3.3M NPV vs. $2.7M monoculture
-- Nobre et al. (2010): Social accounting framework, $1.1-3.0M annual ecosystem service benefits
+- Knowler et al. (2020): IMTA economics, B/C ratios 1.1-1.7, 10-36% price premiums; profitability highly sensitive to species market prices (2% salmon price decline eliminates viability)
+- Carras et al. (2019): DCF analysis, IMTA $3.3M NPV vs. $2.7M monoculture; product diversification acts as economic insurance (IMTA 3.2% profit margin vs. 0.3% monoculture under 12% price reduction scenario)
+- Shore et al. (2024): Kelp production costs $0.69-2.03/lb depending on yield; 3x productivity difference reduces costs 66-74%, demonstrating critical importance of optimized growth forecasting
+- Nobre et al. (2010): Social accounting framework, $1.1-3.0M annual ecosystem service benefits (several times larger than private profit increase)
+- Channa et al. (2024): Energy costs dominate operating expenses (£19-54/kg in cold climates); optimization critical for New England viability
 - Literature Review Gap: No economic valuation frameworks exist for coastal protection benefits - **innovation opportunity**
 
 ### 2.5 Fish Yield Forecasting (Core Competency)
@@ -147,7 +151,8 @@ Based on literature review synthesis (50+ papers analyzed), the IMTA Analytics P
 **Feed Conversion Ratio (FCR) Optimization:**
 
 - **Adaptive feeding recommendations:** Predict optimal feeding rates based on current environmental conditions (temperature, DO, stocking density)
-- **Cost-benefit analysis:** Balance feed costs against growth rates to maximize profitability
+- **Economic impact modeling:** Feed costs represent largest variable input expense; dynamic FCR prediction enables real-time cost-benefit analysis balancing feed costs against growth rates
+- **Environmental coupling:** FCR varies 1.03-1.65 for salmonids depending on temperature (optimal 9-15°C), DO (declines below 5 mg/L), and stocking density; ML models predict FCR dynamically for adaptive feeding strategies
 - **Waste minimization:** Reduce overfeeding to lower nutrient loading and improve extractive species (mussel/kelp) performance
 - **Validated performance:** Chambers et al. (2024) achieved FCR = 1.24 for steelhead trout at UNH Aquafort (within optimal 1.03-1.65 range)
 
