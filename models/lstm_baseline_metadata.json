@@ -1,0 +1,52 @@
+{
+  "model_type": "LSTM Baseline",
+  "target": "EXO2DO (% saturation)",
+  "created_date": "2025-11-13",
+  "features": {
+    "base_features": [
+      "EXO2DO",
+      "EXO2Temp",
+      "EXO2spCond",
+      "EXO2Salinity",
+      "EXO2pH",
+      "EXO2Turb",
+      "EXO2Chlor"
+    ],
+    "lag_features": 12,
+    "temporal_features": [
+      "hour_sin",
+      "hour_cos",
+      "day_sin",
+      "day_cos"
+    ],
+    "total_features": 22
+  },
+  "data": {
+    "train_samples": 20675,
+    "test_samples": 5169,
+    "train_test_split": "80/20",
+    "date_range": "2024-12-20 14:32:10 to 2025-09-26 17:47:10",
+    "sampling_interval": "15 minutes"
+  },
+  "performance": {
+    "r2_train": 0.9388798341355461,
+    "r2_test": 0.8299960545645002,
+    "mae_test": 3.3089124348889745,
+    "rmse_test": 3.775786423695496,
+    "units": "% saturation"
+  },
+  "architecture": {
+    "lstm_units": 64,
+    "dropout_rate": 0.001,
+    "activation": "elu",
+    "optimizer": "Adam",
+    "learning_rate": 0.01,
+    "loss": "mse",
+    "epochs_trained": 11,
+    "early_stopping_patience": 10
+  },
+  "references": [
+    "Barzegar et al. (2020) - CNN-LSTM hybrid model",
+    "Xu et al. (2025) - CNN-SA-BiSRU architecture"
+  ]
+}
