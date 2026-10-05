@@ -176,3 +176,9 @@ docs/strategy/
 # Trained model binaries and run outputs
 *.keras
 results/
+
+# Converted reference full texts: published only when the licence permits
+# redistribution (see refs/README.md); force-add those with git add -f
+refs/publications/*.md
+!refs/publications/README.md
+refs/technical/*.md
