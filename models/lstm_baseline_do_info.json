@@ -1,0 +1,62 @@
+{
+  "model_type": "LSTM Baseline",
+  "created_date": "2026-10-04 02:21:29",
+  "architecture": {
+    "lstm_units": 64,
+    "dropout_rate": 0.001,
+    "learning_rate": 0.01,
+    "activation": "elu",
+    "optimizer": "adam",
+    "loss": "mse"
+  },
+  "training": {
+    "epochs_completed": 42,
+    "batch_size": 64,
+    "validation_split": 0.2,
+    "early_stopping_patience": 15
+  },
+  "data": {
+    "total_samples": 59545,
+    "train_samples": 47636,
+    "test_samples": 11909,
+    "n_features": 22,
+    "features": [
+      "EXO2Temp",
+      "EXO2Salinity",
+      "EXO2pH",
+      "EXO2Chlor",
+      "EXO2Turb",
+      "EXO2Depth",
+      "hour_sin",
+      "hour_cos",
+      "doy_sin",
+      "doy_cos",
+      "DO_lag_1",
+      "DO_lag_2",
+      "DO_lag_3",
+      "DO_lag_4",
+      "DO_lag_5",
+      "DO_lag_6",
+      "DO_lag_7",
+      "DO_lag_8",
+      "DO_lag_9",
+      "DO_lag_10",
+      "DO_lag_11",
+      "DO_lag_12"
+    ],
+    "target": "EXO2DO",
+    "n_lags": 12
+  },
+  "performance": {
+    "train": {
+      "r2": 0.9814039252512328,
+      "mae": 0.6049031639883907,
+      "rmse": 0.989525060172491
+    },
+    "test": {
+      "r2": 0.5239636576060721,
+      "mae": 3.30439487266044,
+      "rmse": 4.576765532716503
+    }
+  }
+}
